@@ -7,4 +7,32 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'commercialfront';
+
+  onEntrepriseCalled() {
+
+  }
+
+  onStrictureCalled() {
+
+  }
+
+  onPosteCalled() {
+
+  }
+
+  onSante() {
+
+  }
+
+  oncSecurity() {
+
+  }
+
+  onEnverenment() {
+
+  }
+
+  onFCommun() {
+
+  }
 }
