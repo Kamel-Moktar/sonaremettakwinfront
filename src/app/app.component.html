@@ -17,14 +17,14 @@
                 class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-target="#reference-table" data-bs-toggle="collapse">
 
           <span class="fa fa-address-book" ></span>
-          &nbsp;&nbsp;Renomage
+          &nbsp;&nbsp;Facturation
         </button>
         <div class="collapse" id="reference-table">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onSante()">Santé</a></li>
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="oncSecurity()" >Sécurité</a></li>
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onEnverenment()" >Environment</a></li>
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onFCommun()" >Commun</a></li>
+            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onInvoiceCalled()">Facturation</a></li>
+            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="oncSecurity()" >Acheminement</a></li>
+            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onEnverenment()" >Réglement</a></li>
+<!--            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onFCommun()" >Commun</a></li>-->
           </ul>
         </div>
       </li>
@@ -32,13 +32,13 @@
         <button aria-expanded="false"
                 class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-target="#orders-collapse" data-bs-toggle="collapse">
           <span class="fa fa-briefcase" ></span>
-          &nbsp; Donnée de base
+          &nbsp; Donnée de basen
         </button>
         <div class="collapse" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onEntrepriseCalled()" >Entreprise</a></li>
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onStrictureCalled()" >Structure</a></li>
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onPosteCalled()">Poste de travail</a></li>
+            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onCustomerCalled()" >Client</a></li>
+            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onUniteMesureClic()" >Unité de mésure</a></li>
+            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onPrestationCalled()">Prestation</a></li>
           </ul>
         </div>
       </li>

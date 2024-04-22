@@ -1,0 +1,73 @@
+<div class="card">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col"><h3>{{title}}</h3></div>
+      <div class="col col-auto">
+        <button (click)="onCancel()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-arrow-left"></span>
+
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body m-lg-5">
+    <form [formGroup]="formGroup">
+      <div class="col ">
+
+        <div class="row m-2">
+          <div class="col col text-end"><label> Nom: </label></div>
+          <div class="col"><input [formControlName]="'name'" class="form-control" placeholder="Nom de client"
+                                  type="text"></div>
+          <div class="col"></div>
+        </div>
+
+
+        <div class="row m-2">
+          <div class="col col text-end"><label> Nom court : </label></div>
+          <div class="col "><input class="form-control" [formControlName]="'shortName'" placeholder="Abbriviation " type="text"></div>
+          <div class="col col"></div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col  text-end"><label> RC: </label></div>
+          <div class="col"><input class="form-control"  [formControlName]="'rc'"placeholder="Registre de commerce" type="text"></div>
+          <div class="col"></div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col col text-end"><label> IF: </label></div>
+          <div class="col"><input class="form-control" [formControlName]="'if'"placeholder="Identificateur Fiscal" type="text"></div>
+          <div class="col"></div>
+        </div>
+
+         <div class="row m-2">
+           <div class="col col text-end"><label> NS : </label></div>
+           <div class="col"><input class="form-control" [formControlName]="'ns'"placeholder="Numéro Statistique " type="text"></div>
+           <div class="col"></div>
+         </div>
+
+         <div class="row m-2">
+           <div class="col col text-end"><label>  N° Article: </label></div>
+           <div class="col"><input class="form-control" [formControlName]="'nArticle'"placeholder="Numéro d'article d'imposition  " type="text"></div>
+           <div class="col"></div>
+         </div>
+
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col">
+            <button (click)="onValidate()" class="btn btn-outline-success m-2">Validate</button>
+            <button (click)="onCancel()" class="btn btn-outline-success m-2">Cancel</button>
+          </div>
+          <div class="col">
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="card-footer ">
+    <div class="row">
+      <div class="col"><h3>{{footer}}</h3></div>
+
+    </div>

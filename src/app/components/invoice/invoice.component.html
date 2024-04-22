@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col"><h3>{{title}}</h3></div>
+      <div class="col col-auto">
+        <button class="btn btn-outline-success align-content-end" (click)="onAddInvoice()">
+          <span class="fa fa-plus"></span>
+          Ajouter
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped  table-bordered table-hover">
+      <thead>
+      <tr class="text-center">
+        <th style="width: 5%" >Numéro</th>
+        <th style="width: 30%" >Client</th>
+        <th style="width: 15%">date</th>
+        <th style="width: 15%" >Montant HT</th>
+        <th style="width: 10%" >Montant TVA</th>
+        <th style="width: 15%" >Montant TTC</th>
+
+
+
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let a of this.invoices ;let i=index ">
+        <td style="text-align: center"> {{a.number}}</td>
+        <td> {{a.customer.shortName}}</td>
+        <td> {{a.date |date:"dd/MM/yyyy"}}</td>
+        <td> {{a.amountExcludingTax}}</td>
+        <td> {{a.amountTax}}</td>
+        <td> {{a.amountIncludingTax}}</td>
+
+        <td><div class="container">
+          <button class="btn btn-outline-success" (click)="onUpdate(a)">
+            <span class="fa fa-pencil"> </span>
+          </button>
+        </div></td>
+        <td><div class="container">
+          <button class="btn btn-outline-success" (click)="onDelete(a)" >
+            <span class="fa fa-trash-o" > </span>
+          </button>
+        </div></td>
+        <td><div class="container">
+          <button class="btn btn-outline-success" (click)="onDelete(a)" >
+            <span class="fa fa-info-circle" > </span>
+          </button>
+        </div></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-header">
+    <!--    Total : <strong>{{totalEntreprise}}</strong> &nbsp;Enregistrements-->
+  </div>
+
+</div>
+
+

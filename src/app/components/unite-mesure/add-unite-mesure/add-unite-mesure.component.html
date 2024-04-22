@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col"><h3>{{title}}</h3></div>
+      <div class="col col-auto">
+        <button (click)="onCancel()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-arrow-left"></span>
+
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body m-lg-5">
+    <form [formGroup]="formGroup">
+      <div class="col ">
+
+        <div class="row m-2">
+          <div class="col col text-end"><label> Nom: </label></div>
+          <div class="col"><input [formControlName]="'name'" class="form-control" placeholder="Nom de l'unite de mesure"
+                                  type="text"></div>
+          <div class="col"></div>
+        </div>
+
+
+
+
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col">
+            <button (click)="onValidate()" class="btn btn-outline-success m-2">Validate</button>
+            <button (click)="onCancel()" class="btn btn-outline-success m-2">Cancel</button>
+          </div>
+          <div class="col">
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="card-footer ">
+    <div class="row">
+      <div class="col"><h3>{{footer}}</h3></div>
+
+    </div>
+
