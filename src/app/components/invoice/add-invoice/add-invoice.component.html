@@ -15,41 +15,45 @@
       <div class="col ">
 
         <div class="row m-2">
-          <div class="col col text-end"><label> customer: </label></div>
-          <div class="col">
+          <div class="col col-2 text-end"><label>Client: </label></div>
+          <div class="col col-8">
             <select class='form-select form-control'
                     (change)='customerSelected($event)'>
               <option class='form-select'  *ngFor='let option of customers'
                       [value]="option.shortName">{{option.shortName}}</option>
             </select>
           </div>
-          <div class="col"></div>
+<!--          <div class="col"></div>-->
         </div>
 
 
 
+<!--        <div class="row m-2">-->
+<!--          <div class="col col-2 text-end"><label> Numero de facture : </label></div>-->
+<!--          <div class="col "><input class="form-control" [formControlName]="'number'" placeholder="Number " type="text"></div>-->
+<!--          <div class="col col"></div>-->
+<!--          <div class="col"></div>-->
+<!--          <div class="col col"></div>-->
+<!--          <div class="col"></div>-->
+<!--        </div>-->
+
         <div class="row m-2">
-          <div class="col col text-end"><label> Numero de facture : </label></div>
-          <div class="col "><input class="form-control" [formControlName]="'number'" placeholder="Number " type="string"></div>
-          <div class="col col"></div>
+          <div class="col col-2 text-end"><label> Date: </label></div>
+          <div class="col col-4"><input class="form-control" [formControlName]="'date'" placeholder="la date" type="date"></div>
+
         </div>
 
         <div class="row m-2">
-          <div class="col  text-end"><label> Referance: </label></div>
-          <div class="col"><input class="form-control"  [formControlName]="'reference'"placeholder="Reference" type="text"></div>
-          <div class="col"></div>
+          <div class="col  col-2 text-end"><label> Referance: </label></div>
+          <div class="col col"><input class="form-control"  [formControlName]="'reference'" placeholder="Reference" type="text"></div>
+
         </div>
 
-        <div class="row m-2">
-          <div class="col col text-end"><label> La date: </label></div>
-          <div class="col"><input class="form-control" [formControlName]="'date'"placeholder="la date" type="date"></div>
-          <div class="col"></div>
-        </div>
 
         <div class="row m-2">
-          <div class="col col text-end"><label> object: </label></div>
-          <div class="col"><input class="form-control" [formControlName]="'object'"placeholder="object" type="date"></div>
-          <div class="col"></div>
+          <div class="col col-2 text-end"><label> Object: </label></div>
+          <div class="col col"><input class="form-control" [formControlName]="'object'"placeholder="object" type="text"></div>
+
         </div>
 
 
