@@ -15,40 +15,39 @@
       <div class="col ">
 
         <div class="row m-2">
-          <div class="col col text-end"><label> Nom: </label></div>
+          <div class="col col-2 text-end"><label> Nom ou raison social: </label></div>
           <div class="col"><input [formControlName]="'name'" class="form-control" placeholder="Nom de client"
                                   type="text"></div>
-          <div class="col"></div>
         </div>
 
 
         <div class="row m-2">
-          <div class="col col text-end"><label> Nom court : </label></div>
+          <div class="col col-2 text-end"><label> Libellé court: </label></div>
           <div class="col "><input class="form-control" [formControlName]="'shortName'" placeholder="Abbriviation " type="text"></div>
           <div class="col col"></div>
         </div>
 
         <div class="row m-2">
-          <div class="col  text-end"><label> RC: </label></div>
-          <div class="col"><input class="form-control"  [formControlName]="'rc'"placeholder="Registre de commerce" type="text"></div>
+          <div class="col col-2 text-end"><label> Numéro de Registre de Commerce (NRC): </label></div>
+          <div class="col col-2"><input class="form-control"  [formControlName]="'rc'"placeholder="Registre de commerce" type="text"></div>
           <div class="col"></div>
         </div>
 
         <div class="row m-2">
-          <div class="col col text-end"><label> IF: </label></div>
-          <div class="col"><input class="form-control" [formControlName]="'if'"placeholder="Identificateur Fiscal" type="text"></div>
+          <div class="col col-2 text-end"><label> Numéro d'Identification Fiscal (NIF): </label></div>
+          <div class="col col-2"><input class="form-control" [formControlName]="'if'"placeholder="Identificateur Fiscal" type="text"></div>
           <div class="col"></div>
         </div>
 
          <div class="row m-2">
-           <div class="col col text-end"><label> NS : </label></div>
-           <div class="col"><input class="form-control" [formControlName]="'ns'"placeholder="Numéro Statistique " type="text"></div>
+           <div class="col col-2 text-end"><label> Numéro d'Identification Statistiques (NIS) : </label></div>
+           <div class="col col-2"><input class="form-control" [formControlName]="'ns'"placeholder="Numéro Statistique " type="text"></div>
            <div class="col"></div>
          </div>
 
          <div class="row m-2">
-           <div class="col col text-end"><label>  N° Article: </label></div>
-           <div class="col"><input class="form-control" [formControlName]="'nArticle'"placeholder="Numéro d'article d'imposition  " type="text"></div>
+           <div class="col col-2 text-end"><label>  Numéro Article d'Imposition: </label></div>
+           <div class="col col-2"><input class="form-control" [formControlName]="'nArticle'"placeholder="Numéro d'article d'imposition  " type="text"></div>
            <div class="col"></div>
          </div>
 
@@ -56,8 +55,8 @@
           <div class="col">
           </div>
           <div class="col">
-            <button (click)="onValidate()" class="btn btn-outline-success m-2">Validate</button>
-            <button (click)="onCancel()" class="btn btn-outline-success m-2">Cancel</button>
+            <button (click)="onValidate()" class="btn btn-outline-success m-2">Valider</button>
+            <button (click)="onCancel()" class="btn btn-outline-success m-2">Annuler</button>
           </div>
           <div class="col">
           </div>
