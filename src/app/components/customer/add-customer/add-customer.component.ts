@@ -36,10 +36,10 @@ export class AddCustomerComponent {
     this.customerService.add({
       name: this.formGroup.value.name,
       shortName: this.formGroup.value.shortName,
-      rc: this.formGroup.value.rc,
-      if: this.formGroup.value.if,
-      ns: this.formGroup.value.ns,
-      narticle:this.formGroup.value.nArticle
+      numRc: this.formGroup.value.rc,
+      idFiscal: this.formGroup.value.if,
+      idStatistic: this.formGroup.value.ns,
+      numArticle:this.formGroup.value.nArticle
     }).subscribe( ()=>{
       this.onCancel();
       }

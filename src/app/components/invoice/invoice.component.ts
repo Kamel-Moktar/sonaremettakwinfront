@@ -13,7 +13,7 @@ export class InvoiceComponent {
   invoices?: any[];
   title: any = 'Facture';
 
-  constructor(private invoiceService: InvoiceService, private router: Router) {
+  constructor(public invoiceService: InvoiceService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -54,6 +54,12 @@ export class InvoiceComponent {
 
     this.router.navigateByUrl("addinvoice")
 
+
+  }
+
+  onDetail(a:any) {
+
+    this.router.navigateByUrl("invoice-detail/"+a.id)
 
   }
 }

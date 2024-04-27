@@ -25,6 +25,8 @@ export class CustomerComponent {
       res => {
 
         this.customers = res
+
+        console.log(res)
       })
   }
 
@@ -43,10 +45,10 @@ export class CustomerComponent {
     this.router.navigateByUrl("updatecustomer/"+a.id+"/"
       + a.name + "/"
       + a.shortName + "/"
-      + a.rc + "/"
-      + a.if + "/"
-      + a.ns + "/"
-      + a.narticle)
+      + a.numRc + "/"
+      + a.idFiscal + "/"
+      + a.idStatistic + "/"
+      + a.numArticle)
   }
 
   onAddCustomer() {

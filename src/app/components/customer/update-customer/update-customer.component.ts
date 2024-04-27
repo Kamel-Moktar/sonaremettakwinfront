@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {CustomerService} from "../../../../services/customer/customer.service";
+import {CustomerService} from "../../../services/customer/customer.service";
 
 @Component({
   selector: 'app-update-customer',
@@ -16,10 +16,10 @@ export class UpdateCustomerComponent {
     id:["", Validators.required],
     name: ["", Validators.required],
     shortName: ["", Validators.required],
-    rc: ["", Validators.required],
-    if: ["", Validators.required],
-    ns: ["", Validators.required],
-    nArticle: ["", Validators.required]
+    numRc: ["", Validators.required],
+    idFiscal: ["", Validators.required],
+    idStatistic: ["", Validators.required],
+    numArticle: ["", Validators.required]
 
   })
 
@@ -55,10 +55,10 @@ export class UpdateCustomerComponent {
       id:this.formGroup.value.id,
       name: this.formGroup.value.name,
       shortName: this.formGroup.value.shortName,
-      rc: this.formGroup.value.rc,
-      if: this.formGroup.value.if,
-      ns: this.formGroup.value.ns,
-      narticle:this.formGroup.value.nArticle
+      numRc: this.formGroup.value.rc,
+      idFiscal: this.formGroup.value.if,
+      idStatistic: this.formGroup.value.ns,
+      numArticle:this.formGroup.value.nArticle
     }).subscribe( ()=>{
         this.onCancel();
       }

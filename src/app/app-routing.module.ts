@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {CustomerComponent} from "./components/customer/customer.component";
 import {AddCustomerComponent} from "./components/customer/add-customer/add-customer.component";
-import {UpdateCustomerComponent} from "./components/customer/update-customer/update-customer/update-customer.component";
+import {UpdateCustomerComponent} from "./components/customer/update-customer/update-customer.component";
 import {UniteMesureComponent} from "./components/unite-mesure/unite-mesure.component";
 import {AddUniteMesureComponent} from "./components/unite-mesure/add-unite-mesure/add-unite-mesure.component";
 import {UpdateUniteMesureComponent} from "./components/unite-mesure/update-unite-mesure/update-unite-mesure.component";
@@ -12,6 +12,8 @@ import {AddBenefitComponent} from "./components/benefit/add-benefit/add-benefit.
 import {UpdateBenefitComponent} from "./components/benefit/update-benefit/update-benefit.component";
 import {InvoiceComponent} from "./components/invoice/invoice.component";
 import {AddInvoiceComponent} from "./components/invoice/add-invoice/add-invoice.component";
+import {InvoiceDetailComponent} from "./components/invoice/invoice-detail/invoice-detail.component";
+import {AddSaleComponent} from "./components/invoice/add-sale/add-sale.component";
 
 const routes: Routes = [
   {path:"customer", component:CustomerComponent},
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path:"updatbenefit/:id/:designation/:description/:price/:sakina/:unitMeasurement", component:UpdateBenefitComponent},
   {path:"invoice",component:InvoiceComponent},
   { path:"addinvoice", component:AddInvoiceComponent},
+  { path:"invoice-detail/:invoice-id", component:InvoiceDetailComponent},
+  { path:"add-sale/:invoice-id", component:AddSaleComponent},
 
 
   ]
