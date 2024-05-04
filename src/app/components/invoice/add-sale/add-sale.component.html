@@ -24,7 +24,7 @@
                       [value]="option.designation">{{option.designation}}</option>
             </select>
           </div>
-          <!--          <div class="col"></div>-->
+          <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
 
 
@@ -41,13 +41,13 @@
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Qte: </label></div>
           <div class="col col-2"><input class="form-control" [formControlName]="'qte'" placeholder="Qte" type="text"></div>
-
+          <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
 
         <div class="row m-2">
           <div class="col  col-2 text-end"><label> P.U: </label></div>
           <div class="col col-2"><input class="form-control"  [formControlName]="'price'" placeholder="P.U" type="text"></div>
-
+          <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
 
 

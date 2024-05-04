@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -7,28 +8,33 @@ import {HttpClient} from "@angular/common/http";
 export class CustomerService {
 
   constructor(private http:HttpClient) { }
-
+  baseUrl=environment.backendBaseUrl+"/customer"
 
   public getAll(){
-    return this.http.get<any>("http://localhost:8080/customer/all")
+    const url=this.baseUrl+"/all"
+    return this.http.get<any>(url)
   }
 
   public  add (customer :any ){
-
-    return this.http.post("http://localhost:8080/customer/add",customer)
+    const url=this.baseUrl+"/add"
+    return this.http.post(url,customer)
 
   }
 
   public  delete(customer :any ){
-   return this.http.post("http://localhost:8080/customer/delete",customer)
+    const url=this.baseUrl+"/delete"
+   return this.http.post(url,customer)
   }
 
   public  update(customer :any ){
-    return this.http.post("http://localhost:8080/customer/update",customer)
+    const url=this.baseUrl+"/update"
+    return this.http.post(url,customer)
   }
 
 
+  getById(id: any) {
+    const url=this.baseUrl+"/byid/"+id
 
-
-
+    return this.http.get<any>(url)
+  }
 }

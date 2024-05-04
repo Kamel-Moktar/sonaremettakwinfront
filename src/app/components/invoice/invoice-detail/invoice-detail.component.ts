@@ -47,8 +47,9 @@ export class InvoiceDetailComponent {
       })
 
   }
-
+  // convertir-nombre-lettre
   onPrint(sectionToPrint: string) {
+
     let document1: any = document.getElementById(sectionToPrint)
     const originalContents = document.body.innerHTML;
 
@@ -57,7 +58,8 @@ export class InvoiceDetailComponent {
       window.print();
       document.body.innerHTML = originalContents;
     }
-    this.router.navigateByUrl("invoice")
+   this.printMode=false
+   this.router.navigateByUrl("invoice")
   }
 
   onAddLigne() {
@@ -65,7 +67,7 @@ export class InvoiceDetailComponent {
   }
 
   onUpdate(a:any) {
-
+    this.router.navigateByUrl("update-sale/"+a.id)
   }
 
 
@@ -94,6 +96,10 @@ export class InvoiceDetailComponent {
           })
       })
     }
+  }
+
+  onPrint1() {
+    this.printMode=true
   }
 }
 

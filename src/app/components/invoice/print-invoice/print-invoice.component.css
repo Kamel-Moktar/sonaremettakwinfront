@@ -12,11 +12,7 @@ p{font-size: 12pt;}
   margin: 9pt 0 9pt 0;
 }
 
-.logotipo {
-  width: 6cm;
-  height: 4cm;
-  margin: -0.5cm;
-}
+
 
 .label { font-weight: 500;}
 
@@ -32,7 +28,6 @@ p{font-size: 12pt;}
 
 
 
-/*
 .container {
   display: grid;
   grid: "numero numero"
@@ -62,9 +57,7 @@ p{font-size: 12pt;}
   grid-area: loja;
 }
 
-.logotipo {
-  grid-area: logo;
-}
+
 
 .cliente-label {
   grid-area: clt-lbl;
@@ -82,4 +75,4 @@ p{font-size: 12pt;}
   grid-area: da;
 }
 
-*/
+

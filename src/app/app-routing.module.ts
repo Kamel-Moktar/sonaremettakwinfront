@@ -14,21 +14,23 @@ import {InvoiceComponent} from "./components/invoice/invoice.component";
 import {AddInvoiceComponent} from "./components/invoice/add-invoice/add-invoice.component";
 import {InvoiceDetailComponent} from "./components/invoice/invoice-detail/invoice-detail.component";
 import {AddSaleComponent} from "./components/invoice/add-sale/add-sale.component";
+import {UpdateSaleComponent} from "./components/invoice/update-sale/update-sale.component";
 
 const routes: Routes = [
   {path:"customer", component:CustomerComponent},
   {path:"addcustomer",component:AddCustomerComponent},
-  {path:"updatecustomer/:id/:name/:sname/:rc/:if/:ns/:narticle",component:UpdateCustomerComponent},
+  {path:"updatecustomer/:id",component:UpdateCustomerComponent},
   { path:"unitemesure", component:UniteMesureComponent},
   { path:"addunitemesure", component:AddUniteMesureComponent},
-  { path:"updateunitemesure/:id/:name", component:UpdateUniteMesureComponent},
+  { path:"updateunitemesure/:id", component:UpdateUniteMesureComponent},
   {path:"benefit", component:BenefitComponent},
   { path:"addbenefit", component:AddBenefitComponent},
-  { path:"updatbenefit/:id/:designation/:description/:price/:sakina/:unitMeasurement", component:UpdateBenefitComponent},
+  { path:"updatbenefit/:id", component:UpdateBenefitComponent},
   {path:"invoice",component:InvoiceComponent},
   { path:"addinvoice", component:AddInvoiceComponent},
   { path:"invoice-detail/:invoice-id", component:InvoiceDetailComponent},
   { path:"add-sale/:invoice-id", component:AddSaleComponent},
+  { path:"update-sale/:invoice-id", component:UpdateSaleComponent},
 
 
   ]

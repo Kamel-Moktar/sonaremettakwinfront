@@ -33,7 +33,7 @@ export class UniteMesureComponent {
 
 
   onUpdate(a:any) {
-    this.router.navigateByUrl("updateunitemesure/"+a.id+"/"+a.name)
+    this.router.navigateByUrl("updateunitemesure/"+a.id)
 
 
   }

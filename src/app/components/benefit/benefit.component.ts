@@ -35,7 +35,7 @@ export class BenefitComponent {
 
 
   onUpdate(a:any) {
-    this.router.navigateByUrl("updatbenefit/"+a.id+"/"+a.description+"/"+a.designation+"/"+a.price+"/"+a.sakina+"/"+a.unitMeasurement.name)
+    this.router.navigateByUrl("updatbenefit/"+a.id)
 
   }
 

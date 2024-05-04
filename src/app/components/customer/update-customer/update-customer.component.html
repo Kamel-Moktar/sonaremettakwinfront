@@ -16,47 +16,64 @@
 
         <div class="row m-2">
           <div class="col col-4 text-end"><label> Nom ou raison social: </label></div>
-          <div class="col"><input [formControlName]="'name'" class="form-control" placeholder="Nom de client"
-                                  type="text"></div>
+          <div class="col col-7"><input [formControlName]="'name'" class="form-control" placeholder="Nom de client"
+                                        type="text"></div>
+          <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
 
 
         <div class="row m-2">
           <div class="col col-4 text-end"><label> Libellé court: </label></div>
-          <div class="col "><input class="form-control" [formControlName]="'shortName'" placeholder="Abbriviation " type="text"></div>
-          <div class="col col"></div>
+          <div class="col col-4"><input class="form-control" [formControlName]="'shortName'" placeholder="Abbriviation " type="text"></div>
+          <div class="col"><h6 style="color:red">(*)</h6></div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col col-4 text-end"><label>Adresse : </label></div>
+          <div class="col col-7 "><input class="form-control" [formControlName]="'adresse'" placeholder="Adresse client " type="text"></div>
+          <div class="col"><h6 style="color:red">(*)</h6></div>
+        </div>
+        <div class="row m-2">
+          <div class="col col-4 text-end"><label> Téléphone: </label></div>
+          <div class="col col-2"><input class="form-control" [formControlName]="'phoneNumber'" placeholder="Numéro téléphone " type="text"></div>
+
+        </div>
+        <div class="row m-2">
+          <div class="col col-4 text-end"><label> Fax : </label></div>
+          <div class="col col-2"><input class="form-control" [formControlName]="'fax'" placeholder="Numéro de fax   " type="text"></div>
+
         </div>
 
         <div class="row m-2">
           <div class="col col-4 text-end"><label> Numéro de Registre de Commerce (NRC): </label></div>
-          <div class="col col-2"><input class="form-control"  [formControlName]="'rc'"placeholder="Registre de commerce" type="text"></div>
-          <div class="col"></div>
+          <div class="col col-2"><input class="form-control"  [formControlName]="'rc'"placeholder="RC" type="text"></div>
+
         </div>
 
         <div class="row m-2">
           <div class="col col-4 text-end"><label> Numéro d'Identification Fiscal (NIF): </label></div>
-          <div class="col col-2"><input class="form-control" [formControlName]="'if'"placeholder="Identificateur Fiscal" type="text"></div>
-          <div class="col"></div>
+          <div class="col col-2"><input class="form-control" [formControlName]="'if'"placeholder="Id fiscal" type="text"></div>
+
         </div>
 
         <div class="row m-2">
           <div class="col col-4 text-end"><label> Numéro d'Identification Statistiques (NIS) : </label></div>
-          <div class="col col-2"><input class="form-control" [formControlName]="'ns'"placeholder="Numéro Statistique " type="text"></div>
-          <div class="col"></div>
+          <div class="col col-2"><input class="form-control" [formControlName]="'ns'"placeholder="Id statistique " type="text"></div>
+
         </div>
 
         <div class="row m-2">
           <div class="col col-4 text-end"><label>  Numéro Article d'Imposition: </label></div>
-          <div class="col col-2"><input class="form-control" [formControlName]="'nArticle'"placeholder="Numéro d'article d'imposition  " type="text"></div>
-          <div class="col"></div>
+          <div class="col col-2"><input class="form-control" [formControlName]="'nArticle'"placeholder="Numéro d'article  " type="text"></div>
+
         </div>
 
         <div class="row">
           <div class="col">
           </div>
           <div class="col">
-            <button (click)="onValidate()" class="btn btn-outline-success m-2">Validate</button>
-            <button (click)="onCancel()" class="btn btn-outline-success m-2">Cancel</button>
+            <button (click)="onValidate()" class="btn btn-outline-success m-2">Valider</button>
+            <button (click)="onCancel()" class="btn btn-outline-success m-2">Annuler</button>
           </div>
           <div class="col">
           </div>
@@ -70,5 +87,3 @@
       <div class="col"><h3>{{footer}}</h3></div>
 
     </div>
-  </div>
-</div>

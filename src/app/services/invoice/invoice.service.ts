@@ -7,33 +7,36 @@ import {DatePipe} from "@angular/common";
   providedIn: 'root'
 })
 export class InvoiceService {
+
+  baseUrl :any=environment.backendBaseUrl+"/invoice"
+
+
   constructor(private http:HttpClient) { }
 
-
   public getAll(){
-    let url=environment.backendBaseUrl+"/invoice/all"
+    let url=this.baseUrl+"/all"
     return this.http.get<any>(url)
   }
 
   public  add (invoice :any ){
-    let url=environment.backendBaseUrl+"/invoice/add"
+    let url=this.baseUrl+"/add"
     return this.http.post(url,invoice)
 
   }
 
   public  delete(invoice :any ){
-    let url=environment.backendBaseUrl+"/invoice/delete"
+    let url=this.baseUrl+"/delete"
     return this.http.post(url,invoice)
   }
 
   public  update(invoice :any ){
-    let url=environment.backendBaseUrl+"/invoice/update"
+    let url=this.baseUrl+"/update"
     return this.http.post(url,invoice)
   }
 
 
   getInvoiceById(invoiceId: any) {
-    let url=environment.backendBaseUrl+"/invoice/byid/"+invoiceId
+    let url=this.baseUrl+"/byid/"+invoiceId
     return this.http.get<any>(url)
 
   }

@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {CustomerService} from "../../../services/customer/customer.service";
 import {BenefitService} from "../../../services/benefit/benefit.service";
 import {UniteMesureService} from "../../../services/unite-mesure/unite-mesure.service";
 
@@ -11,51 +10,51 @@ import {UniteMesureService} from "../../../services/unite-mesure/unite-mesure.se
   styleUrls: ['./add-benefit.component.css']
 })
 export class AddBenefitComponent {
-  title:String="Nouvelle Prestation";
+  title: String = "Nouvelle Prestation";
 
 
   formGroup: FormGroup = this.fb.group({
-   designation: ["", Validators.required],
-    description: ["", Validators.required],
-    price: ["", Validators.required],
-    sakina: ["", Validators.required],
+    designation: ["", Validators.required],
+    description: [""],
+    price: [""],
+
 
   })
+  footer: any = "";
+  uniteMesures: any[] = [];
+  selectedUniteMesure: any
+  selected: any;
+
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private benefitService: BenefitService,
-    private uniteMesureService :UniteMesureService
+    private uniteMesureService: UniteMesureService
   ) {
   }
 
-  footer: any="";
-  uniteMesures: any[]=[];
-  selectedUniteMesure :any
-  selected: any;
 
-  ngOnInit(){
-    this.uniteMesureService.getAll('*').subscribe(res=>{//est une prog asynchrone pour éviter le blocage
-      this.uniteMesures=res
+  ngOnInit() {
+    this.uniteMesureService.getAll('*').subscribe(res => {//est une prog asynchrone pour éviter le blocage
+      this.uniteMesures = res
     })
   }
 
   onValidate() {
-    this.benefitService.add({
-      designation: this.formGroup.value.designation,
-      description: this.formGroup.value.description,
-      price: this.formGroup.value.price,
-      sakina: this.formGroup.value.sakina,
-      unitMeasurement:this.selectedUniteMesure
 
+    if (this.formGroup.valid&&this.selectedUniteMesure) {
+      this.benefitService.add({
+        designation: this.formGroup.value.designation,
+        description: this.formGroup.value.description,
+        price: this.formGroup.value.price,
+        unitMeasurement: this.selectedUniteMesure
 
-    }).subscribe( ()=>{
-        this.onCancel();
-      }
-
-    )
-
+      }).subscribe(() => {
+          this.onCancel();
+        }
+      )
+    } else alert("Veuillez remplir les rebiques requis")
 
 
   }
@@ -64,11 +63,11 @@ export class AddBenefitComponent {
     this.router.navigateByUrl("benefit")
   }
 
-  uniteMesurSelected(event:any) {
+  uniteMesurSelected(event: any) {
     const value = event.target.value;
-     this.uniteMesures.forEach(u=>{
-       if(u.name==value) this.selectedUniteMesure=u
-     })
+    this.uniteMesures.forEach(u => {
+      if (u.name == value) this.selectedUniteMesure = u
+    })
 
     console.log(this.selectedUniteMesure)
 

@@ -14,10 +14,10 @@ export class UpdateBenefitComponent {
 
 
   formGroup: FormGroup = this.fb.group({
+
     designation: ["", Validators.required],
     description: ["", Validators.required],
-    price: ["", Validators.required],
-    sakina: ["", Validators.required],
+    price: [0, Validators.required],
 
   })
 
@@ -44,14 +44,18 @@ export class UpdateBenefitComponent {
 
     })
 
-    this.formGroup = this.fb.group({
-      id: [this.activateRoute.snapshot.url[1].path, Validators.required],
-      designation: [this.activateRoute.snapshot.url[2].path, Validators.required],
-      description: [this.activateRoute.snapshot.url[3].path, Validators.required],
-      price: [this.activateRoute.snapshot.url[4].path, Validators.required],
-      sakina: [this.activateRoute.snapshot.url[5].path, Validators.required],
+    const id =this.activateRoute.snapshot.url[1].path
+    this.benefitService.getById(id).subscribe(res=>{
 
+      this.formGroup = this.fb.group({
+        id: [res.id, Validators.required],
+        designation: [res.designation, Validators.required],
+        description: [res.description, Validators.required],
+        price: [res.price, Validators.required]
+
+      })
     })
+
 
   }
 

@@ -13,14 +13,15 @@ export class UpdateCustomerComponent {
 
 
   formGroup: FormGroup = this.fb.group({
-    id:["", Validators.required],
     name: ["", Validators.required],
     shortName: ["", Validators.required],
-    numRc: ["", Validators.required],
-    idFiscal: ["", Validators.required],
-    idStatistic: ["", Validators.required],
-    numArticle: ["", Validators.required]
-
+    adresse: ["", Validators.required],
+    phoneNumber: [""],
+    fax: [""],
+    rc: [""],
+    if: [""],
+    ns: [""],
+    nArticle: [""]
   })
 
   constructor(
@@ -36,16 +37,26 @@ export class UpdateCustomerComponent {
 
 
   ngOnInit(){
-    this.formGroup= this.fb.group({
-      id:[this.activateRoute.snapshot.url[1].path, Validators.required],
-      name: [this.activateRoute.snapshot.url[2].path, Validators.required],
-      shortName: [this.activateRoute.snapshot.url[3].path, Validators.required],
-      rc: [this.activateRoute.snapshot.url[4].path, Validators.required],
-      if: [this.activateRoute.snapshot.url[5].path, Validators.required],
-      ns: [this.activateRoute.snapshot.url[6].path, Validators.required],
-      nArticle: [this.activateRoute.snapshot.url[7].path, Validators.required]
+
+    const id=this.activateRoute.snapshot.url[1]
+
+    this.customerService.getById(id).subscribe(res=>{
+      this.formGroup= this.fb.group({
+        id: [res.id, Validators.required],
+        name: [res.name, Validators.required],
+        shortName: [res.shortName, Validators.required],
+        adresse: [res.adresse, Validators.required],
+        phoneNumber: [res.phoneNumber],
+        fax: [res.fax],
+        rc: [res.numRc],
+        if: [res.idFiscal],
+        ns: [res.idStatistic],
+        nArticle: [res.numArticle]
+      })
 
     })
+
+
 
   }
 
@@ -55,10 +66,13 @@ export class UpdateCustomerComponent {
       id:this.formGroup.value.id,
       name: this.formGroup.value.name,
       shortName: this.formGroup.value.shortName,
+      adresse: this.formGroup.value.adresse,
+      phoneNumber: this.formGroup.value.phoneNumber,
+      fax: this.formGroup.value.fax,
       numRc: this.formGroup.value.rc,
       idFiscal: this.formGroup.value.if,
       idStatistic: this.formGroup.value.ns,
-      numArticle:this.formGroup.value.nArticle
+      numArticle: this.formGroup.value.nArticle
     }).subscribe( ()=>{
         this.onCancel();
       }

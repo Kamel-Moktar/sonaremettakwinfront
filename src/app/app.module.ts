@@ -15,7 +15,7 @@ import { UpdateUniteMesureComponent } from './components/unite-mesure/update-uni
 import { BenefitComponent } from './components/benefit/benefit.component';
 import { AddBenefitComponent } from './components/benefit/add-benefit/add-benefit.component';
 import { UpdateBenefitComponent } from './components/benefit/update-benefit/update-benefit.component';
-import {IgxComboModule} from "igniteui-angular";
+
 import { InvoiceComponent } from './components/invoice/invoice.component';
 
 import { AddInvoiceComponent } from './components/invoice/add-invoice/add-invoice.component';
@@ -23,6 +23,7 @@ import { PrintInvoiceComponent } from './components/invoice/print-invoice/print-
 import { InvoiceDetailComponent } from './components/invoice/invoice-detail/invoice-detail.component';
 import { AddSaleComponent } from './components/invoice/add-sale/add-sale.component';
 import { UpdateSaleComponent } from './components/invoice/update-sale/update-sale.component';
+
 
 
 function NgbModule() {
@@ -57,7 +58,9 @@ function NgbModule() {
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    IgxComboModule
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,7 +13,7 @@ import {SaleService} from "../../../services/sale/sale.service";
 })
 export class AddSaleComponent {
 
-  title:String="Ajouter un prestation à la facture";
+  title:String="Ajouter une prestation à la facture";
 
 
   formGroup: FormGroup = this.fb.group({

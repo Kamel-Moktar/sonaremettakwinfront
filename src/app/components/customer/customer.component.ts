@@ -9,8 +9,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent {
-  customers?: any[];
+  customers: any[]=[];
   title: any = 'Client';
+
+
 
   constructor(private customerService: CustomerService, private router: Router) {
   }
@@ -21,12 +23,13 @@ export class CustomerComponent {
   }
 
   refresh(): void {
+
     this.customerService.getAll().subscribe(
       res => {
 
         this.customers = res
 
-        console.log(res)
+        // console.log(res)
       })
   }
 
@@ -42,13 +45,7 @@ export class CustomerComponent {
 
   onUpdate(a: any) {
     console.log(a)
-    this.router.navigateByUrl("updatecustomer/"+a.id+"/"
-      + a.name + "/"
-      + a.shortName + "/"
-      + a.numRc + "/"
-      + a.idFiscal + "/"
-      + a.idStatistic + "/"
-      + a.numArticle)
+    this.router.navigateByUrl("updatecustomer/"+a.id)
   }
 
   onAddCustomer() {

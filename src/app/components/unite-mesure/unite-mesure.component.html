@@ -30,15 +30,11 @@
       <thead>
       <tr class="text-center">
         <th style="width: 15%">#</th>
-        <th style="width: 20%">
-
-            <div class="col"><label>Nom</label></div>
-
-
-        </th>
+        <th style="width: 20%"><label>Nom</label></th>
+        <th style="width: 20%"><label>Symbole</label></th>
+        <th style="width: 20%"><label>Designation</label></th>
         <th style="width: 5%"> <label>update</label></th>
         <th style="width: 5%"><label>delete</label></th>
-
       </thead>
 
 
@@ -47,6 +43,8 @@
       <tr *ngFor="let a of this.uniteMesures ;let i=index ">
         <td style="text-align: center"> {{a.id}}</td>
         <td> {{a.name}}</td>
+        <td> {{a.symbol}}</td>
+        <td> {{a.designation}}</td>
 
         <td>
           <div class="container">
