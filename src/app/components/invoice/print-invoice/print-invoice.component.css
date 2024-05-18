@@ -1,17 +1,24 @@
 html, body, h1, h2, h3, h4, p, img { margin: 0;} /* margin reset*/
-h1{font-size: 18pt; font-weight: 500; margin-bottom: 0.5cm;}
-h2{font-size: 16pt; font-weight: 500;}
-p{font-size: 12pt;}
+h1{font-size: 18pt; font-weight: 350; margin-bottom: 0.1cm;}
+h2{font-size: 16pt; font-weight: 350;}
+p{font-size: 9pt;}
 
 .items-group {
   border-style: solid;
-  border-color: black;
+  border-color:gray;
   border-width: 1pt 1pt 1pt 1pt;
-  border-radius: 5pt;
-  padding: 3pt 3pt 3pt 3pt;
-  margin: 9pt 0 9pt 0;
+  border-radius: 1pt;
+  padding: 1pt 1pt 1pt 1pt;
+  margin: 1pt 0 1pt 0;
 }
-
+.items-group1 {
+  border-style: solid;
+  border-color: black;
+  border-width: 0 0 0 0;
+  border-radius: 1pt;
+  padding: 1pt 1pt 1pt 1pt;
+  margin: 1pt 0 1pt 0;
+}
 
 
 .label { font-weight: 500;}
@@ -24,7 +31,11 @@ p{font-size: 12pt;}
   padding-bottom: 24pt;
   border-bottom: solid black 1pt;
 }
-
+@page {
+  size: 210mm 297mm;
+  /* Chrome sets own margins, we change these printer settings */
+  margin: 0 4mm 0 4mm;
+}
 
 
 

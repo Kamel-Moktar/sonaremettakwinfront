@@ -10,66 +10,58 @@ import {BenefitService} from "../../../services/benefit/benefit.service";
   styleUrls: ['./invoice-detail.component.css']
 })
 export class InvoiceDetailComponent {
-  printMode: any=false
-  title: any="Detail de la facture ";
-  lignes: any[]=[];
-  invoiceId: any=0;
-  benefits :any[]=[]
-  invoice :any
-  constructor(private router:Router,
-              private activateRoute:ActivatedRoute,
-              public invoiceService :InvoiceService,
-              private saleService:SaleService,
-              private benefitService :BenefitService) {
+  printMode: any = false
+  title: any = "Detail de la facture ";
+  lignes: any[] = [];
+  invoiceId: any = 0;
+  benefits: any[] = []
+  invoice: any
+
+  constructor(private router: Router,
+              private activateRoute: ActivatedRoute,
+              public invoiceService: InvoiceService,
+              private saleService: SaleService,
+              private benefitService: BenefitService) {
 
   }
-  ngOnInit(){
-    this.invoiceId=this.activateRoute.snapshot.url[1].path
 
-
-
+  ngOnInit() {
+    this.invoiceId = this.activateRoute.snapshot.url[1].path
 
 
     this.benefitService.getAll().subscribe(
-      (res)=>{
-        this.benefits=res
+      (res) => {
+        this.benefits = res
       })
 
     this.invoiceService.getInvoiceById(this.invoiceId).subscribe(
-      (res)=>{
-        this.invoice=res
+      (res) => {
+        this.invoice = res
         this.saleService.getSaleByInvoice(this.invoice).subscribe(
-          (res)=>{
-            this.lignes=res
+          (res) => {
+            this.lignes = res
           })
 
 
       })
 
   }
+
   // convertir-nombre-lettre
-  onPrint(sectionToPrint: string) {
 
-    let document1: any = document.getElementById(sectionToPrint)
-    const originalContents = document.body.innerHTML;
-
-    if (document1 != null) {
-      document.body.innerHTML = document1.innerHTML;
-      window.print();
-      document.body.innerHTML = originalContents;
-    }
-   this.printMode=false
-   this.router.navigateByUrl("invoice")
-  }
 
   onAddLigne() {
 
   }
 
-  onUpdate(a:any) {
-    this.router.navigateByUrl("update-sale/"+a.id)
+  onUpdate(a: any) {
+    this.router.navigateByUrl("update-sale/" + a.id)
+
   }
 
+  ouvreNouvelOnglet(url: string) {
+    window.open(url, "_blank");
+  }
 
 
   onCancel() {
@@ -77,7 +69,7 @@ export class InvoiceDetailComponent {
   }
 
   onAdd() {
-    this.router.navigateByUrl("add-sale/"+this.invoice.id)
+    this.router.navigateByUrl("add-sale/" + this.invoice.id)
   }
 
   onDelete(a: any) {
@@ -85,11 +77,11 @@ export class InvoiceDetailComponent {
 
       this.saleService.delete(a).subscribe(() => {
         this.invoiceService.getInvoiceById(this.invoiceId).subscribe(
-          (res)=>{
-            this.invoice=res
+          (res) => {
+            this.invoice = res
             this.saleService.getSaleByInvoice(this.invoice).subscribe(
-              (res)=>{
-                this.lignes=res
+              (res) => {
+                this.lignes = res
               })
 
 
@@ -99,7 +91,7 @@ export class InvoiceDetailComponent {
   }
 
   onPrint1() {
-    this.printMode=true
+   this.ouvreNouvelOnglet("print-invoice/"+this.invoiceId)
   }
 }
 

@@ -44,7 +44,7 @@ export class CustomerComponent {
 
 
   onUpdate(a: any) {
-    console.log(a)
+
     this.router.navigateByUrl("updatecustomer/"+a.id)
   }
 

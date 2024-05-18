@@ -17,14 +17,15 @@ export class InvoiceComponent {
   }
 
   ngOnInit(): void {
-    this.refresh()
 
+
+
+    this.refresh()
   }
 
   refresh(): void {
     this.invoiceService.getAll().subscribe(
       res => {
-
         this.invoices = res
       })
   }
@@ -40,26 +41,15 @@ export class InvoiceComponent {
 
 
   onUpdate(a: any) {
-    console.log(a)
-    this.router.navigateByUrl("updateinvoice/"+a.id+"/"
-      + a.name + "/"
-      + a.shortName + "/"
-      + a.rc + "/"
-      + a.if + "/"
-      + a.ns + "/"
-      + a.narticle)
+
+    this.router.navigateByUrl("updateinvoice/"+a.id)
   }
 
   onAddInvoice() {
-
     this.router.navigateByUrl("addinvoice")
-
-
   }
 
   onDetail(a:any) {
-
     this.router.navigateByUrl("invoice-detail/"+a.id)
-
   }
 }

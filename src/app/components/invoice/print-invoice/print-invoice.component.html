@@ -1,65 +1,118 @@
-<div class="container-fluid">
-  <!--  <div class="row no-gutters">-->
-  <!--    <div class="col">-->
-  <!--      <h1> Assistência Nº 1 </h1>-->
-  <!--    </div>-->
-  <!--  </div>-->
-
-  <div class="row no-gutters">
-    <div class="col col-3">
-      <img src="../../assets/logo.bmp">
-    </div>
-
-    <div class="col">
-      <h2><strong> شركة سوناريم التكوين</strong></h2>
-      <h2><strong>SONAREM ETTAKWINE Spa - Filiale du GROUPE SONAREM CAPITAL SOCIAL : 10 000 000 DA</strong></h2>
-
-    </div>
-
-  </div>
-  <div class="row">
-    <div class=" col col-5 no-gutters items-group" style="text-align: center">
-
-      <p>SONAREM ETTAKWINE Spa</p>
-      <p>Adresse : 127, Bd Krim Belkacem-Telemly-ALGER </p>
-      <p>RIB BNA N° : 00100609030000027991</p>
-      <p>Tel : 021714872-021714903</p>
-      <p>RC N° : 900146434</p>
-      <p>NIF N° :  002316124257199</p>
-      <p>NIS N° : 002316010279254</p>
-      <p>Art N° : 16016763336</p>
-    </div>
-    <div class="col"></div>
-    <div class=" col col-5 no-gutters items-group" style="text-align: center">
-
-      <p><strong> Doit :</strong></p>
-      <p>Adresse:</p>
-      <p>RC:</p>
-      <p>NIF:</p>
-      <p>NIS:</p>
-      <p>N° Article :</p>
-
-    </div>
-
-    <div class="row no-gutters items-group">
-      <div class="col">
-        <p class="label">Condições Gerais:</p>
-        <ul class="disclaimer">
-          <li>Prazo para levantar 90 dias</li>
-          <li>Garantia 90 dias</li>
-          <li>Esta assistência só é entregue a quem apresentar este documento</li>
-          <li>O preço acresce 10% a cada 30 dias após fim do prazo de levantamento (taxa de conservação)</li>
-          <li>Os dados do cliente, acima mencionados, ficam registados na N Reparações apenas para efeitos de
-            comunicação
-            em relação às suas assistências e facturação
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="row no-gutters">
-      <div class="col">
-        <p class="disclaimer signature-field">Declaro que li e concordo com o disposto neste documento em 03/02/2019</p>
+<div class="card">
+  <div class="card-header ">
+    <div class="row">
+      <div *ngIf="invoice" class="col"><h6>{{title}}&nbsp;N°: {{invoiceService.formatInvoiceNumber(invoice)}}
+        du {{invoice.date|date:"dd/MM/yyyy"}} </h6></div>
+      <div class="col col-auto">
+        <button (click)="onPrint( )" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-print"></span>
+        </button>
       </div>
     </div>
   </div>
+  <div class="card-body">
+    <div class="container-fluid" id="printPart">
+      <div class="row no-gutters"><h2><strong>.</strong></h2></div>
+      <div class="row no-gutters">
+        <div class="col col-3">
+          <img src="../../assets/logo.bmp">
+        </div>
+        <div class="col">
+          <h2><strong> شركة سوناريم التكوين</strong></h2>
+          <h2><strong>SONAREM ETTAKWINE Spa - Filiale du GROUPE SONAREM CAPITAL SOCIAL : 10 000 000 DA</strong></h2>
+        </div>
+      </div>
+      <hr />
+      <div class="row no-gutters ">
+        <div *ngIf="invoice" class="col col-8">
+          <h4><strong>Facture N°: {{invoiceService.formatInvoiceNumber(invoice)}}</strong></h4>
+        </div>
+        <div *ngIf="invoice" class="col col-4 text-end"><strong> Alger Le:
+          &nbsp; {{invoice.date| date :"dd/MM/yyyy"}} </strong></div>
+      </div>
+      <hr />
+      <div class="row items-group1">
+
+        <div class=" col col-6 no-gutters items-group" style="text-align: center">
+          <p>SONAREM ETTAKWINE Spa</p>
+          <p>Adresse:127, Bd Krim Belkacem-Telemly-ALGER. Tel:021714872-021714903</p>
+          <p>RIB BNA N°:00100609030000027991.</p>
+          <p> RC N°:900146434. Art N° : 16016763336</p>
+          <p>NIF N°:002316124257199. NIS N°:002316010279254.</p>
+          <p></p>
+        </div>
+
+        <div *ngIf="invoice" class=" col col-6 no-gutters items-group" style="text-align: center">
+          <p>
+            <strong><strong>Doit:&nbsp;&nbsp;</strong>{{invoice.customer.name}}&nbsp;({{invoice.customer.shortName}}
+              )</strong></p>
+          <p>Adresse:&nbsp;{{invoice.customer.adresse}}. Tél:&nbsp;{{invoice.customer.phoneNumber}}.
+            Fax:&nbsp;{{invoice.customer.fax}}.</p>
+          <p>RC:&nbsp; {{invoice.customer.numRc}}NIF:&nbsp; {{invoice.customer.idFiscal}}</p>
+          <p>NIS:&nbsp;{{invoice.customer.idStatistic}}.N° Article:&nbsp; {{invoice.customer.numArticle}}</p>
+          <p></p>
+        </div>
+
+      </div>
+      <hr />
+      <div class="row no-gutters items-group1">
+
+        <div class="card-body">
+          <div>
+            <table class="table table-striped  table-bordered table-hover">
+              <thead>
+              <tr class="text-center">
+                <th style="width: 5%">#</th>
+                <th style="width: 50%">Prestation</th>
+                <th style="width: 10%">Qte</th>
+                <th style="width: 10%">P.U</th>
+                <th style="width: 25%">Total</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor=" let a of this.lignes ;let i=index ">
+                <td style="text-align: center"> {{i}}</td>
+                <td> {{a.benefit.designation}} <label *ngIf="a.observation"> ({{a.observation}})</label></td>
+                <td align="center"> {{a.quantity}}</td>
+                <td align="right"> {{a.price| number:".2"}} </td>
+                <td align="right"> {{a.price * a.quantity | number:".2"}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="invoice" div>
+            <div class="row">
+              <div class="col 6"></div>
+              <div class="col-6">
+                <table class="table table-striped  table-bordered table-hover">
+                  <tr>
+                    <td align="right"><h6>Montant HT :</h6></td>
+                    <td align="right"><h6>{{invoice.amountExcludingTax|number :".2"}}&nbsp;DA</h6></td>
+                  </tr>
+                  <tr>
+                    <td align="right"><h6>Montant TVA (9%):</h6></td>
+                    <td align="right"><h6>{{invoice.amountTax|number :".2"}}&nbsp;DA</h6></td>
+                  </tr>
+                  <tr>
+                    <td align="right"><h6>Montant TTC :</h6></td>
+                    <td align="right"><h6>{{invoice.amountIncludingTax|number :".2"}}&nbsp;DA</h6></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="row">La présente facture est arrêtée à la somme de ;</div>
+          <div class="row  text-center"><strong>{{invoiceService.numberToLetter(intPart())}}&nbsp; DZD &nbsp; et
+            &nbsp; {{decimalPart()|number :".0"}} &nbsp; Cts</strong></div>
+        </div>
+      </div>
+      <div>
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+        <div class="row  text-end"><strong> Le President Directeur Général </strong></div>
+      </div>
+    </div>
+  </div>
+</div>

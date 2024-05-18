@@ -20,40 +20,38 @@
         <th style="width: 15%">Montant HT</th>
         <th style="width: 10%">Montant TVA</th>
         <th style="width: 15%">Montant TTC</th>
-
-
       </thead>
       <tbody>
-
-      <tr *ngFor="let a of this.invoices ;let i=index ">
+      <tr *ngFor="let a of this.invoices ;let i=index "   title="Object :{{a.object}}.
+       Reference :{{a.reference}}">
         <td style="text-align: center"> {{invoiceService.formatInvoiceNumber(a)}}</td>
         <td> {{a.customer.shortName}}</td>
         <td> {{a.date |date:"dd/MM/yyyy"}}</td>
-        <td> {{a.amountExcludingTax| number:".2"}}</td>
-        <td> {{a.amountTax| number:".2"}}</td>
-        <td> {{a.amountIncludingTax| number:".2"}}</td>
+        <td align="right"> {{a.amountExcludingTax| number:".2"}}</td>
+        <td align="right"> {{a.amountTax| number:".2"}}</td>
+        <td align="right"> {{a.amountIncludingTax| number:".2"}}</td>
         <td>
+        <div class="container">
+          <button (click)="onDetail(a)" class="btn btn-outline-success">
+            <span class="fa fa-info-circle"> </span>
+          </button>
+        </div>
+      </td>
+        <td  *ngIf="a.amountIncludingTax===a.remains">
           <div class="container">
             <button (click)="onUpdate(a)" class="btn btn-outline-success">
               <span class="fa fa-pencil"> </span>
             </button>
           </div>
         </td>
-        <td>
-          <div class="container">
+        <td *ngIf="a.amountIncludingTax===a.remains">
+          <div class="container"  >
             <button (click)="onDelete(a)" class="btn btn-outline-success">
               <span class="fa fa-trash-o"> </span>
             </button>
           </div>
         </td>
-        <td>
-          <div class="container">
-            <button (click)="onDetail(a)" class="btn btn-outline-success">
-              <span class="fa fa-info-circle"> </span>
-            </button>
 
-          </div>
-        </td>
       </tr>
       </tbody>
     </table>

@@ -1,1 +1,61 @@
-<p>update-invoice works!</p>
+<div class="card m-3">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col"><h6>{{title}}</h6></div>
+      <div class="col col-auto">
+        <button (click)="onCancel()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-arrow-left"></span>
+
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body m-lg-5">
+    <form [formGroup]="formGroup">
+      <div class="col ">
+
+
+        <div class="row m-2">
+          <div class="col col-2 text-end"><label> Date: </label></div>
+          <div class="col col-4"><input [formControlName]="'invoiceDate'"
+                                        class="form-control" id="invoiceDate1" type="date"></div>
+          <div class="col"><h6 style="color:red">(*)</h6></div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col  col-2 text-end"><label> Referance: </label></div>
+          <div class="col col"><input [formControlName]="'reference'" class="form-control" placeholder="Reference"
+                                      type="text"></div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col col-2 text-end"><label> Object: </label></div>
+          <div class="col col"><input [formControlName]="'object'" class="form-control" placeholder="object"
+                                      type="text"></div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col">
+            <button (click)="onValidate()" class="btn btn-outline-success m-2">Validate</button>
+            <button (click)="onCancel()" class="btn btn-outline-success m-2">Cancel</button>
+          </div>
+          <div class="col">
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="card-footer ">
+    <div class="row">
+
+    </div>
+
+  </div>
+</div>

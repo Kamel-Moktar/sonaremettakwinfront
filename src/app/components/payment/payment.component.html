@@ -1,0 +1,69 @@
+<div class="card">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col"><h6>{{title}}</h6></div>
+      <div class="col col-auto">
+        <button (click)="onAddPayment()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-plus"></span>
+          Ajouter
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped  table-bordered table-hover">
+      <thead>
+      <tr class="text-center">
+        <th style="width: 5%">N°</th>
+        <th style="width: 30%">Client</th>
+        <th style="width: 15%">date</th>
+        <th style="width: 15%">Montant</th>
+        <th style="width: 15%">Reference</th>
+
+      </thead>
+      <tbody>
+      <tr *ngFor="let a of this.payments ;let i=index "   title="Object :{{a.object}}.
+       Reference :{{a.reference}}">
+        <td style="text-align: center"> {{a.id}}</td>
+        <td >
+          <h6 *ngIf="a.customer">{{a.customer.shortName}}</h6>
+          <h6 *ngIf="!a.customer">Non localisé</h6>
+        </td>
+        <td> {{a.date |date:"dd/MM/yyyy"}}</td>
+        <td align="right"> {{a.amount| number:".2"}}</td>
+        <td align="right"> {{a.reference}}</td>
+
+        <td>
+          <div class="container">
+            <button (click)="onDetail(a)" class="btn btn-outline-success">
+              <span class="fa fa-info-circle"> </span>
+            </button>
+          </div>
+        </td>
+        <td>
+          <div class="container">
+            <button (click)="onUpdate(a)" class="btn btn-outline-success">
+              <span class="fa fa-pencil"> </span>
+            </button>
+          </div>
+        </td>
+        <td>
+          <div class="container">
+            <button (click)="onDelete(a)" class="btn btn-outline-success">
+              <span class="fa fa-trash-o"> </span>
+            </button>
+          </div>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-header">
+    <!--    Total : <strong>{{totalEntreprise}}</strong> &nbsp;Enregistrements-->
+  </div>
+
+</div>
+
+
+

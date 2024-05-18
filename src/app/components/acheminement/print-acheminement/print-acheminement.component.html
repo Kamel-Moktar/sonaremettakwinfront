@@ -1,0 +1,122 @@
+<div class="card">
+  <div class="card-header ">
+    <div class="row">
+      <div *ngIf="shippingSlip" class="col">
+        <h6>{{title}}&nbsp;N°: {{shippingSlipService.formatShippingSlipNumber(shippingSlip)}}
+          du {{shippingSlip.date|date:"dd/MM/yyyy"}} </h6></div>
+      <div class="col col-auto">
+        <button (click)="onPrint( )" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-print"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid" id="printPart">
+      <div class="row no-gutters"><h2><strong>.</strong></h2></div>
+      <div class="row no-gutters">
+        <div class="col col-3">
+          <img src="../../assets/logo.bmp">
+        </div>
+        <div class="col">
+          <h2><strong> شركة سوناريم التكوين</strong></h2>
+          <h2><strong>SONAREM ETTAKWINE Spa - Filiale du GROUPE SONAREM CAPITAL SOCIAL : 10 000 000 DA</strong></h2>
+        </div>
+      </div>
+      <hr />
+      <div class="row no-gutters ">
+        <div class="col col-8">
+          <h6><strong>Direction Général.</strong></h6>
+        </div>
+        <div *ngIf="shippingSlip" class="col col-4 text-end"><strong> Alger Le:
+          &nbsp; {{shippingSlip.date| date :"dd/MM/yyyy"}} </strong></div>
+      </div>
+      <div class="row no-gutters ">
+        <div class="col col-8">
+          <h6><strong>Stricture Commercial.</strong></h6>
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div *ngIf="shippingSlip" class="col col-8">
+          <h6><strong>N°: {{shippingSlipService.formatShippingSlipNumber(shippingSlip)}}/DIR/COM.</strong></h6>
+        </div>
+
+      </div>
+
+
+      <div class="row no-gutters">
+        <div class="col col-8">
+          <h6><strong> &nbsp;</strong></h6>
+        </div>
+
+      </div>
+
+      <div align="center" class="row no-gutters ">
+        <div align="center" class="col col">
+          <h4 align="center"><strong> <u><i>Bordereau d'Envoi des Pièces adressées</i> </u> </strong></h4>
+        </div>
+
+      </div>
+
+      <div class="row no-gutters">
+        <div class="col col-8">
+          <h6><strong> &nbsp;</strong></h6>
+        </div>
+
+      </div>
+
+      <div class="row no-gutters items-group">
+
+        <div class="card-body">
+          <div>
+            <table class="table  table-bordered table-hover">
+              <thead>
+              <tr class="text-center">
+                <th style="width: 5%">#</th>
+                <th style="width: 80%">Designation</th>
+                <th style="width: 3%">N.page</th>
+                <th style="width: 12%">Obs</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="text-center">
+                <td></td>
+                <td><strong>Nous vous transmettons ci-joint :</strong></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr *ngFor=" let a of this.lignes ;let i=index ">
+                <td style="text-align: center"> {{i}}</td>
+                <td>&nbsp;- La facture N°: <strong>{{invoiceSservice.formatInvoiceNumber(a.invoice)}}  </strong> du
+                  <strong>{{a.invoice.date|date:'dd/mm/yyyy'}}</strong> d'un montant de
+                  <strong>{{a.invoice.amountIncludingTax|number:'0.2'}}</strong> &nbsp;DZD
+                </td>
+                <td align="center"> {{a.nbrPage}}</td>
+                <td> {{a.obs}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </div>
+      <div>
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+        <div class="row  text-end"><strong> Le President Directeur Général </strong></div>
+      </div>
+      <div class="footer">
+        <hr />
+        <div class="row no-gutters" align="center">
+          <p>SONAREM ETTAKWINE Spa. -Adresse: 127, Bd Krim Belkacem-Telemly-ALGER.
+            -Tel: 021714872-021714903. -RC N° : 900146434.</p>
+        </div>
+
+        <div>&nbsp; </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

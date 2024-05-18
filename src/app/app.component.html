@@ -1,52 +1,89 @@
-
 <div class="toast-body align-text-top" style="background-color:#e0ebeb;cursor: pointer;">
-
   <h4>{{title}}</h4>
-
 </div>
 <div class="row">
-  <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+  <div class="flex-shrink-0 p-3 bg-white" style="width: 180px;">
     <a class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom" href="/">
-
       <span class="fs-5 fw-semibold">Menu</span>
     </a>
     <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button aria-expanded="false"
+                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                data-bs-target="#reporting" data-bs-toggle="collapse">
+          <span class="fa fa-bar-chart"></span>
+          &nbsp;&nbsp;Reporting
+        </button>
+        <div class="collapse" id="reporting">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a (click)="onCA()"
+                   class="link-dark d-inline-flex text-decoration-none rounded">Chiffre d'affaire</a></li>
+            <li><a (click)="oncCreance()"
+                   class="link-dark d-inline-flex text-decoration-none rounded">Créances</a></li>
+            <li><a (click)="onEncaissement()" class="link-dark d-inline-flex text-decoration-none rounded">Encaissement</a>
+            </li>
+            <!-- <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onFCommun()" >Commun</a></li>-->
+          </ul>
+        </div>
+      </li>
 
       <li class="mb-1">
         <button aria-expanded="false"
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-target="#reference-table" data-bs-toggle="collapse">
+                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                data-bs-target="#offres" data-bs-toggle="collapse">
+          <span class="fa fa-shopping-bag"></span>
+          &nbsp;&nbsp;Offres
+        </button>
+        <div class="collapse" id="offres">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a (click)="onProForma()"
+                   class="link-dark d-inline-flex text-decoration-none rounded">Pro-forma</a></li>
 
-          <span class="fa fa-address-book" ></span>
+          </ul>
+        </div>
+      </li>
+
+      <li class="mb-1">
+        <button aria-expanded="false"
+                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                data-bs-target="#facturation" data-bs-toggle="collapse">
+
+          <span class="fa fa-tasks"></span>
           &nbsp;&nbsp;Facturation
         </button>
-        <div class="collapse" id="reference-table">
+        <div class="collapse" id="facturation">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onInvoiceCalled()">Facturation</a></li>
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="oncSecurity()" >Acheminement</a></li>
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onEnverenment()" >Réglement</a></li>
-<!--            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onFCommun()" >Commun</a></li>-->
+            <li><a (click)="onInvoiceCalled()"
+                   class="link-dark d-inline-flex text-decoration-none rounded">Facturation</a></li>
+            <li><a (click)="oncAcheminement()"
+                   class="link-dark d-inline-flex text-decoration-none rounded">Acheminement</a></li>
+            <li><a (click)="onReglement()" class="link-dark d-inline-flex text-decoration-none rounded">Règlement</a>
+            </li>
+            <!--            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onFCommun()" >Commun</a></li>-->
           </ul>
         </div>
       </li>
       <li class="mb-1">
         <button aria-expanded="false"
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-target="#orders-collapse" data-bs-toggle="collapse">
-          <span class="fa fa-briefcase" ></span>
-          &nbsp; Donnée de basen
+                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                data-bs-target="#orders-collapse" data-bs-toggle="collapse">
+          <span class="fa fa-briefcase"></span>
+          &nbsp; References
         </button>
         <div class="collapse" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onCustomerCalled()" >Client</a></li>
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onUniteMesureClic()" >Unité de mésure</a></li>
-            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onPrestationCalled()">Prestation</a></li>
+            <li><a (click)="onCustomerCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Client</a>
+            </li>
+            <li><a (click)="onUniteMesureClic()" class="link-dark d-inline-flex text-decoration-none rounded">Unité de
+              mésure</a></li>
+            <li><a (click)="onPrestationCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Prestation</a>
+            </li>
           </ul>
         </div>
       </li>
-
     </ul>
   </div>
-  <div class="col bg-light m-lg-3">
-
+  <div class="col bg-light m-lg-2">
     <router-outlet></router-outlet>
   </div>
 </div>
