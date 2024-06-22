@@ -8,7 +8,7 @@ import {Route, Router} from "@angular/router";
 })
 export class AppComponent {
 
-  title = 'Facturation & Recouvrement';
+  title = 'SONAREM ETTAKWINE';
 
   constructor(private router:Router) {}
 
@@ -51,6 +51,10 @@ export class AppComponent {
   }
 
   onProForma() {
-    // this.router.navigateByUrl("payment")
+    this.router.navigateByUrl("proforma")
+  }
+
+  onAttestationCalled() {
+    this.router.navigateByUrl("attestation")
   }
 }

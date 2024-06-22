@@ -39,7 +39,7 @@ export class PaymentComponent {
 
   onUpdate(a: any) {
 
-    this.router.navigateByUrl("updatepayment/" + a.id)
+    this.router.navigateByUrl("update-payment/" + a.id)
   }
 
   onAddPayment() {

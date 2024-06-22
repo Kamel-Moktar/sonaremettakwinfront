@@ -15,9 +15,7 @@ import {UpdateUniteMesureComponent} from './components/unite-mesure/update-unite
 import {BenefitComponent} from './components/benefit/benefit.component';
 import {AddBenefitComponent} from './components/benefit/add-benefit/add-benefit.component';
 import {UpdateBenefitComponent} from './components/benefit/update-benefit/update-benefit.component';
-
 import {InvoiceComponent} from './components/invoice/invoice.component';
-
 import {AddInvoiceComponent} from './components/invoice/add-invoice/add-invoice.component';
 import {PrintInvoiceComponent} from './components/invoice/print-invoice/print-invoice.component';
 import {InvoiceDetailComponent} from './components/invoice/invoice-detail/invoice-detail.component';
@@ -39,6 +37,18 @@ import { PrintPaymentComponent } from './components/payment/print-payment/print-
 import { TurnoverComponent } from './components/turnover/turnover.component';
 import { DebtsComponent } from './components/debts/debts.component';
 import { EncasementComponent } from './components/encasement/encasement.component';
+import {NgxPrintModule} from "ngx-print";
+import { PrintAttestationComponent } from './components/pedagogie/attestation/print-attestation/print-attestation.component';
+import { ProformaComponent } from './components/proforma/proforma.component';
+import { AddProformaComponent } from './components/proforma/add-proforma/add-proforma.component';
+import { UpdateProformaComponent } from './components/proforma/update-proforma/update-proforma.component';
+import { ProformaDetailComponent } from './components/proforma/proforma-detail/proforma-detail.component';
+import { UpdateOffreComponent } from './components/proforma/update-offre/update-offre.component';
+import { AddOffreComponent } from './components/proforma/add-offre/add-offre.component';
+import { PrintProformaComponent } from './components/proforma/print-proforma/print-proforma.component';
+
+
+
 
 
 function NgbModule() {
@@ -75,11 +85,18 @@ function NgbModule() {
     AddPaymentComponent,
     UpdatePaymentComponent,
     EncaissementComponent,
-
     PrintPaymentComponent,
       TurnoverComponent,
       DebtsComponent,
-      EncasementComponent
+      EncasementComponent,
+      PrintAttestationComponent,
+      ProformaComponent,
+      AddProformaComponent,
+      UpdateProformaComponent,
+      ProformaDetailComponent,
+      UpdateOffreComponent,
+      AddOffreComponent,
+      PrintProformaComponent,
 
   ],
   imports: [
@@ -89,8 +106,7 @@ function NgbModule() {
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-
-
+    NgxPrintModule
   ],
   providers: [],
   bootstrap: [AppComponent]

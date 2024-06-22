@@ -37,7 +37,7 @@ baseUrl=environment.backendBaseUrl+"/benefit"
 
 
   public update( benefit :any ) {
-    const url=this.baseUrl+"update"
+    const url=this.baseUrl+"/update"
     return this.httpClient.put(url,benefit)
   }
 }

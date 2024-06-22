@@ -33,6 +33,7 @@
         <tr class="text-center">
           <th style="width: 5%">#</th>
           <th style="width: 50%">Prestation</th>
+          <th style="width: 15%">Nombre</th>
           <th style="width: 10%">Qte</th>
           <th style="width: 10%">P.U</th>
           <th style="width: 25%">Total</th>
@@ -44,6 +45,7 @@
           <td style="text-align: center"> {{i}}</td>
 
           <td> {{a.benefit.designation}} <label *ngIf="a.observation"> ({{a.observation}})</label></td>
+          <td align="left" *ngIf="a.unit"> {{a.number}}&nbsp;{{a.number==1?a.unit.name:a.unit.name+"s"}}</td>
           <td align="center"> {{a.quantity}}</td>
           <td align="right"> {{a.price| number:".2"}} </td>
           <td align="right"> {{a.price * a.quantity | number:".2"}}</td>
@@ -98,3 +100,4 @@
 
   </div>
 </div>
+<router-outlet></router-outlet>

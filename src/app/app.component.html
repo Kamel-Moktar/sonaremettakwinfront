@@ -81,9 +81,45 @@
           </ul>
         </div>
       </li>
+
+      <li class="mb-1">
+        <button aria-expanded="false"
+                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                data-bs-target="#plan" data-bs-toggle="collapse">
+          <span class="fa fa-calendar"></span>
+          &nbsp; Formation
+        </button>
+        <div class="collapse" id="plan">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a (click)="onCustomerCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Action de fomation</a>
+            </li>
+            <li><a (click)="onUniteMesureClic()" class="link-dark d-inline-flex text-decoration-none rounded">Planification</a></li>
+            <li><a (click)="onPrestationCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Phase</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="mb-1">
+        <button aria-expanded="false"
+                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                data-bs-target="#stagiaire" data-bs-toggle="collapse">
+          <span class="fa fa-graduation-cap"></span>
+          &nbsp; Stagiaire
+        </button>
+        <div class="collapse" id="stagiaire">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a (click)="onCustomerCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Inscription</a>
+            </li>
+            <li><a (click)="onUniteMesureClic()" class="link-dark d-inline-flex text-decoration-none rounded">Liste</a></li>
+            <li><a (click)="onAttestationCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Attestation</a>
+            </li>
+          </ul>
+        </div>
+      </li>
     </ul>
   </div>
-  <div class="col bg-light m-lg-2">
+  <div class="col bg-light m-lg-2   ">
     <router-outlet></router-outlet>
   </div>
 </div>

@@ -16,6 +16,7 @@ export class UpdateBenefitComponent {
   formGroup: FormGroup = this.fb.group({
 
     designation: ["", Validators.required],
+    unit:["Repas"],
     description: ["", Validators.required],
     price: [0, Validators.required],
 
@@ -35,31 +36,43 @@ export class UpdateBenefitComponent {
   selectedUniteMesure: any
   selected: any;
 
-  ngOnInit() {
-    this.uniteMesureService.getAll('*').subscribe(res => {//est une prog asynchrone pour éviter le blocage
-      this.uniteMesures = res
-      this.uniteMesures.forEach(u => {
-        if (u.name == this.activateRoute.snapshot.url[6].path) this.selectedUniteMesure = u
-      })
 
-    })
+  ngOnInit() {
+
 
     const id =this.activateRoute.snapshot.url[1].path
     this.benefitService.getById(id).subscribe(res=>{
+      this.uniteMesureService.getAll('*').subscribe(res => {//est une prog asynchrone pour éviter le blocage
+        this.uniteMesures = res
+
+
+      })
 
       this.formGroup = this.fb.group({
         id: [res.id, Validators.required],
+        unit:[res.unitMeasurement.name],
         designation: [res.designation, Validators.required],
         description: [res.description, Validators.required],
         price: [res.price, Validators.required]
 
       })
+
+
+
     })
 
 
   }
 
   onValidate() {
+
+    this.uniteMesures.forEach(u => {
+      if (u.name == this.formGroup.value.unit) this.selectedUniteMesure = u
+    })
+
+
+
+
     if(this.formGroup.valid&&this.selectedUniteMesure){
     this.benefitService.update({
       id: this.formGroup.value.id,
@@ -80,6 +93,10 @@ export class UpdateBenefitComponent {
   }
 
   uniteMesurSelected(event: any) {
+
+
+    console.log()
+
     const value = event.target.value;
     this.uniteMesures.forEach(u => {
       if (u.name == value) this.selectedUniteMesure = u

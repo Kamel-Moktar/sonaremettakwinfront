@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 import {Router} from "@angular/router";
 import {InvoiceService} from "../../services/invoice/invoice.service";
@@ -17,7 +17,6 @@ export class InvoiceComponent {
   }
 
   ngOnInit(): void {
-
 
 
     this.refresh()
@@ -41,15 +40,14 @@ export class InvoiceComponent {
 
 
   onUpdate(a: any) {
-
-    this.router.navigateByUrl("updateinvoice/"+a.id)
+    this.router.navigateByUrl("updateinvoice/" + a.id)
   }
 
   onAddInvoice() {
     this.router.navigateByUrl("addinvoice")
   }
 
-  onDetail(a:any) {
-    this.router.navigateByUrl("invoice-detail/"+a.id)
+  onDetail(a: any) {
+    this.router.navigateByUrl("invoice-detail/" + a.id)
   }
 }

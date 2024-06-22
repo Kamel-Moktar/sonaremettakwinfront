@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {InvoiceService} from "../../../services/invoice/invoice.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {SaleService} from "../../../services/sale/sale.service";
 
 @Component({
@@ -18,7 +18,10 @@ export class PrintInvoiceComponent {
 
   constructor(public invoiceService: InvoiceService,
               private activateRoute: ActivatedRoute,
-              private saleService: SaleService) {
+              private saleService: SaleService,
+              private router :Router
+
+  ) {
 
   }
 
@@ -32,27 +35,29 @@ export class PrintInvoiceComponent {
           (res) => {
             this.lignes = res
 
-
-            this.intPart()
           })
       })
-
   }
 
   onPrint() {
     let printDocument: any = document.getElementById("printPart")
+    let ancInner=document.body.innerHTML;
     if (printDocument != null) {
       document.body.innerHTML = printDocument.innerHTML;
       window.print()
-      window.close()
+      document.body.innerHTML=ancInner
+      this.router.navigateByUrl("invoice")
+     // window.location.reload()
     }
   }
   intPart() {
     let i = Math.trunc(this.invoice.amountIncludingTax)
     return Math.floor(this.invoice.amountIncludingTax)
   }
-
   decimalPart() {
     return (this.invoice.amountIncludingTax - Math.trunc(this.invoice.amountIncludingTax)) * 100
+  }
+  onCancel() {
+    this.router.navigateByUrl("invoice-detail/"+this.invoiceId)
   }
 }

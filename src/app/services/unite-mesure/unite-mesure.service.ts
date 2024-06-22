@@ -22,6 +22,11 @@ baseUrl :any=environment.backendBaseUrl+"/unitemesure/"
   return this.httpClient.get<any>(url)
   }
 
+  public getUnits(){
+    let url=this.baseUrl+"unit"
+    return this.httpClient.get<any>(url)
+  }
+
   public  add (unitemesure :any ){
     let url=this.baseUrl+"add"
     return this.httpClient.post(url,unitemesure)

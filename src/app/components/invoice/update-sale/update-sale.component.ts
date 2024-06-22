@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {InvoiceService} from "../../../services/invoice/invoice.service";
 import {SaleService} from "../../../services/sale/sale.service";
 import {BenefitService} from "../../../services/benefit/benefit.service";
+import {UniteMesureService} from "../../../services/unite-mesure/unite-mesure.service";
 
 @Component({
   selector: 'app-update-sale',
@@ -13,9 +14,12 @@ import {BenefitService} from "../../../services/benefit/benefit.service";
 export class UpdateSaleComponent {
 
   title: String = "Modifier une prestation dans la facture";
-
+  units : any[]=[];
+  unit:any
 
   formGroup: FormGroup = this.fb.group({
+    number: [1, Validators.required],
+    u:[],
     qte: ["", Validators.required],
     price: ["", Validators.required],
     obs: ["", Validators.required]
@@ -30,7 +34,7 @@ export class UpdateSaleComponent {
     private router: Router,
     private invoiceService: InvoiceService,
     private saleService: SaleService,
-    private benefitService: BenefitService,
+    private  uniteMesureService :UniteMesureService
   ) {
   }
 
@@ -52,23 +56,43 @@ export class UpdateSaleComponent {
 
       this.formGroup = this.fb.group({
         id: [sale.id],
+        number: [sale.number, Validators.required],
+        u:[sale.unit.name],
         qte: [sale.quantity, Validators.required],
         price: [sale.price, Validators.required],
         obs: [sale.observation]
-
-
       })
 
+      this.uniteMesureService.getUnits().subscribe(
+        (res)=>{
+          if(this.units.length>0)
+            this.unit=this.units[0]
+          this.units=res
+        })
+
     })
+
+
   }
 
   onValidate() {
+
+    this.units.forEach(a=>{
+
+      if(a.name===this.formGroup.value.u) {
+        this.unit=a;
+
+      }
+    })
+
 
     if (this.selectedBenefit != null) {
       this.saleService.add({
         id: this.formGroup.value.id,
         benefit: this.selectedBenefit,
         invoice: this.invoice,
+        number:this.formGroup.value.number,
+        unit:this.unit,
         quantity: this.formGroup.value.qte,
         price: this.formGroup.value.price,
         observation: this.formGroup.value.obs
@@ -102,5 +126,5 @@ export class UpdateSaleComponent {
 
   }
 
-//
+
 }

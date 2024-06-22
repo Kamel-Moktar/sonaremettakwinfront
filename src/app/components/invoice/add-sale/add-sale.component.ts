@@ -5,6 +5,7 @@ import {InvoiceService} from "../../../services/invoice/invoice.service";
 import {CustomerService} from "../../../services/customer/customer.service";
 import {BenefitService} from "../../../services/benefit/benefit.service";
 import {SaleService} from "../../../services/sale/sale.service";
+import {UniteMesureService} from "../../../services/unite-mesure/unite-mesure.service";
 
 @Component({
   selector: 'app-add-sale',
@@ -17,6 +18,7 @@ export class AddSaleComponent {
 
 
   formGroup: FormGroup = this.fb.group({
+    number: [1, Validators.required],
     qte: ["", Validators.required],
     price: ["", Validators.required],
     obs: ["", Validators.required]
@@ -25,6 +27,14 @@ export class AddSaleComponent {
 
   })
 
+  footer: any="";
+  benefits: any[]=[];
+  selectedBenefit :any
+  selected: any;
+  invoice :any
+  invoiceId: any;
+  units : any[]=[];
+  unit:any
 
   constructor(
     private activateRoute:ActivatedRoute,
@@ -33,16 +43,12 @@ export class AddSaleComponent {
     private invoiceService: InvoiceService,
     private saleService :SaleService,
     private benefitService :BenefitService,
+    private  uniteMesureService :UniteMesureService
 
   ) {
   }
 
-  footer: any="";
-  benefits: any[]=[];
-  selectedBenefit :any
-  selected: any;
-  invoice :any
-invoiceId: any;
+
   ngOnInit(){
 
     this.invoiceId=this.activateRoute.snapshot.url[1].path
@@ -56,6 +62,13 @@ invoiceId: any;
       (res)=>{
         this.invoice=res
       })
+
+    this.uniteMesureService.getUnits().subscribe(
+      (res)=>{
+        if(this.units.length>0)
+          this.unit=this.units[0]
+        this.units=res
+      })
   }
 
   onValidate() {
@@ -64,6 +77,8 @@ invoiceId: any;
       this.saleService.add({
         benefit: this.selectedBenefit,
         invoice: this.invoice,
+        number:this.formGroup.value.number,
+        unit:this.unit,
         quantity: this.formGroup.value.qte,
         price: this.formGroup.value.price,
         observation:this.formGroup.value.obs
@@ -72,8 +87,6 @@ invoiceId: any;
         }
       )
     }else alert("Veuillez sélectionner une prestation ")
-
-
   }
 
   onCancel() {
@@ -81,20 +94,28 @@ invoiceId: any;
   }
 
   customerSelected(event:any) {
-
-
-
-    const value = event.target.value;
-
-
+    let value = event.target.value;
+    console.log(value)
     this.benefits.forEach(u=>{
-      if(u.shortName==value) {this.selectedBenefit=u;
-        console.log(this.selectedBenefit)
+
+      if(u.designation===value) {
+        this.selectedBenefit=u;
+
       }
     })
-
     // console.log(this.selectedCustomer)
+  }
 
+  unitSelected(event:any) {
+    let value = event.target.value;
+    console.log(value)
+    this.units.forEach(u=>{
+
+      if(u.name===value) {
+        this.unit=u;
+
+      }
+    })
   }
 }
 

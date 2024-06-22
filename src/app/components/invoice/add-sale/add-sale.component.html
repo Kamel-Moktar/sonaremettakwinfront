@@ -21,7 +21,7 @@
             <select class='form-select form-control'
                     (change)='customerSelected($event)'>
               <option class='form-select'  *ngFor='let option of benefits'
-                      [value]="option.designation">{{option.designation}}</option>
+                      [value]="option.designation"  id={{option.id}}>{{option.designation}}</option>
             </select>
           </div>
           <div class="col"><h6 style="color:red">(*)</h6></div>
@@ -29,6 +29,19 @@
 
 
 
+        <div class="row m-2">
+          <div class="col col-2 text-end"><label> Nombre: </label></div>
+          <div class="col col-2"><input class="form-control" [formControlName]="'number'" placeholder="Nombre" type="text"></div>
+          <div class="col col-2">
+            <select class='form-select form-control'
+                    (change)='unitSelected($event)'>
+              <option class='form-select'  *ngFor='let option of units'
+                      [value]="option.name"  id={{option.name}}>{{option.name}}</option>
+            </select>
+          </div>
+
+          <div class="col"><h6 style="color:red">(*)</h6></div>
+        </div>
 
 
         <div class="row m-2">
@@ -36,7 +49,6 @@
           <div class="col col-2"><input class="form-control" [formControlName]="'qte'" placeholder="Qte" type="text"></div>
           <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
-
         <div class="row m-2">
           <div class="col  col-2 text-end"><label> P.U: </label></div>
           <div class="col col-2"><input class="form-control"  [formControlName]="'price'" placeholder="P.U" type="text"></div>
