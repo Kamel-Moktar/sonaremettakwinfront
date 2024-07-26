@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col"><h6>{{title}}</h6></div>
+      <div class="col col-auto">
+        <button (click)="onCancel()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-arrow-left"></span>
+
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body m-lg-5">
+    <form [formGroup]="formGroup">
+      <div class="col ">
+
+        <div class="row m-2">
+          <div class="col col-4 text-end"><label> Nom ou raison social: </label></div>
+          <div class="col col-7"><input [formControlName]="'name'" class="form-control" placeholder="Nom de client"
+                                        type="text"></div>
+          <div class="col"><h6 style="color:red">(*)</h6></div>
+        </div>
+
+
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col">
+            <button (click)="onValidate()" class="btn btn-outline-success m-2">Valider</button>
+            <button (click)="onCancel()" class="btn btn-outline-success m-2">Annuler</button>
+          </div>
+          <div class="col">
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="card-footer ">
+    <div class="row">
+      <div class="col"><h3>{{footer}}</h3></div>
+
+    </div>
+

@@ -40,6 +40,21 @@ import {ProformaDetailComponent} from "./components/proforma/proforma-detail/pro
 import {AddOffreComponent} from "./components/proforma/add-offre/add-offre.component";
 import {UpdateOffreComponent} from "./components/proforma/update-offre/update-offre.component";
 import {PrintProformaComponent} from "./components/proforma/print-proforma/print-proforma.component";
+import {ActionComponent} from "./components/action/action.component";
+import {AddActionComponent} from "./components/action/add-action/add-action.component";
+import {UpdateActionComponent} from "./components/action/update-action/update-action.component";
+import {SessionComponent} from "./components/session/session.component";
+import {AddSessionComponent} from "./components/session/add-session/add-session.component";
+import {UpdateSessionComponent} from "./components/session/update-session/update-session.component";
+import {PhaseComponent} from "./components/phase/phase.component";
+import {AddPhaseComponent} from "./components/phase/add-phase/add-phase.component";
+import {UpdatePhaseComponent} from "./components/phase/update-phase/update-phase.component";
+import {StagiaireComponent} from "./components/stagiaire/stagiaire.component";
+import {AddStagiaireComponent} from "./components/stagiaire/add-stagiaire/add-stagiaire.component";
+import {UpdateStagiaireComponent} from "./components/stagiaire/update-stagiaire/update-stagiaire.component";
+import {UpdateDomaineComponent} from "./components/domaine/update-domaine/update-domaine.component";
+import {AddDomaineComponent} from "./components/domaine/add-domaine/add-domaine.component";
+import {DomaineComponent} from "./components/domaine/domaine.component";
 
 const routes: Routes = [
   {path: "customer", component: CustomerComponent},
@@ -81,9 +96,32 @@ const routes: Routes = [
   {path: "proforma-detail/:proforma-id", component: ProformaDetailComponent},
   {path: "add-offre/:proforma-id", component: AddOffreComponent},
   {path: "update-offre/:proforma-id", component: UpdateOffreComponent},
-  {path: 'print-proforma/:proformaIds', component: PrintProformaComponent}
+  {path: 'print-proforma/:proformaIds', component: PrintProformaComponent},
 
-  ]
+  {path:'action' , component:  ActionComponent},
+  {path: 'add-action', component: AddActionComponent},
+  {path: 'update-action/:action-id',component:UpdateActionComponent},
+
+  {path:'session' , component:  SessionComponent},
+  {path: 'add-session', component: AddSessionComponent},
+  {path: 'update-session/:session-id',component:UpdateSessionComponent},
+
+
+
+  {path:'phase/:session_id' , component:  PhaseComponent},
+  {path: 'add-phase/:session_id', component: AddPhaseComponent},
+  {path: 'update-phase/:phase-id',component:UpdatePhaseComponent},
+
+  {path:'stagiaire' , component:  StagiaireComponent},
+  {path: 'add-stagiaire', component: AddStagiaireComponent},
+  {path: 'update-stagiaire/:stagiaire-id',component:UpdateStagiaireComponent},
+
+  {path:'domaine' , component:  DomaineComponent},
+  {path: 'add-domaine', component: AddDomaineComponent},
+  {path: 'update-domaine/:domaine-id',component:UpdateDomaineComponent},
+
+
+]
 
 
 

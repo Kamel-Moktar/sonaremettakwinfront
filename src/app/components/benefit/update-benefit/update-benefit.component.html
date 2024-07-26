@@ -37,8 +37,7 @@
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Unite de mesure: </label></div>
           <div class="col col-3">
-            <select class='form-select form-control' [formControlName]="'unit'"
-                    (change)='uniteMesurSelected($event)'>
+            <select class='form-select form-control' [formControlName]="'unit'">
               <option class='form-select'  *ngFor='let option of uniteMesures'
                       [value]="option.name">{{option.name}}</option>
             </select>

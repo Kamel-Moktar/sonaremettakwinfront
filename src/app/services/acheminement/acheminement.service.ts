@@ -59,7 +59,7 @@ export class AcheminementService {
 
  public  addInvoice(shppingSlipInvoice:any){
     let url = this.baseUrl + "/addinvoice"
-   console.log(shppingSlipInvoice)
+
     return this.http.post<any>(url,shppingSlipInvoice)
 
 

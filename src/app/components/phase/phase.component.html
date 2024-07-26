@@ -1,0 +1,183 @@
+<div class="card">
+  <div class="card-header m-2">
+    <div class="row m-2 round1">
+      <div class="row  m-2 ">
+        <div class="col col-1 text-end "> Session:</div>
+        <div class="col col-3">
+          <div class="row">
+            <div class="col col-11">
+              <input [disabled]="true" class="form-control" id="name"
+                     placeholder="Choisissez une session ... "
+                     type="text">
+            </div>
+            <div class="col col-1">
+              <button (click)="openModal(sessionModal)" class="btn btn-link align-content-end ">
+                <span class="fa fa-ellipsis-h "></span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col col-1 text-end"> Thème:</div>
+        <div class="col col-7">
+
+          <input [disabled]="true" class="form-control" id="theme"
+                 type="text">
+
+        </div>
+
+
+      </div>
+
+      <div class="row m-2 ">
+
+        <div class="col col-1 text-end "> Date debut:</div>
+        <div class="col col-3">
+
+          <input [disabled]="true" class="form-control" id="startDate"
+                 type="text">
+        </div>
+
+
+        <div class="col col-1 text-end"> Date Fin:</div>
+        <div class="col col-3">
+          <input [disabled]="true" class="form-control" id="endDate"
+                 type="text">
+
+        </div>
+        <div class="col col-1 text-end"> Stagiaires prévus:</div>
+        <div class="col col-3">
+          <input [disabled]="true" class="form-control" id="nbrStagPlanned"
+                 type="text">
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row m-2  round1" *ngIf="session">
+
+      <div class="col m-2"><h3>{{title}}</h3></div>
+      <div class="col col-auto m-2">
+        <button (click)="onAdd()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-plus"></span>
+          Ajouter
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <div class="card-body"  *ngIf="session">
+    <table class="table table-striped  table-bordered table-hover">
+      <thead>
+      <tr class="text-center">
+        <th style="width: 5%">code</th>
+        <th style="width: 50%">Nom</th>
+        <th style="width: 10%">Date Debut</th>
+        <th style="width: 10%">Date Fin</th>
+        <th style="width: 10%">Type Phase</th>
+        <th style="width: 10%">lieu</th>
+
+
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let a of this.phases ;let i=index ">
+        <td style="text-align: center"> {{a.id}}</td>
+        <td> {{a.name}}</td>
+        <td align="center"> {{a.startDate| date: "dd/MM/YYYY"}}</td>
+        <td align="center"> {{a.endDate | date: "dd/MM/YYYY"}}</td>
+        <td> {{a.type}}</td>
+        <td> {{a.lieu }}</td>
+        <td>
+          <div class="container">
+            <button (click)="onUpdate(a)" class="btn btn-outline-success">
+              <span class="fa fa-pencil"> </span>
+            </button>
+          </div>
+        </td>
+        <td>
+          <div class="container">
+            <button (click)="onDelete(a)" class="btn btn-outline-success">
+              <span class="fa fa-trash-o"> </span>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-header">
+    <!--    Total : <strong>{{totalEntreprise}}</strong> &nbsp;Enregistrements-->
+  </div>
+</div>
+
+
+<ng-template #sessionModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="strictureModal">Session de formation </h4>
+    <button (click)="modal.dismiss('Cross click')" aria-label="Close" class="btn-close" type="button"></button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-striped  table-bordered table-hover">
+      <thead>
+      <tr class="text-center">
+        <th style="width: 5%"></th>
+        <th style="width: 15%">
+          <form [formGroup]="fg">
+            <input (keyup)="onSearch()" [formControlName]="'name'" [placeholder]="'Lib Session'" class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 20%">
+          <form [formGroup]="fg">
+            <input (keyup)="onSearch()" [formControlName]="'theme'" [placeholder]="'thème'" class="form-control"
+                   type="text">
+          </form>
+
+        <th style="width: 20%">
+          <form [formGroup]="fg">
+            <input (keyup)="onSearch()" [formControlName]="'dd'" [placeholder]="'date debut'" class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 15%"></th>
+      </tr>
+      </thead>
+      <thead>
+      <tr class="text-center">
+        <th style="width: 5%">code</th>
+        <th style="width: 20%">Libellé</th>
+        <th style="width: 55%">Thème</th>
+        <th style="width: 10%">Date debut</th>
+        <th style="width: 10%">Date Fin</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let a of this.sessions ;let i=index ">
+        <td style="text-align: center"> {{a.id}}</td>
+        <td> {{a.name}}</td>
+        <td> {{a.action.name}}</td>
+        <td> {{a.startDate|date:"dd/MM/YYYY"}}</td>
+        <td> {{a.endDate|date:"dd/MM/YYYY"}}</td>
+
+        <td>
+          <div class="container">
+            <button (click)="modal.close(a)" class="btn btn-outline-dark" type="button">
+              <span class="fa fa-check-square"></span>
+            </button>
+          </div>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+  </div>
+</ng-template>
+
+
+

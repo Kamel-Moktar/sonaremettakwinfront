@@ -15,18 +15,17 @@
     <form [formGroup]="formGroup">
       <div class="col ">
 
-<!--        <div class="row m-2">-->
-<!--          <div class="col col-2 text-end"><label>Client: </label></div>-->
-<!--          <div class="col col-5">-->
-<!--            <select class='form-select form-control'-->
-<!--                    (change)='customerSelected($event)'>-->
-<!--              <option class='form-select'  *ngFor='let option of benefits'-->
-<!--                      [value]="option.designation">{{option.designation}}</option>-->
-<!--            </select>-->
-<!--          </div>-->
-<!--          &lt;!&ndash;          <div class="col"></div>&ndash;&gt;-->
-<!--        </div>-->
-
+        <!--        <div class="row m-2">-->
+        <!--          <div class="col col-2 text-end"><label>Client: </label></div>-->
+        <!--          <div class="col col-5">-->
+        <!--            <select class='form-select form-control'-->
+        <!--                    (change)='customerSelected($event)'>-->
+        <!--              <option class='form-select'  *ngFor='let option of benefits'-->
+        <!--                      [value]="option.designation">{{option.designation}}</option>-->
+        <!--            </select>-->
+        <!--          </div>-->
+        <!--          &lt;!&ndash;          <div class="col"></div>&ndash;&gt;-->
+        <!--        </div>-->
 
 
         <!--        <div class="row m-2">-->
@@ -41,11 +40,12 @@
 
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Nombre: </label></div>
-          <div class="col col-2"><input class="form-control" [formControlName]="'number'" placeholder="Nombre" type="text"></div>
+          <div class="col col-2"><input [formControlName]="'number'" class="form-control" placeholder="Nombre"
+                                        type="text"></div>
           <div class="col col-2">
-            <select class='form-select form-control'[formControlName]="'u'">
-              <option class='form-select'  *ngFor='let option of units'
-                      [value]="option.name"  id={{option.name}}>{{option.name}}</option>
+            <select [formControlName]="'u'" class='form-select form-control'>
+              <option *ngFor='let option of units' [value]="option.name"
+                      class='form-select' id={{option.name}}>{{option.name}}</option>
             </select>
           </div>
 
@@ -54,26 +54,26 @@
 
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Qte: </label></div>
-          <div class="col col-2"><input class="form-control" [formControlName]="'qte'" placeholder="Qte" type="text"></div>
+          <div class="col col-2"><input [formControlName]="'qte'" class="form-control" placeholder="Qte" type="text">
+          </div>
           <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
 
 
-
         <div class="row m-2">
           <div class="col  col-2 text-end"><label> P.U: </label></div>
-          <div class="col col-2"><input class="form-control"  [formControlName]="'price'" placeholder="P.U" type="text"></div>
+          <div class="col col-2"><input [formControlName]="'price'" class="form-control" placeholder="P.U" type="text">
+          </div>
           <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
 
 
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Obs: </label></div>
-          <div class="col col"><input class="form-control" [formControlName]="'obs'"placeholder="obs" type="text"></div>
+          <div class="col col"><input [formControlName]="'obs'" class="form-control" placeholder="obs" type="text">
+          </div>
 
         </div>
-
-
 
 
         <div class="row">
@@ -97,3 +97,5 @@
     </div>
 
 
+  </div>
+</div>

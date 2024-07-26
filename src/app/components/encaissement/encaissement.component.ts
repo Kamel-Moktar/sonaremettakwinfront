@@ -125,13 +125,10 @@ export class EncaissementComponent {
     if (number ==null) number = '*'
     if (shortName ==null) shortName = '*'
     if (date ==null) date = "*"
-
-    console.log({number: number, shortName: shortName, date: date})
     this.refreshInvoices({number: number, shortName: shortName, date: date})
   }
 
   refreshInvoices(searchParam: any) {
-
     this.invoiceService.getDebtsParam(searchParam).subscribe((ls) => {
       this.invoices = []
       ls.forEach(e => {

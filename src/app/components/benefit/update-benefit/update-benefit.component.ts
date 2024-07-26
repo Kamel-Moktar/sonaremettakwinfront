@@ -92,15 +92,6 @@ export class UpdateBenefitComponent {
     this.router.navigateByUrl("benefit")
   }
 
-  uniteMesurSelected(event: any) {
 
-
-    console.log()
-
-    const value = event.target.value;
-    this.uniteMesures.forEach(u => {
-      if (u.name == value) this.selectedUniteMesure = u
-    })
-  }
 
 }

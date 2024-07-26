@@ -102,7 +102,7 @@ export class DetailAcheminementComponent {
   public add(){
      let factureExist=false
     for(let e of  this.shippingSlipInvoices){
-      if(this.selectedInvoice.id==e.invoice.id) {
+      if(this.selectedInvoice.invoice.id==e.invoice.id) {
         factureExist=true
         break
       }
@@ -111,10 +111,10 @@ export class DetailAcheminementComponent {
     }else{
     this.shippingSlipService.addInvoice(
       {
-        invoice:this.selectedInvoice,
+        invoice:this.selectedInvoice.invoice,
         shippingSlip: this.selectedShippingSlip,
-        nbrPage:this.formGroup.value.nbrPage,
-        obs:this.formGroup.value.obs
+        nbrPage:this.selectedInvoice.fg.value.nbrPage,
+        obs:this.selectedInvoice.fg.value.obs
       }
     ).subscribe(res=>
     {
@@ -150,7 +150,7 @@ refresh(){
           this.invoices.push({
             invoice: e,
             fg: this.fb.group({
-              nbrPage: [e.remains, [Validators.required, Validators.min(0)]],
+              nbrPage: ["", [Validators.required, Validators.min(0)]],
               obs: [""]
             })
           })

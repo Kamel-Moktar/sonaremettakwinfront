@@ -57,4 +57,24 @@ export class AppComponent {
   onAttestationCalled() {
     this.router.navigateByUrl("attestation")
   }
+
+  onInsciptionCalled() {
+    this.router.navigateByUrl("stagiaire")
+  }
+
+  onActionCalled() {
+    this.router.navigateByUrl("action")
+  }
+
+  onSessionClic() {
+    this.router.navigateByUrl("session")
+  }
+
+  onPhaseCalled() {
+    this.router.navigateByUrl("phase/0")
+  }
+
+  onDomaineCalled() {
+    this.router.navigateByUrl("domaine")
+  }
 }

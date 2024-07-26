@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ProformaService} from "../../../services/proforma/proforma.service";
 import {CustomerService} from "../../../services/customer/customer.service";
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-add-proforma',
@@ -22,11 +23,20 @@ export class AddProformaComponent {
 
   })
 
+  fg: FormGroup = this.fb.group({
+    name: [""],
+    shortName: [""],
+
+
+  })
+  private closeResult="";
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private proformaService: ProformaService,
-    private customerService :CustomerService
+    private customerService :CustomerService,
+    private modalService: NgbModal
   ) {
   }
 
@@ -83,6 +93,36 @@ export class AddProformaComponent {
 
     // console.log(this.selectedCustomer)
 
+  }
+
+  onSearch() {
+
+    this.customerService.getAllParam({name: this.fg.value.name, shortName: this.fg.value.shortName}).subscribe(res => {
+      this.customers = res
+
+    })
+  }
+
+  openModal(content: any) {
+
+
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', size: "lg"}).result.then((result) => {
+      this.selectedCustomer = result;
+      let action = document.getElementById("action");
+      if (action) action.setAttribute("value", this.selectedCustomer.shortName)
+    }, (reason) => {
+      this.closeResult = `Dismissed ${AddProformaComponent.getDismissReason(reason)}`;
+    });
+  }
+
+  static getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }
 

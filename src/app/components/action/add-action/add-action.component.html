@@ -1,0 +1,83 @@
+<div class="card">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col"><h6>{{title}}</h6></div>
+      <div class="col col-auto">
+        <button (click)="onCancel()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-arrow-left"></span>
+
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body m-lg-5">
+    <form [formGroup]="formGroup">
+      <div class="col ">
+        <div class="row m-2">
+          <div class="col col-2 text-end"><label> Intitulé: </label></div>
+          <div class="col col-8"><input [formControlName]="'name'" class="form-control"
+                                        placeholder="Intitulé de la formation"
+                                        type="text"></div>
+          <div class="col"><h6 style="color:#ff0000">(*)</h6></div>
+        </div>
+        <div class="row m-2">
+          <div class="col col-2 text-end"><label> Domaine: </label></div>
+          <div class="col col-3" *ngIf="domaines">
+            <select class='form-select form-control' formControlName="dom" >
+              <option class='form-select'  *ngFor='let option of domaines'
+                      [value]="option.name">{{option.name}}</option>
+            </select>
+          </div>
+          <div class="col"><h6 style="color:#ff0000">(*)</h6></div>
+        </div>
+
+
+        <div class="row m-2">
+          <div class="col col-2 text-end"><label> Durée (en jours): </label></div>
+          <div class="col col-2"><input (keyup)="dureEntered()" [formControlName]="'dureDay'" class="form-control"
+                                        placeholder="Durée (en jours)" type="text"></div>
+          <div class="col"><h6 style="color:#ff0000">(*)</h6></div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col col-2 text-end"><label> Durée (en heure): </label></div>
+          <div class="col col-2"><input [formControlName]="'dureHour'" class="form-control"
+                                        placeholder="Durée (en heure) " type="text"></div>
+          <div class="col"><h6 style="color:#ff0000">(*)</h6></div>
+        </div>
+        <div class="row m-2">
+          <div class="col col-2 text-end"><label> But: </label></div>
+          <div class="col col"><input [formControlName]="'but'" class="form-control" placeholder="But de la formation "
+                                      type="text"></div>
+
+        </div>
+
+        <div class="row m-2">
+          <div class="col col-2 text-end"><label> Objectif: </label></div>
+          <div class="col col"><input [formControlName]="'objectif'" class="form-control"
+                                      placeholder="Objectif de la formation " type="text"></div>
+
+        </div>
+
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col">
+            <button (click)="onValidate()" class="btn btn-outline-success m-2">Validate</button>
+            <button (click)="onCancel()" class="btn btn-outline-success m-2">Cancel</button>
+          </div>
+          <div class="col">
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="card-footer ">
+    <div class="row">
+      <div class="col"><h3>{{footer}}</h3></div>
+
+    </div>
+  </div>
+</div>
+

@@ -15,6 +15,11 @@ export class CustomerService {
     return this.http.get<any>(url)
   }
 
+  public getAllParam(param:any){
+    const url=this.baseUrl+"/allparam"
+    return this.http.post<any>(url,param)
+  }
+
   public  add (customer :any ){
     const url=this.baseUrl+"/add"
     return this.http.post(url,customer)

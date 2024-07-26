@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col"><h6>{{title}}</h6></div>
+      <div class="col col-auto">
+        <button class="btn btn-outline-success align-content-end" (click)="onAdd()">
+          <span class="fa fa-plus"></span>
+          Ajouter
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped  table-bordered table-hover">
+      <thead>
+      <tr class="text-center">
+        <th style="width: 5%" >code</th>
+        <th style="width: 25%" >Nom</th>
+        <th style="width: 40%" >Thème</th>
+        <th style="width: 10%">Date Debut</th>
+        <th style="width: 10%" >Date Fin </th>
+        <th style="width: 10%">Nbr Stags Prévus</th>
+
+
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let a of this.sessions ;let i=index ">
+        <td style="text-align: center"> {{a.id}}</td>
+        <td> {{a.name}}</td>
+        <td> {{a.action.name}}</td>
+        <td align="center"> {{a.startDate| date: "dd/MM/YYYY"}}</td>
+        <td align="center"> {{a.endDate | date: "dd/MM/YYYY"}}</td>
+        <td align="center"> {{a.nbrStagPlanned}}</td>
+        <td><div class="container">
+          <button class="btn btn-outline-success" (click)="onUpdate(a)">
+            <span class="fa fa-pencil"> </span>
+          </button>
+        </div></td>
+        <td><div class="container">
+          <button class="btn btn-outline-success" (click)="onDelete(a)" >
+            <span class="fa fa-trash-o" > </span>
+          </button>
+        </div></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-header">
+    <!--    Total : <strong>{{totalEntreprise}}</strong> &nbsp;Enregistrements-->
+  </div>
+
+</div>
+
+
+
+
