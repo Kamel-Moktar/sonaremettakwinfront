@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {ProformaService} from "../../services/proforma/proforma.service";
 import {Router} from "@angular/router";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-proforma',
@@ -10,9 +11,19 @@ import {Router} from "@angular/router";
 export class ProformaComponent {
 
   proformas?: any[];
-  title: any = 'Facture proforma';
+  title: any = 'Facture proforma'
 
-  constructor(public proformaService: ProformaService, private router: Router) {
+  formGroup: any = this.fb.group({
+    number: [""],
+    shortName: [""],
+    date: [""]
+  });
+
+  constructor(
+    public proformaService: ProformaService,
+    private router: Router,
+    private fb:FormBuilder
+  ) {
   }
 
   ngOnInit(): void {
@@ -22,7 +33,7 @@ export class ProformaComponent {
   }
 
   refresh(): void {
-    this.proformaService.getAll().subscribe(
+    this.proformaService.getAllParam({number: this.formGroup.value.number, shortName: this.formGroup.value.shortName, date:this.formGroup.value.date}).subscribe(
       res => {
         this.proformas = res
       })
@@ -48,5 +59,9 @@ export class ProformaComponent {
 
   onDetail(a: any) {
     this.router.navigateByUrl("proforma-detail/" + a.id)
+  }
+
+  onSearch() {
+    this.refresh()
   }
 }

@@ -47,7 +47,7 @@ export class AppComponent {
   }
 
   onEncaissement() {
-    this.router.navigateByUrl("encasement")
+    // this.router.navigateByUrl("encasement")
   }
 
   onProForma() {
@@ -59,7 +59,7 @@ export class AppComponent {
   }
 
   onInsciptionCalled() {
-    this.router.navigateByUrl("stagiaire")
+    this.router.navigateByUrl("inscription/0")
   }
 
   onActionCalled() {
@@ -76,5 +76,9 @@ export class AppComponent {
 
   onDomaineCalled() {
     this.router.navigateByUrl("domaine")
+  }
+
+  onStagiaireCalled() {
+    this.router.navigateByUrl("stagiaire")
   }
 }

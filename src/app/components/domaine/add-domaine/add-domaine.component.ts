@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {DomaineService} from "../../../services/domaine/domaine.service";
@@ -30,7 +30,7 @@ export class AddDomaineComponent {
 
 
   onValidate() {
-    if(this.formGroup.valid){
+    if (this.formGroup.valid) {
       this.domaineService.add({
         name: this.formGroup.value.name,
 
@@ -38,7 +38,7 @@ export class AddDomaineComponent {
           this.onCancel();
         }
       )
-    }else alert("Veuillez remplir les rebiques requis")
+    } else alert("Veuillez remplir les rebiques requis")
 
   }
 

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col"><h6>{{title}}</h6></div>
       <div class="col col-auto">
-        <button class="btn btn-outline-success align-content-end" (click)="onAdd()">
+        <button (click)="onAdd()" class="btn btn-outline-success align-content-end">
           <span class="fa fa-plus"></span>
           Ajouter
         </button>
@@ -14,11 +14,35 @@
     <table class="table table-striped  table-bordered table-hover">
       <thead>
       <tr class="text-center">
-        <th style="width: 5%" >code</th>
-        <th style="width: 25%" >Nom</th>
-        <th style="width: 40%" >Thème</th>
+        <th style="width: 5%"></th>
+        <th style="width: 15%">
+          <form [formGroup]="fg">
+            <input (keyup)="onSearch()" [formControlName]="'name'" [placeholder]="'Lib Session'" class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 20%">
+          <form [formGroup]="fg">
+            <input (keyup)="onSearch()" [formControlName]="'theme'" [placeholder]="'thème'" class="form-control"
+                   type="text">
+          </form>
+
+        <th style="width: 20%">
+          <form [formGroup]="fg">
+            <input (keyup)="onSearch()" [formControlName]="'dd'" [placeholder]="'date debut'" class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 15%"></th>
+      </tr>
+      </thead>
+      <thead>
+      <tr class="text-center">
+        <th style="width: 5%">code</th>
+        <th style="width: 25%">Nom</th>
+        <th style="width: 40%">Thème</th>
         <th style="width: 10%">Date Debut</th>
-        <th style="width: 10%" >Date Fin </th>
+        <th style="width: 10%">Date Fin</th>
         <th style="width: 10%">Nbr Stags Prévus</th>
 
 
@@ -32,16 +56,34 @@
         <td align="center"> {{a.startDate| date: "dd/MM/YYYY"}}</td>
         <td align="center"> {{a.endDate | date: "dd/MM/YYYY"}}</td>
         <td align="center"> {{a.nbrStagPlanned}}</td>
-        <td><div class="container">
-          <button class="btn btn-outline-success" (click)="onUpdate(a)">
-            <span class="fa fa-pencil"> </span>
-          </button>
-        </div></td>
-        <td><div class="container">
-          <button class="btn btn-outline-success" (click)="onDelete(a)" >
-            <span class="fa fa-trash-o" > </span>
-          </button>
-        </div></td>
+        <td>
+          <div class="container">
+            <button (click)="onDetail(a)" class="btn btn-outline-success" title="Decoupage en Phase">
+              <span class="fa fa-calendar"> </span>
+            </button>
+          </div>
+        </td>
+        <td>
+          <div class="container">
+            <button (click)="onStagiaire(a)" class="btn btn-outline-success" title="Stagiaires inscrits">
+              <span class="fa fa-group"> </span>
+            </button>
+          </div>
+        </td>
+        <td>
+          <div class="container">
+            <button (click)="onUpdate(a)" class="btn btn-outline-success" title="Modifier">
+              <span class="fa fa-pencil"> </span>
+            </button>
+          </div>
+        </td>
+        <td>
+          <div class="container">
+            <button (click)="onDelete(a)" class="btn btn-outline-success" title="Supprimer">
+              <span class="fa fa-trash-o"> </span>
+            </button>
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>

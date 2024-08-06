@@ -31,7 +31,7 @@ import {EncaissementComponent} from "./components/encaissement/encaissement.comp
 import {PrintPaymentComponent} from "./components/payment/print-payment/print-payment.component";
 import {TurnoverComponent} from "./components/turnover/turnover.component";
 import {DebtsComponent} from "./components/debts/debts.component";
-import {EncasementComponent} from "./components/encasement/encasement.component";
+
 import {PrintAttestationComponent} from "./components/pedagogie/attestation/print-attestation/print-attestation.component";
 import {ProformaComponent} from "./components/proforma/proforma.component";
 import {AddProformaComponent} from "./components/proforma/add-proforma/add-proforma.component";
@@ -55,6 +55,11 @@ import {UpdateStagiaireComponent} from "./components/stagiaire/update-stagiaire/
 import {UpdateDomaineComponent} from "./components/domaine/update-domaine/update-domaine.component";
 import {AddDomaineComponent} from "./components/domaine/add-domaine/add-domaine.component";
 import {DomaineComponent} from "./components/domaine/domaine.component";
+import {DetailStagiaireComponent} from "./components/stagiaire/detail-stagiaire/detail-stagiaire.component";
+import {InscriptionComponent} from "./components/inscription/inscription.component";
+import {DeclencheurComponent} from "./components/inscription/declencheur/declencheur.component";
+import {UpdateAraveDateComponent} from "./components/inscription/update-arave-date/update-arave-date.component";
+import {PrintListStagiaireComponent} from "./components/inscription/print-list-stagiaire/print-list-stagiaire.component";
 
 const routes: Routes = [
   {path: "customer", component: CustomerComponent},
@@ -69,15 +74,15 @@ const routes: Routes = [
   {path: "invoice", component: InvoiceComponent},
   {path: "addinvoice", component: AddInvoiceComponent},
   {path: "updateinvoice/:id", component: UpdateInvoiceComponent},
-  {path: "invoice-detail/:invoice-id", component: InvoiceDetailComponent},
-  {path: "add-sale/:invoice-id", component: AddSaleComponent},
-  {path: "update-sale/:invoice-id", component: UpdateSaleComponent},
+  {path: "invoice-detail/:invoiceId", component: InvoiceDetailComponent},
+  {path: "add-sale/:invoiceId", component: AddSaleComponent},
+  {path: "update-sale/:invoiceId", component: UpdateSaleComponent},
 
   {path: "acheminement", component: AcheminementComponent},
   {path: "add-acheminement", component: AddAcheminementComponent},
-  {path: "accuse-acheminement/:shippingSlip-id", component: AccuseAcheminementComponent},
-  {path: "detail-acheminement/:shippingSlip-id", component: DetailAcheminementComponent},
-  {path: "update-detail-acheminement/:shippingSlip-id", component: UpdateDetailAceminementComponent},
+  {path: "accuse-acheminement/:shippingSlipId", component: AccuseAcheminementComponent},
+  {path: "detail-acheminement/:shippingSlipId", component: DetailAcheminementComponent},
+  {path: "update-detail-acheminement/:shippingSlipId", component: UpdateDetailAceminementComponent},
   {path: "print-shippingslip/:id", component: PrintAcheminementComponent},
   {path: "payment", component: PaymentComponent},
   {path: "addpayment", component: AddPaymentComponent},
@@ -86,21 +91,21 @@ const routes: Routes = [
   {path: "print-payment/:id", component: PrintPaymentComponent},
   {path: "turnover", component: TurnoverComponent},
   {path: "debts", component: DebtsComponent},
-  {path: "encasement", component: EncasementComponent},
+
   {path: 'print-invoice/:invoiceIds', component: PrintInvoiceComponent},
-  {path: 'attestation', component: PrintAttestationComponent},
+  {path: 'attestation/:inscriptionId', component: PrintAttestationComponent},
 
   {path:'proforma' , component:  ProformaComponent},
   {path: 'add-proforma', component: AddProformaComponent},
-  {path: 'update-proforma/:proforma-id',component:UpdateProformaComponent},
-  {path: "proforma-detail/:proforma-id", component: ProformaDetailComponent},
+  {path: 'update-proforma/:proformaId',component:UpdateProformaComponent},
+  {path: "proforma-detail/:proformaId", component: ProformaDetailComponent},
   {path: "add-offre/:proforma-id", component: AddOffreComponent},
-  {path: "update-offre/:proforma-id", component: UpdateOffreComponent},
+  {path: "update-offre/:proformaId", component: UpdateOffreComponent},
   {path: 'print-proforma/:proformaIds', component: PrintProformaComponent},
 
   {path:'action' , component:  ActionComponent},
   {path: 'add-action', component: AddActionComponent},
-  {path: 'update-action/:action-id',component:UpdateActionComponent},
+  {path: 'update-action/:actionId',component:UpdateActionComponent},
 
   {path:'session' , component:  SessionComponent},
   {path: 'add-session', component: AddSessionComponent},
@@ -109,17 +114,23 @@ const routes: Routes = [
 
 
   {path:'phase/:session_id' , component:  PhaseComponent},
-  {path: 'add-phase/:session_id', component: AddPhaseComponent},
-  {path: 'update-phase/:phase-id',component:UpdatePhaseComponent},
+  {path: 'add-phase/:sessionId', component: AddPhaseComponent},
+  {path: 'update-phase/:phaseId',component:UpdatePhaseComponent},
 
   {path:'stagiaire' , component:  StagiaireComponent},
-  {path: 'add-stagiaire', component: AddStagiaireComponent},
-  {path: 'update-stagiaire/:stagiaire-id',component:UpdateStagiaireComponent},
+  {path: 'add-stagiaire/:form', component: AddStagiaireComponent},
+  {path: 'update-stagiaire/:stagiaireId/:inscriptionID',component:UpdateStagiaireComponent},
+  {path: 'detail-stagiaire/:stagiaireId',component:DetailStagiaireComponent},
 
   {path:'domaine' , component:  DomaineComponent},
   {path: 'add-domaine', component: AddDomaineComponent},
-  {path: 'update-domaine/:domaine-id',component:UpdateDomaineComponent},
+  {path: 'update-domaine/:domainId',component:UpdateDomaineComponent},
 
+  {path: 'inscription/:sessionId' , component:  InscriptionComponent},
+  {path: 'update-inscription/:inscriptionId', component: UpdateInvoiceComponent},
+  {path: 'declencheur/:inscriptionId', component:DeclencheurComponent},
+  {path: 'update-arrive-date/:inscriptionId', component:UpdateAraveDateComponent},
+  {path: 'printlist/:sessionId', component:PrintListStagiaireComponent},
 
 ]
 

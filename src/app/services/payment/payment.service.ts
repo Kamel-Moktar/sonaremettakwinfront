@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {DatePipe} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +18,13 @@ export class PaymentService {
     return this.http.get<any>(url)
   }
 
-  public getEncaissementByPayment (paymentId: any) {
-    let url = this.baseUrl + "/encaissementbypayment/"+paymentId
+  public getEncaissementByPayment(paymentId: any) {
+    let url = this.baseUrl + "/encaissementbypayment/" + paymentId
     return this.http.get<any[]>(url)
   }
 
   public getEncaissementById(encaissementId: any) {
-    let url = this.baseUrl + "/encaissementbyid/"+encaissementId
+    let url = this.baseUrl + "/encaissementbyid/" + encaissementId
     return this.http.get<any>(url)
   }
 
@@ -37,7 +36,7 @@ export class PaymentService {
 
   public delete(payment: any) {
     let url = this.baseUrl + "/delete"
-    return this.http.post<any>(url,payment)
+    return this.http.post<any>(url, payment)
   }
 
   public update(payment: any) {
@@ -52,19 +51,18 @@ export class PaymentService {
   }
 
 
-  public  addEncaissement(encaissement:any){
+  public addEncaissement(encaissement: any) {
     let url = this.baseUrl + "/addencaissement"
-    return this.http.post<any>(url,encaissement)
+    return this.http.post<any>(url, encaissement)
   }
 
 
-
-  public  deleteEncaissement(encaissement: any) {
+  public deleteEncaissement(encaissement: any) {
     let url = this.baseUrl + "/deleteencaissement"
-    return this.http.post<any>(url,encaissement)
+    return this.http.post<any>(url, encaissement)
   }
 
-  updateEncaissement (encaissement: any) {
+  updateEncaissement(encaissement: any) {
     let url = this.baseUrl + "/updateencaissement"
     return this.http.post(url, encaissement)
   }

@@ -12,28 +12,30 @@ export class InvoiceService {
 
   constructor(private http: HttpClient) {
   }
+
   public getAll() {
     let url = this.baseUrl + "/all"
     return this.http.get<any[]>(url)
   }
+
   public getDebts() {
     let url = this.baseUrl + "/debts"
     return this.http.get<any[]>(url)
   }
 
-  public getDebtsParam(param :any) {
+  public getDebtsParam(param: any) {
     let url = this.baseUrl + "/debtsparam"
-    return this.http.post<any[]>(url,param)
+    return this.http.post<any[]>(url, param)
   }
 
-  public getAllParam(param :any) {
+  public getAllParam(param: any) {
     let url = this.baseUrl + "/allparam"
-    return this.http.post<any[]>(url,param)
+    return this.http.post<any[]>(url, param)
   }
 
-  public getUnpaidInvoice(searchParm:any) {
+  public getUnpaidInvoice(searchParm: any) {
     let url = this.baseUrl + "/unpaidinvoice"
-    return this.http.post<any[]>(url,searchParm)
+    return this.http.post<any[]>(url, searchParm)
   }
 
 

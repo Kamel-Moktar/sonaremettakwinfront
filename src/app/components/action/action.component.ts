@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ActionService} from "../../services/action/action.service";
 import {Router} from "@angular/router";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-action',
@@ -11,19 +12,27 @@ export class ActionComponent {
 
   title: any = 'Action de formation';
   actions: any;
+  fg: FormGroup = this.fb.group({
+    name: [""],
+    domaine: [""]
+  })
 
-  constructor(private actionService:ActionService, private router: Router) {
+  constructor(
+    private actionService: ActionService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.refresh()
 
   }
 
   refresh() {
-    this.actionService.getAll().subscribe(
-      (res)=>{//est une prog asynchrone pour éviter le blocage
-        this.actions=res
+    this.actionService.getAllParam({name: this.fg.value.name, domainName: this.fg.value.domaine}).subscribe(
+      (res) => {//est une prog asynchrone pour éviter le blocage
+        this.actions = res
 
 
         //  console.log(res)
@@ -32,13 +41,12 @@ export class ActionComponent {
   }
 
 
-
-  onUpdate(a:any) {
-    this.router.navigateByUrl("update-action/"+a.id)
+  onUpdate(a: any) {
+    this.router.navigateByUrl("update-action/" + a.id)
 
   }
 
-  onDelete(a:any):void {
+  onDelete(a: any): void {
     if (confirm("Voulez vous vraiment supprimer ce Client  ?")) {
 
       this.actionService.delete(a).subscribe(() => {
@@ -48,11 +56,13 @@ export class ActionComponent {
   }
 
 
-
   onAdd() {
     this.router.navigateByUrl("add-action")
   }
 
 
+  onSearch() {
+    this.refresh()
+  }
 }
 

@@ -14,11 +14,31 @@
     <table class="table table-striped  table-bordered table-hover">
       <thead>
       <tr class="text-center">
-        <th style="width: 5%" >code</th>
-        <th style="width: 25%" >Intitulé</th>
-        <th style="width: 25%" >Domaine</th>
+        <th style="width: 5%"></th>
+        <th style="width: 15%">
+          <form [formGroup]="fg">
+            <input (keyup)="onSearch()" [formControlName]="'name'" [placeholder]="'Thème'" class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 15%">
+          <form [formGroup]="fg">
+            <input (keyup)="onSearch()" [formControlName]="'domaine'" [placeholder]="'Doamine'" class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 15%"></th>
+        <th style="width: 5%"></th>
+        <th style="width: 30%"></th>
+      </tr>
+      </thead>
+      <thead>
+      <tr class="text-center">
+        <th style="width: 5%">code</th>
+        <th style="width: 25%">Intitulé</th>
+        <th style="width: 25%">Domaine</th>
         <th style="width: 30%">But</th>
-        <th style="width: 30%" >Objectif</th>
+        <th style="width: 30%">Objectif</th>
         <th style="width: 5%">Durée(Jours)</th>
         <th style="width: 5%">Durée(Heures)</th>
 
@@ -34,16 +54,20 @@
         <td> {{a.duration}}</td>
         <td> {{a.durationHour}}</td>
 
-        <td><div class="container">
-          <button class="btn btn-outline-success" (click)="onUpdate(a)">
-            <span class="fa fa-pencil"> </span>
-          </button>
-        </div></td>
-        <td><div class="container">
-          <button class="btn btn-outline-success" (click)="onDelete(a)" >
-            <span class="fa fa-trash-o" > </span>
-          </button>
-        </div></td>
+        <td>
+          <div class="container">
+            <button class="btn btn-outline-success" (click)="onUpdate(a)">
+              <span class="fa fa-pencil"> </span>
+            </button>
+          </div>
+        </td>
+        <td>
+          <div class="container">
+            <button class="btn btn-outline-success" (click)="onDelete(a)">
+              <span class="fa fa-trash-o"> </span>
+            </button>
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>

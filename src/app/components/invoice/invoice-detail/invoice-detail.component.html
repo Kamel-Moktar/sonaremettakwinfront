@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-header "   *ngIf="invoice">
+  <div class="card-header " *ngIf="invoice">
     <div class="row">
       <div *ngIf="invoice" class="col"><h6>{{title}}&nbsp;N°: {{invoiceService.formatInvoiceNumber(invoice)}}
         du {{invoice.date|date:"dd/MM/yyyy"}} </h6></div>
@@ -9,7 +9,7 @@
         </button>
 
       </div>
-      <div class="col col-auto"  *ngIf="invoice.amountIncludingTax===invoice.remains">
+      <div class="col col-auto" *ngIf="invoice.amountIncludingTax===invoice.remains">
         <button (click)="onAdd()" class="btn btn-outline-success align-content-end">
           <span class="fa fa-plus"></span>
         </button>
@@ -45,20 +45,20 @@
           <td style="text-align: center"> {{i}}</td>
 
           <td> {{a.benefit.designation}} <label *ngIf="a.observation"> ({{a.observation}})</label></td>
-          <td align="left" *ngIf="a.unit"> {{a.number}}&nbsp;{{a.number==1?a.unit.name:a.unit.name+"s"}}</td>
+          <td align="left" *ngIf="a.unit"> {{a.number}}&nbsp;{{a.number == 1 ? a.unit.name : a.unit.name + "s"}}</td>
           <td align="center"> {{a.quantity}}</td>
           <td align="right"> {{a.price| number:".2"}} </td>
           <td align="right"> {{a.price * a.quantity | number:".2"}}</td>
 
 
-          <td  *ngIf="a.invoice.amountIncludingTax===a.invoice.remains">
-            <div class="container"  >
+          <td *ngIf="a.invoice.amountIncludingTax===a.invoice.remains">
+            <div class="container">
               <button (click)="onUpdate(a)" class="btn btn-outline-success">
                 <span class="fa fa-pencil"> </span>
               </button>
             </div>
           </td>
-          <td  *ngIf="a.invoice.amountIncludingTax===a.invoice.remains">
+          <td *ngIf="a.invoice.amountIncludingTax===a.invoice.remains">
             <div class="container">
               <button (click)="onDelete(a)" class="btn btn-outline-success">
                 <span class="fa fa-trash-o"> </span>

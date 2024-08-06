@@ -1,4 +1,4 @@
-<div class="card"  *ngIf="invoice">
+<div class="card" *ngIf="invoice">
   <div class="card-header ">
     <div class="row">
       <div *ngIf="invoice" class="col"><h6>{{title}}&nbsp;N°: {{invoiceService.formatInvoiceNumber(invoice)}}
@@ -10,7 +10,7 @@
           <span class="fa fa-print"></span>
 
         </button>
-        </div>
+      </div>
       <div class="col col-auto">
         <button (click)="onCancel()" class="btn btn-outline-success align-content-end">
           <span class="fa fa-arrow-left"></span>
@@ -30,7 +30,7 @@
           <h2><strong>SONAREM ETTAKWINE Spa - Filiale du GROUPE SONAREM CAPITAL SOCIAL : 10 000 000 DA</strong></h2>
         </div>
       </div>
-      <hr />
+      <hr/>
       <div class="row no-gutters ">
         <div *ngIf="invoice" class="col col-8">
           <h4><strong>Facture N°: {{invoiceService.formatInvoiceNumber(invoice)}}</strong></h4>
@@ -38,7 +38,7 @@
         <div *ngIf="invoice" class="col col-4 text-end"><strong> Alger Le:
           &nbsp; {{invoice.date| date :"dd/MM/yyyy"}} </strong></div>
       </div>
-      <hr />
+      <hr/>
       <div class="row items-group1">
 
         <div class=" col col-6 no-gutters items-group" style="text-align: center">
@@ -62,7 +62,7 @@
         </div>
 
       </div>
-      <hr />
+      <hr/>
       <div class="row no-gutters items-group1">
 
         <div class="card-body">
@@ -85,33 +85,33 @@
                 <td style="text-align: center"> {{i}}</td>
 
                 <td> {{a.benefit.designation}} <label *ngIf="a.observation"> ({{a.observation}})</label></td>
-                <td align="left" *ngIf="a.unit"> {{a.number}}&nbsp;{{a.number==1?a.unit.name:a.unit.name+"s"}}</td>
+                <td align="left"
+                    *ngIf="a.unit"> {{a.number}}&nbsp;{{a.number == 1 ? a.unit.name : a.unit.name + "s"}}</td>
                 <td align="center"> {{a.quantity}}</td>
                 <td align="right"> {{a.price| number:".2"}} </td>
                 <td align="right"> {{a.price * a.quantity | number:".2"}}</td>
 
 
-
               </tr>
               </tbody>
-<!--              <thead>-->
-<!--              <tr class="text-center">-->
-<!--                <th style="width: 5%">#</th>-->
-<!--                <th style="width: 50%">Prestation</th>-->
-<!--                <th style="width: 10%">Qte</th>-->
-<!--                <th style="width: 10%">P.U</th>-->
-<!--                <th style="width: 25%">Total</th>-->
-<!--              </tr>-->
-<!--              </thead>-->
-<!--              <tbody>-->
-<!--              <tr *ngFor=" let a of this.lignes ;let i=index ">-->
-<!--                <td style="text-align: center"> {{i}}</td>-->
-<!--                <td> {{a.benefit.designation}} <label *ngIf="a.observation"> ({{a.observation}})</label></td>-->
-<!--                <td align="center"> {{a.quantity}}</td>-->
-<!--                <td align="right"> {{a.price| number:".2"}} </td>-->
-<!--                <td align="right"> {{a.price * a.quantity | number:".2"}}</td>-->
-<!--              </tr>-->
-<!--              </tbody>-->
+              <!--              <thead>-->
+              <!--              <tr class="text-center">-->
+              <!--                <th style="width: 5%">#</th>-->
+              <!--                <th style="width: 50%">Prestation</th>-->
+              <!--                <th style="width: 10%">Qte</th>-->
+              <!--                <th style="width: 10%">P.U</th>-->
+              <!--                <th style="width: 25%">Total</th>-->
+              <!--              </tr>-->
+              <!--              </thead>-->
+              <!--              <tbody>-->
+              <!--              <tr *ngFor=" let a of this.lignes ;let i=index ">-->
+              <!--                <td style="text-align: center"> {{i}}</td>-->
+              <!--                <td> {{a.benefit.designation}} <label *ngIf="a.observation"> ({{a.observation}})</label></td>-->
+              <!--                <td align="center"> {{a.quantity}}</td>-->
+              <!--                <td align="right"> {{a.price| number:".2"}} </td>-->
+              <!--                <td align="right"> {{a.price * a.quantity | number:".2"}}</td>-->
+              <!--              </tr>-->
+              <!--              </tbody>-->
             </table>
           </div>
           <div *ngIf="invoice" div>

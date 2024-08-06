@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { UpdateDomaineComponent } from './update-domaine.component';
+import {UpdateDomaineComponent} from './update-domaine.component';
 
 describe('UpdateDomaineComponent', () => {
   let component: UpdateDomaineComponent;

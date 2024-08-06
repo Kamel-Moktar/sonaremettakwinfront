@@ -43,7 +43,7 @@ export class AddBenefitComponent {
 
   onValidate() {
 
-    if (this.formGroup.valid&&this.selectedUniteMesure) {
+    if (this.formGroup.valid && this.selectedUniteMesure) {
       this.benefitService.add({
         designation: this.formGroup.value.designation,
         description: this.formGroup.value.description,

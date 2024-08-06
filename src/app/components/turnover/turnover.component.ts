@@ -11,9 +11,9 @@ import {FormBuilder} from "@angular/forms";
 export class TurnoverComponent {
   invoices: any[]=[];
   formGroup: any = this.fb.group({
-    number: [],
-    shortName: [],
-    date: []
+    number: [""],
+    shortName: [""],
+    date: [""]
   });
 
   totalHT=0
@@ -29,20 +29,12 @@ export class TurnoverComponent {
 
   ngOnInit() {
 
-    this.refreshInvoices({number: "*", shortName: "*", date: "*"})
+    this.refreshInvoices({number: "", shortName: "", date: ""})
   }
 
 
   onSearch() {
-    let number = this.formGroup.value.number
-    let shortName = this.formGroup.value.shortName
-    let date = this.formGroup.value.date
-    if (number == null) number = '*'
-    if (shortName == null) shortName = '*'
-    if (date == null) date = "*"
-
-    console.log({number: number, shortName: shortName, date: date})
-    this.refreshInvoices({number: number, shortName: shortName, date: date})
+    this.refreshInvoices({number: this.formGroup.value.number, shortName: this.formGroup.value.shortName, date:this.formGroup.value.date})
   }
 
   refreshInvoices(searchParam: any) {

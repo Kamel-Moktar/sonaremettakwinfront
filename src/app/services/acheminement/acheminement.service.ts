@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {DatePipe} from "@angular/common";
@@ -20,12 +20,12 @@ export class AcheminementService {
   }
 
   public getInvoiceByShippingSlip(shippingSlipId: any) {
-    let url = this.baseUrl + "/invoicebyshippingslip/"+shippingSlipId
+    let url = this.baseUrl + "/invoicebyshippingslip/" + shippingSlipId
     return this.http.get<any>(url)
   }
 
   public getByShippingSlipInvoiceById(shippingSlipInvoiceId: any) {
-    let url = this.baseUrl + "/shippingslipinvoicebyid/"+shippingSlipInvoiceId
+    let url = this.baseUrl + "/shippingslipinvoicebyid/" + shippingSlipInvoiceId
     return this.http.get<any>(url)
   }
 
@@ -51,20 +51,22 @@ export class AcheminementService {
     return this.http.get<any>(url)
 
   }
+
   accuse(shippingSlip: any) {
     let url = this.baseUrl + "/accuse"
-    return this.http.post<any>(url,shippingSlip)
+    return this.http.post<any>(url, shippingSlip)
 
   }
 
- public  addInvoice(shppingSlipInvoice:any){
+  public addInvoice(shppingSlipInvoice: any) {
     let url = this.baseUrl + "/addinvoice"
 
-    return this.http.post<any>(url,shppingSlipInvoice)
+    return this.http.post<any>(url, shppingSlipInvoice)
 
 
   }
- public  formatShippingSlipNumber(shippingSlip: any) :any{
+
+  public formatShippingSlipNumber(shippingSlip: any): any {
 
     let shippingSlipNmber = ""
     let datePipe = new DatePipe("EN-en")
@@ -77,13 +79,13 @@ export class AcheminementService {
   }
 
 
- public  deleteInvoice(invoice: any,shippingSlipId: any) {
+  public deleteInvoice(invoice: any, shippingSlipId: any) {
     let url = this.baseUrl + "/deleteinvoice"
-    return this.http.post<any>(url,invoice)
+    return this.http.post<any>(url, invoice)
   }
 
-  updateShippingSlipDetail (shippingSlipInvoice: any) {
-  let url = this.baseUrl + "/updateinvoice"
-  return this.http.post(url, shippingSlipInvoice)
-}
+  updateShippingSlipDetail(shippingSlipInvoice: any) {
+    let url = this.baseUrl + "/updateinvoice"
+    return this.http.post(url, shippingSlipInvoice)
+  }
 }

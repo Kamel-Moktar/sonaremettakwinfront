@@ -34,12 +34,12 @@ export class UpdateInvoiceComponent {
     this.invoiceService.getInvoiceById(this.invoiceId).subscribe(res => {
       this.invoice = res
       let s: String = this.invoice.date.toString()
-console.log(s)
+
       let year = s.slice(0, 4)
       let month = s.slice(5, 7)
       let day = s.slice(8, 10)
       let d = year + "-" + month + "-" + day
-      console.log(d)
+
 
       this.formGroup = this.fb.group({
           invoiceDate: [d, Validators.required],
@@ -53,11 +53,11 @@ console.log(s)
   onValidate() {
     if (this.formGroup.valid) {
       this.invoiceService.update({
-        id:this.invoice.id,
+        id: this.invoice.id,
         date: this.formGroup.value.invoiceDate,
         object: this.formGroup.value.object,
         reference: this.formGroup.value.reference,
-        customer:this.invoice.customer
+        customer: this.invoice.customer
       }).subscribe(() => {
           this.onCancel();
         }

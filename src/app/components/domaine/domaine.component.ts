@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {DomaineService} from "../../services/domaine/domaine.service";
 import {Router} from "@angular/router";
 
@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./domaine.component.css']
 })
 export class DomaineComponent {
-  domaines: any[]=[];
+  domaines: any[] = [];
   title: any = 'Domaine de formation ';
 
   constructor(private domaineService: DomaineService, private router: Router) {
@@ -37,7 +37,7 @@ export class DomaineComponent {
 
 
   onUpdate(a: any) {
-    this.router.navigateByUrl("update-domaine/"+a.id)
+    this.router.navigateByUrl("update-domaine/" + a.id)
   }
 
   onAddDomaine() {

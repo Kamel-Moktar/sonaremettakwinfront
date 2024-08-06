@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SessionService} from "../../../services/session/session.service";
 import {ActionService} from "../../../services/action/action.service";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {UtilsService} from "../../../services/utils/utils.service";
 
 @Component({
   selector: 'app-update-session',
@@ -23,7 +24,6 @@ export class UpdateSessionComponent {
     nbrStagPlanned: [12, Validators.required]
 
 
-
   })
 
   fg: FormGroup = this.fb.group({
@@ -41,7 +41,8 @@ export class UpdateSessionComponent {
     private sessionService: SessionService,
     private actionService: ActionService,
     private modalService: NgbModal,
-    private activateRoute :ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private  utils: UtilsService
   ) {
 
 
@@ -51,42 +52,39 @@ export class UpdateSessionComponent {
     this.actionService.getAll().subscribe(res => {//est une prog asynchrone pour éviter le blocage
       this.actions = res
     })
-   let sessionId =this.activateRoute.snapshot.url[1].path
-    this.sessionService.getById(sessionId).subscribe(res=>{
-      this.selected=res
+    let sessionId = this.activateRoute.snapshot.url[1].path
+    this.sessionService.getById(sessionId).subscribe(res => {
+      this.selected = res
 
-      this.formGroup= this.fb.group({
+      this.formGroup = this.fb.group({
         name: [this.selected.name, Validators.required],
-        dd: [this.selected.startDate, Validators.required],
-        df: [this.selected.endDate, Validators.required],
+        dd: [this.utils.formatDate(this.selected.startDate), Validators.required],
+        df: [this.utils.formatDate(this.selected.endDate), Validators.required],
         nbrStagPlanned: [this.selected.nbrStagPlanned, Validators.required]
       })
 
-      this.selectedAction=this.selected.action
+      this.selectedAction = this.selected.action
       let action = document.getElementById("action");
       if (action) action.setAttribute("value", this.selectedAction.name)
     })
-
-
-
-
   }
 
   onValidate() {
-
     if (this.formGroup.valid && this.selectedAction) {
-      this.sessionService.update({
-        id:this.selected.id,
-        name: this.formGroup.value.name,
-        startDate: this.formGroup.value.dd,
-        endDate: this.formGroup.value.df,
-        nbrStagPlanned: this.formGroup.value.nbrStagPlanned,
-        action: this.selectedAction
+      if (this.formGroup.value.df >= this.formGroup.value.dd) {
+        this.sessionService.update({
+          id: this.selected.id,
+          name: this.formGroup.value.name,
+          startDate: this.formGroup.value.dd,
+          endDate: this.formGroup.value.df,
+          nbrStagPlanned: this.formGroup.value.nbrStagPlanned,
+          action: this.selectedAction
 
-      }).subscribe(() => {
-          this.onCancel();
-        }
-      )
+        }).subscribe(() => {
+            this.onCancel();
+          }
+        )
+      } else alert("La date début est supérieure à la date fin ")
     } else alert("Veuillez remplir les rebiques requis")
 
 
@@ -125,32 +123,19 @@ export class UpdateSessionComponent {
     }
   }
 
-
-
   addDays(date: Date, days: number): Date {
     let result = new Date(date);
     result.setDate(date.getDate() + days);
     return result;
   }
 
-  calculeDateFin(){
-    if(this.selectedAction){
-      let df = new Date(this.formGroup.value.dd)
-      let dure=this.selectedAction.duration
-      let rest =dure%5
-      let nbrSemaine=(dure-rest)/5
-      df=this.addDays(df,nbrSemaine*7+rest)
-
-      let s: string = df.toString()
-      let year = df.getFullYear()
-      let month = df.getMonth()+1
-      let day = df.getDate()
-      let d = year + "-"+(month>9?month:"0"+month)+ "-" + (day>9?day:"0"+day)
+  calculeDateFin() {
+    if (this.selectedAction) {
 
       this.formGroup = this.fb.group({
         name: [this.formGroup.value.name, Validators.required],
         dd: [this.formGroup.value.dd, Validators.required],
-        df: [d, Validators.required],
+        df: [this.formGroup.value.df, Validators.required],
         nbrStagPlanned: [this.formGroup.value.nbrStagPlanned, Validators.required]
 
       })

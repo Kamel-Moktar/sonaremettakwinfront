@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {InvoiceService} from "../../../services/invoice/invoice.service";
 import {SaleService} from "../../../services/sale/sale.service";
-import {BenefitService} from "../../../services/benefit/benefit.service";
 import {UniteMesureService} from "../../../services/unite-mesure/unite-mesure.service";
 
 @Component({
@@ -14,12 +13,12 @@ import {UniteMesureService} from "../../../services/unite-mesure/unite-mesure.se
 export class UpdateSaleComponent {
 
   title: String = "Modifier une prestation dans la facture";
-  units : any[]=[];
-  unit:any
+  units: any[] = [];
+  unit: any
 
   formGroup: FormGroup = this.fb.group({
     number: [1, Validators.required],
-    u:[],
+    u: [],
     qte: ["", Validators.required],
     price: ["", Validators.required],
     obs: ["", Validators.required]
@@ -34,7 +33,7 @@ export class UpdateSaleComponent {
     private router: Router,
     private invoiceService: InvoiceService,
     private saleService: SaleService,
-    private  uniteMesureService :UniteMesureService
+    private  uniteMesureService: UniteMesureService
   ) {
   }
 
@@ -51,23 +50,23 @@ export class UpdateSaleComponent {
 
     this.saleService.getSaleById(this.id).subscribe(sale => {
 
-     this.selectedBenefit=sale.benefit
+      this.selectedBenefit = sale.benefit
       this.invoice = sale.invoice
 
       this.formGroup = this.fb.group({
         id: [sale.id],
         number: [sale.number, Validators.required],
-        u:[sale.unit.name],
+        u: [sale.unit.name],
         qte: [sale.quantity, Validators.required],
         price: [sale.price, Validators.required],
         obs: [sale.observation]
       })
 
       this.uniteMesureService.getUnits().subscribe(
-        (res)=>{
-          if(this.units.length>0)
-            this.unit=this.units[0]
-          this.units=res
+        (res) => {
+          if (this.units.length > 0)
+            this.unit = this.units[0]
+          this.units = res
         })
 
     })
@@ -77,10 +76,10 @@ export class UpdateSaleComponent {
 
   onValidate() {
 
-    this.units.forEach(a=>{
+    this.units.forEach(a => {
 
-      if(a.name===this.formGroup.value.u) {
-        this.unit=a;
+      if (a.name === this.formGroup.value.u) {
+        this.unit = a;
 
       }
     })
@@ -91,8 +90,8 @@ export class UpdateSaleComponent {
         id: this.formGroup.value.id,
         benefit: this.selectedBenefit,
         invoice: this.invoice,
-        number:this.formGroup.value.number,
-        unit:this.unit,
+        number: this.formGroup.value.number,
+        unit: this.unit,
         quantity: this.formGroup.value.qte,
         price: this.formGroup.value.price,
         observation: this.formGroup.value.obs

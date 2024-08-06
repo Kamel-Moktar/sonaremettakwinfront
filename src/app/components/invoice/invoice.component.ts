@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 
 import {Router} from "@angular/router";
 import {InvoiceService} from "../../services/invoice/invoice.service";
-import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {FormBuilder} from "@angular/forms";
 
 
 @Component({
@@ -13,8 +14,17 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 export class InvoiceComponent {
   invoices?: any[];
   title: any = 'Facture';
-
-  constructor(public invoiceService: InvoiceService, private router: Router,private modalService: NgbModal) {
+  formGroup: any = this.fb.group({
+    number: [""],
+    shortName: [""],
+    date: [""]
+  });
+  constructor(
+    public invoiceService: InvoiceService,
+    private router: Router,
+    private modalService: NgbModal,
+    private fb:FormBuilder
+  ) {
   }
 
   ngOnInit(): void {
@@ -24,7 +34,7 @@ export class InvoiceComponent {
   }
 
   refresh(): void {
-    this.invoiceService.getAll().subscribe(
+    this.invoiceService.getAllParam({number: this.formGroup.value.number, shortName: this.formGroup.value.shortName, date: this.formGroup.value.date}).subscribe(
       res => {
         this.invoices = res
       })
@@ -53,5 +63,7 @@ export class InvoiceComponent {
   }
 
 
-
+  onSearch() {
+    this.refresh()
+  }
 }

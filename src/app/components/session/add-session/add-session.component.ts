@@ -23,7 +23,6 @@ export class AddSessionComponent {
     nbrStagPlanned: [12, Validators.required]
 
 
-
   })
 
   fg: FormGroup = this.fb.group({
@@ -107,36 +106,34 @@ export class AddSessionComponent {
   }
 
 
-
   addDays(date: Date, days: number): Date {
     let result = new Date(date);
     result.setDate(date.getDate() + days);
     return result;
   }
 
-  calculeDateFin(){
-if(this.selectedAction){
-    let df = new Date(this.formGroup.value.dd)
-    let dure=this.selectedAction.duration
-    let rest =dure%5
-    let nbrSemaine=(dure-rest)/5
-    df=this.addDays(df,nbrSemaine*7+rest)
+  calculeDateFin() {
+    if (this.selectedAction) {
+      let df = new Date(this.formGroup.value.dd)
+      let dure = this.selectedAction.duration
+      let rest = dure % 5
+      let nbrSemaine = (dure - rest) / 5
+      df = this.addDays(df, nbrSemaine * 7 + rest)
 
-    let s: string = df.toString()
-    let year = df.getFullYear()
-    let month = df.getMonth()+1
-    let day = df.getDate()
-    let d = year + "-"+(month>9?month:"0"+month)+ "-" + (day>9?day:"0"+day)
+      let year = df.getFullYear()
+      let month = df.getMonth() + 1
+      let day = df.getDate()
+      let d = year + "-" + (month > 9 ? month : "0" + month) + "-" + (day > 9 ? day : "0" + day)
 
-    this.formGroup = this.fb.group({
-      name: [this.formGroup.value.name, Validators.required],
-      dd: [this.formGroup.value.dd, Validators.required],
-      df: [d, Validators.required],
-      nbrStagPlanned: [this.formGroup.value.nbrStagPlanned, Validators.required]
+      this.formGroup = this.fb.group({
+        name: [this.formGroup.value.name, Validators.required],
+        dd: [this.formGroup.value.dd, Validators.required],
+        df: [d, Validators.required],
+        nbrStagPlanned: [this.formGroup.value.nbrStagPlanned, Validators.required]
 
-    })
+      })
 
-  }
+    }
 
   }
 }

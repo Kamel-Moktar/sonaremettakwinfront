@@ -16,9 +16,9 @@
 
       <div class="col ">
         <div class="row m-2">
-          <div class="col col-2 text-end"><label> libellé de la session: </label></div>
+          <div class="col col-2 text-end"><label> Nom de laPhase: </label></div>
           <div class="col col-3"><input [formControlName]="'name'" class="form-control"
-                                        placeholder="Intitulé de la formation"
+                                        placeholder="Nom de la Phase"
                                         type="text"></div>
           <div class="col"><h6 style="color:#ff0000">(*)</h6></div>
         </div>
@@ -26,7 +26,7 @@
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Date debut: </label></div>
           <div class="col col-4"><input
-                                        [formControlName]="'dd'" class="form-control" id="dateD" type="date"></div>
+            [formControlName]="'dd'" class="form-control" id="dateD" type="date"></div>
           <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
         <div class="row m-2">
@@ -36,6 +36,27 @@
           <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
 
+
+        <div class="row m-2">
+          <div class="col col-2 text-end"><label> Type de la phase: </label></div>
+          <div class="col col-2" *ngIf="typePhases">
+            <select class='form-select form-control' formControlName="type">
+              <option class='form-select' *ngFor='let option of typePhases'
+                      [value]="option">{{option}}</option>
+            </select>
+          </div>
+          <div class="col"><h6 style="color:#ff0000">(*)</h6></div>
+        </div>
+        <div class="row m-2" *ngIf="formGroup.value.type=='FT'">
+          <div class="col col-2 text-end"><label> Lieu de la formation : </label></div>
+          <div class="col col-2" *ngIf="lieuPhases">
+            <select class='form-select form-control' formControlName="lieu">
+              <option class='form-select' *ngFor='let option of lieuPhases'
+                      [value]="option">{{option}}</option>
+            </select>
+          </div>
+          <div class="col"><h6 style="color:#ff0000">(*)</h6></div>
+        </div>
 
         <div class="row">
           <div class="col">

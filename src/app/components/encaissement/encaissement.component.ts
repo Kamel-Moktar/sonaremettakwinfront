@@ -50,7 +50,7 @@ export class EncaissementComponent {
             this.lignes = ls
           })
       })
-    this.refreshInvoices({number: "*", shortName: "*", date: "*"})
+    this.refreshInvoices({number: "", shortName: "", date: ""})
   }
 
   static getDismissReason(reason: any): string {
@@ -119,13 +119,7 @@ export class EncaissementComponent {
 
 
   onSearch() {
-    let number = this.formGroup.value.number
-    let shortName = this.formGroup.value.shortName
-    let date = this.formGroup.value.date
-    if (number ==null) number = '*'
-    if (shortName ==null) shortName = '*'
-    if (date ==null) date = "*"
-    this.refreshInvoices({number: number, shortName: shortName, date: date})
+    this.refreshInvoices({number: this.formGroup.value.number, shortName: this.formGroup.value.shortName, date:this.formGroup.value.date})
   }
 
   refreshInvoices(searchParam: any) {

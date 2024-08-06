@@ -14,6 +14,31 @@
     <table class="table table-striped  table-bordered table-hover">
       <thead>
       <tr class="text-center">
+        <th style="width: 5%">
+          <form [formGroup]="formGroup">
+            <input (keyup)="onSearch()" [formControlName]="'number'" [placeholder]="'N° facture'" class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 15%">
+          <form [formGroup]="formGroup">
+            <input (keyup)="onSearch()" [formControlName]="'shortName'" [placeholder]="'Client'" class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 15%">
+          <form [formGroup]="formGroup">
+            <input (keyup)="onSearch()" [formControlName]="'date'" [placeholder]="'date facture'" class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 15%"></th>
+        <th style="width: 5%"></th>
+        <th style="width: 15%"></th>
+      </tr>
+      </thead>
+      <thead>
+      <tr class="text-center">
         <th style="width: 5%">N°</th>
         <th style="width: 30%">Client</th>
         <th style="width: 15%">date</th>

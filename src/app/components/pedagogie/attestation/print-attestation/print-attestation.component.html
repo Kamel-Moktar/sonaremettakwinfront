@@ -4,10 +4,8 @@
       <div class="col"><h6>{{title}}&nbsp;</h6></div>
       <div class="col col-auto">
         <button class="btn btn-outline-success align-content-end" ngxPrint printSectionId="printPart"
-                styleSheetFile="/assets/print-styl/attestation.css"
-        >
+                styleSheetFile="/assets/print-styl/attestation.css">
           <span class="fa fa-print"></span>
-
         </button>
       </div>
       <div class="col col-auto">
@@ -18,18 +16,17 @@
     </div>
   </div>
   <div class="card-body">
-    <div id="printPart">
+    <div id="printPart" *ngIf="inscription">
       <div class="div_with_bg">
-        <div class="name">BOUKARI Faouzi </div>
-        <div class="date_naissance">09/01/1930</div>
-        <div class="lieu_naissance">Azzefoune </div>
-        <div class="formation">Fabrication des boulons</div>
-        <div class="du">01/01/2022</div>
-        <div class="au">02/03/2023</div>
-        <div class="duree_jour">35</div>
-        <div class="duree_heure">120</div>
-        <div class="edition">01/02/2024</div>
-
+        <div class="name">{{inscription.stagiaire.familyName}}&nbsp; {{inscription.stagiaire.firstName}}</div>
+        <div class="date_naissance">{{inscription.stagiaire.birthDay|date : "dd/MM/yyyy"}}</div>
+        <div class="lieu_naissance">{{inscription.stagiaire.birthPlace}} </div>
+        <div class="formation">{{inscription.session.action.name}}({{inscription.session.name}})</div>
+        <div class="du">{{inscription.session.startDate|date : "dd/MM/yyyy"}}</div>
+        <div class="au">{{inscription.session.endDate|date : "dd/MM/yyyy"}}</div>
+        <div class="duree_jour">{{inscription.session.action.duration}}</div>
+        <div class="duree_heure">{{inscription.session.action.durationHour}}</div>
+        <div class="edition">{{edition|date : "dd/MM/yyyy"}}</div>
       </div>
     </div>
   </div>

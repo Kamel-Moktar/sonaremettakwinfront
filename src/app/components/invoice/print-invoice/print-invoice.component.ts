@@ -13,14 +13,13 @@ export class PrintInvoiceComponent {
   invoice: any;
   lignes: any;
   invoiceId: any
-  title= "Impression de la facture ";
+  title = "Impression de la facture ";
 
 
   constructor(public invoiceService: InvoiceService,
               private activateRoute: ActivatedRoute,
               private saleService: SaleService,
-              private router :Router
-
+              private router: Router
   ) {
 
   }
@@ -41,23 +40,26 @@ export class PrintInvoiceComponent {
 
   onPrint() {
     let printDocument: any = document.getElementById("printPart")
-    let ancInner=document.body.innerHTML;
+    let ancInner = document.body.innerHTML;
     if (printDocument != null) {
       document.body.innerHTML = printDocument.innerHTML;
       window.print()
-      document.body.innerHTML=ancInner
+      document.body.innerHTML = ancInner
       this.router.navigateByUrl("invoice")
-     // window.location.reload()
+      // window.location.reload()
     }
   }
+
   intPart() {
     let i = Math.trunc(this.invoice.amountIncludingTax)
     return Math.floor(this.invoice.amountIncludingTax)
   }
+
   decimalPart() {
     return (this.invoice.amountIncludingTax - Math.trunc(this.invoice.amountIncludingTax)) * 100
   }
+
   onCancel() {
-    this.router.navigateByUrl("invoice-detail/"+this.invoiceId)
+    this.router.navigateByUrl("invoice-detail/" + this.invoiceId)
   }
 }

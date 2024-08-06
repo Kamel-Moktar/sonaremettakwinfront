@@ -1,1 +1,99 @@
-<p>stagiaire works!</p>
+<div [class.isPrinting]="true" class="card">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col"><h6>{{title}}</h6></div>
+      <div class="col col-auto">
+        <button (click)="onAddStagiaire()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-plus"></span>
+          Ajouter
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped  table-bordered table-hover">
+
+      <thead>
+      <tr class="text-center">
+        <th style="width: 5%"></th>
+        <th style="width: 20%">
+          <form [formGroup]="fg">
+            <input (keyup)="onSearch()" [formControlName]="'familyName'" [placeholder]="'Nom'"
+                   class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 20%">
+          <form [formGroup]="fg">
+            <input (keyup)="onSearch()" [formControlName]="'firstName'" [placeholder]="'Prénom'"
+                   class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 10%">
+          <form [formGroup]="fg">
+            <input (keyup)="onSearch()" [formControlName]="'birthDay'" [placeholder]="'Date de naissance'"
+                   class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 15%">
+          <form [formGroup]="fg">
+            <input (keyup)="onSearch()" [formControlName]="'customer'" [placeholder]="'Client'"
+                   class="form-control"
+                   type="text">
+          </form>
+        </th>
+        <th style="width: 30%"></th>
+      </tr>
+
+      <tr class="text-center">
+        <th style="width: 5%">N°</th>
+        <th style="width: 20%">Nom</th>
+        <th style="width: 20%">Prénom</th>
+        <th style="width: 10%">Date de naissance</th>
+        <th style="width: 15%">Client</th>
+        <th style="width: 30%">Adresse</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let a of this.stagiaires ;let i=index " >
+        <td style="text-align: center"> {{a.id}}</td>
+        <td> {{a.familyName}}</td>
+        <td>{{a.firstName}} </td>
+        <td> {{a.birthDay |date:"dd/MM/yyyy"}}</td>
+        <td> {{a.customer.shortName}}</td>
+        <td> {{a.adresse}}</td>
+        <td>
+          <div class="container">
+            <button (click)="onDetail(a)" class="btn btn-outline-success">
+              <span class="fa fa-info-circle"> </span>
+            </button>
+          </div>
+        </td>
+        <td>
+          <div class="container">
+            <button (click)="onUpdate(a)" class="btn btn-outline-success" title="Modifier">
+              <span class="fa fa-pencil"> </span>
+            </button>
+          </div>
+        </td>
+        <td>
+          <div class="container">
+            <button (click)="onDelete(a)" class="btn btn-outline-success" title="Supprimer">
+              <span class="fa fa-trash-o"> </span>
+            </button>
+          </div>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-header">
+    <!--    Total : <strong>{{totalEntreprise}}</strong> &nbsp;Enregistrements-->
+  </div>
+
+</div>
+
+

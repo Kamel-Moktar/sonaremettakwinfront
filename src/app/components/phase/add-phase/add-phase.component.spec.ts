@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AddPhaseComponent } from './add-phase.component';
+import {AddPhaseComponent} from './add-phase.component';
 
 describe('AddPhaseComponent', () => {
   let component: AddPhaseComponent;

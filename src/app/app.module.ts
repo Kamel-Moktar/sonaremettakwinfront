@@ -36,7 +36,7 @@ import { EncaissementComponent } from './components/encaissement/encaissement.co
 import { PrintPaymentComponent } from './components/payment/print-payment/print-payment.component';
 import { TurnoverComponent } from './components/turnover/turnover.component';
 import { DebtsComponent } from './components/debts/debts.component';
-import { EncasementComponent } from './components/encasement/encasement.component';
+
 import {NgxPrintModule} from "ngx-print";
 import { PrintAttestationComponent } from './components/pedagogie/attestation/print-attestation/print-attestation.component';
 import { ProformaComponent } from './components/proforma/proforma.component';
@@ -62,6 +62,12 @@ import { DomaineComponent } from './components/domaine/domaine.component';
 import { AddDomaineComponent } from './components/domaine/add-domaine/add-domaine.component';
 import { UpdateDomaineComponent } from './components/domaine/update-domaine/update-domaine.component';
 import {DatePipe} from "@angular/common";
+import { DetailStagiaireComponent } from './components/stagiaire/detail-stagiaire/detail-stagiaire.component';
+import { InscriptionComponent } from './components/inscription/inscription.component';
+import { UpdateInscriptionComponent } from './components/inscription/update-inscription/update-inscription.component';
+import { DeclencheurComponent } from './components/inscription/declencheur/declencheur.component';
+import { UpdateAraveDateComponent } from './components/inscription/update-arave-date/update-arave-date.component';
+import { PrintListStagiaireComponent } from './components/inscription/print-list-stagiaire/print-list-stagiaire.component';
 
 
 
@@ -104,7 +110,6 @@ function NgbModule() {
     PrintPaymentComponent,
       TurnoverComponent,
       DebtsComponent,
-      EncasementComponent,
       PrintAttestationComponent,
       ProformaComponent,
       AddProformaComponent,
@@ -128,6 +133,12 @@ function NgbModule() {
       DomaineComponent,
       AddDomaineComponent,
       UpdateDomaineComponent,
+      DetailStagiaireComponent,
+      InscriptionComponent,
+      UpdateInscriptionComponent,
+      DeclencheurComponent,
+      UpdateAraveDateComponent,
+      PrintListStagiaireComponent,
 
   ],
   imports: [

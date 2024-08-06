@@ -16,7 +16,7 @@ export class UpdateBenefitComponent {
   formGroup: FormGroup = this.fb.group({
 
     designation: ["", Validators.required],
-    unit:["Repas"],
+    unit: ["Repas"],
     description: ["", Validators.required],
     price: [0, Validators.required],
 
@@ -40,8 +40,8 @@ export class UpdateBenefitComponent {
   ngOnInit() {
 
 
-    const id =this.activateRoute.snapshot.url[1].path
-    this.benefitService.getById(id).subscribe(res=>{
+    const id = this.activateRoute.snapshot.url[1].path
+    this.benefitService.getById(id).subscribe(res => {
       this.uniteMesureService.getAll('*').subscribe(res => {//est une prog asynchrone pour éviter le blocage
         this.uniteMesures = res
 
@@ -50,13 +50,12 @@ export class UpdateBenefitComponent {
 
       this.formGroup = this.fb.group({
         id: [res.id, Validators.required],
-        unit:[res.unitMeasurement.name],
+        unit: [res.unitMeasurement.name],
         designation: [res.designation, Validators.required],
         description: [res.description, Validators.required],
         price: [res.price, Validators.required]
 
       })
-
 
 
     })
@@ -71,27 +70,26 @@ export class UpdateBenefitComponent {
     })
 
 
-
-
-    if(this.formGroup.valid&&this.selectedUniteMesure){
-    this.benefitService.update({
-      id: this.formGroup.value.id,
-      designation: this.formGroup.value.designation,
-      description: this.formGroup.value.description,
-      price: this.formGroup.value.price,
-      sakina: this.formGroup.value.sakina,
-      unitMeasurement: this.selectedUniteMesure
-    }).subscribe(() => {
-        this.onCancel();
-      }
-    )
-    }else {alert("Veuillez Saisir tous les champs")}
+    if (this.formGroup.valid && this.selectedUniteMesure) {
+      this.benefitService.update({
+        id: this.formGroup.value.id,
+        designation: this.formGroup.value.designation,
+        description: this.formGroup.value.description,
+        price: this.formGroup.value.price,
+        sakina: this.formGroup.value.sakina,
+        unitMeasurement: this.selectedUniteMesure
+      }).subscribe(() => {
+          this.onCancel();
+        }
+      )
+    } else {
+      alert("Veuillez Saisir tous les champs")
+    }
   }
 
   onCancel() {
     this.router.navigateByUrl("benefit")
   }
-
 
 
 }

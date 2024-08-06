@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {CustomerService} from "../../services/customer/customer.service";
 import {Router} from "@angular/router";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -9,12 +10,19 @@ import {Router} from "@angular/router";
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent {
-  customers: any[]=[];
+  customers: any[] = [];
   title: any = 'Client';
 
+  fg: FormGroup = this.fb.group({
+    name: [""],
+    shortName: [""],
+  })
 
-
-  constructor(private customerService: CustomerService, private router: Router) {
+  constructor(
+    private customerService: CustomerService,
+    private router: Router,
+    private fb :FormBuilder
+  ) {
   }
 
   ngOnInit(): void {
@@ -24,7 +32,7 @@ export class CustomerComponent {
 
   refresh(): void {
 
-    this.customerService.getAll().subscribe(
+    this.customerService.getAllParam({name:this.fg.value.name,shortName:this.fg.value.shortName}).subscribe(
       res => {
 
         this.customers = res
@@ -45,7 +53,7 @@ export class CustomerComponent {
 
   onUpdate(a: any) {
 
-    this.router.navigateByUrl("updatecustomer/"+a.id)
+    this.router.navigateByUrl("updatecustomer/" + a.id)
   }
 
   onAddCustomer() {
@@ -53,5 +61,9 @@ export class CustomerComponent {
     this.router.navigateByUrl("addcustomer")
 
 
+  }
+
+  onSearch() {
+    this.refresh()
   }
 }

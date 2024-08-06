@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ActionService} from "../../../services/action/action.service";
-import {UniteMesureService} from "../../../services/unite-mesure/unite-mesure.service";
 import {DomaineService} from "../../../services/domaine/domaine.service";
 
 @Component({
@@ -19,9 +18,9 @@ export class AddActionComponent {
     name: ["", Validators.required],
     but: [""],
     objectif: [""],
-    dureDay: ["",Validators.required],
-    dureHour: ["",Validators.required],
-    dom: ["aa",Validators.required]
+    dureDay: ["", Validators.required],
+    dureHour: ["", Validators.required],
+    dom: ["aa", Validators.required]
 
   })
   footer: any = "";
@@ -59,7 +58,7 @@ export class AddActionComponent {
         objectif: this.formGroup.value.objectif,
         duration: this.formGroup.value.dureDay,
         durationHour: this.formGroup.value.dureHour,
-        domaine:this.selectedDomaine
+        domaine: this.selectedDomaine
 
       }).subscribe(() => {
           this.onCancel();
@@ -75,16 +74,15 @@ export class AddActionComponent {
   }
 
 
+  dureEntered() {
 
-  dureEntered(){
-
-    this.formGroup= this.fb.group({
+    this.formGroup = this.fb.group({
       name: [this.formGroup.value.name, Validators.required],
       but: [this.formGroup.value.but],
-      objectif:[this.formGroup.value.objectif],
-      dureDay:[this.formGroup.value.dureDay, Validators.required],
-      dureHour:[this.formGroup.value.dureDay*6, Validators.required],
-      dom:[this.formGroup.value.dom,Validators.required],
+      objectif: [this.formGroup.value.objectif],
+      dureDay: [this.formGroup.value.dureDay, Validators.required],
+      dureHour: [this.formGroup.value.dureDay * 6, Validators.required],
+      dom: [this.formGroup.value.dom, Validators.required],
 
     })
   }

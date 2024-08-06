@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
@@ -11,7 +11,7 @@ import {PaymentService} from "../../../services/payment/payment.service";
   styleUrls: ['./update-payment.component.css']
 })
 export class UpdatePaymentComponent {
-  title:String="Nouvelle facture";
+  title: String = "Nouvelle facture";
 
 
   formGroup: FormGroup = this.fb.group({
@@ -24,40 +24,39 @@ export class UpdatePaymentComponent {
     private fb: FormBuilder,
     private router: Router,
     private paymentService: PaymentService,
-    private customerService :CustomerService
+    private customerService: CustomerService
   ) {
   }
 
-  footer: any="";
-  customers: any[]=[];
-  selectedCustomer :any
+  footer: any = "";
+  customers: any[] = [];
+  selectedCustomer: any
   selected: any;
 
-  ngOnInit(){
-    this.customerService.getAll().subscribe(res=>{
-      this.customers=res
-      if(this.customers.length>0)
-        this.selectedCustomer=this.customers[0]
+  ngOnInit() {
+    this.customerService.getAll().subscribe(res => {
+      this.customers = res
+      if (this.customers.length > 0)
+        this.selectedCustomer = this.customers[0]
     })
   }
 
   onValidate() {
 
-    if(this.selectedCustomer!=null){
+    if (this.selectedCustomer != null) {
       this.paymentService.add({
         number: this.formGroup.value.number,
         date: this.formGroup.value.date,
         object: this.formGroup.value.object,
         reference: this.formGroup.value.reference,
-        customer:this.selectedCustomer
+        customer: this.selectedCustomer
 
 
-      }).subscribe( ()=>{
+      }).subscribe(() => {
           this.onCancel();
         }
-
       )
-    }else alert("Veuillez selectionner un client ")
+    } else alert("Veuillez selectionner un client ")
 
 
   }
@@ -66,15 +65,15 @@ export class UpdatePaymentComponent {
     this.router.navigateByUrl("payment")
   }
 
-  customerSelected(event:any) {
-
+  customerSelected(event: any) {
 
 
     const value = event.target.value;
 
 
-    this.customers.forEach(u=>{
-      if(u.shortName==value) {this.selectedCustomer=u;
+    this.customers.forEach(u => {
+      if (u.shortName == value) {
+        this.selectedCustomer = u;
         console.log(this.selectedCustomer)
       }
     })

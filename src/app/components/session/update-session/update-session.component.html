@@ -18,8 +18,9 @@
         <div class="col col-8">
           <div class="row">
             <div class="col col-8">
-              <input  class="form-control"   id="action"  [disabled]="true"     placeholder="Choisissez un thème de formation... "
-                      type="text">
+              <input class="form-control" id="action" [disabled]="true"
+                     placeholder="Choisissez un thème de formation... "
+                     type="text">
             </div>
             <div class="col col-1">
               <button (click)="openModal(actionModal)" class="btn btn-link align-content-end ">
@@ -44,19 +45,19 @@
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Date debut: </label></div>
           <div class="col col-4"><input [formControlName]="'dd'"
-                                        class="form-control"     id="dateD" type="date"   (change)="calculeDateFin()"></div>
+                                        class="form-control" id="dateD" type="date" (change)="calculeDateFin()"></div>
           <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Date fin: </label></div>
           <div class="col col-4"><input [formControlName]="'df'"
-                                        class="form-control"  id="datef" type="date"></div>
+                                        class="form-control" id="datef" type="date"></div>
           <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
 
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Nombre de stagiaire prévus: </label></div>
-          <div class="col col-2"><input [formControlName]="'nbrStagPlanned'" class="form-control"  type="text"></div>
+          <div class="col col-2"><input [formControlName]="'nbrStagPlanned'" class="form-control" type="text"></div>
           <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
         <div class="row">

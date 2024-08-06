@@ -38,35 +38,40 @@ export class PhaseComponent {
   }
 
   ngOnInit(): void {
+
+    this.sessionService.getAll().subscribe(ss => {
+      this.sessions = ss
+    })
     let session_id = this.activateRoute.snapshot.url[1].path
     if (session_id != "0") {
       this.sessionService.getById(session_id).subscribe(res => {
         this.session = res
         this.showSession()
+        this.refresh()
       })
     }
-    this.refresh()
+
 
   }
 
   refresh() {
-    this.sessionService.getAll().subscribe(ss => {
-      this.sessions = ss
 
-    })
+    this.phaseService.getAllBySession(this.session.id).subscribe(
+      (ph) => {
+        this.phases = ph
 
+      })
 
   }
 
 
   onUpdate(a: any) {
-    this.router.navigateByUrl("update-pahse/" + a.id)
+    this.router.navigateByUrl("update-phase/" + a.id)
 
   }
 
   onDelete(a: any): void {
     if (confirm("Voulez vous vraiment supprimer ce Client  ?")) {
-
       this.phaseService.delete(a).subscribe(() => {
         this.refresh()
       })
@@ -129,17 +134,11 @@ export class PhaseComponent {
       this.sessions = res
     })
   }
+
+  onRetour() {
+    this.router.navigateByUrl("session")
+  }
 }
 
 
-export enum TypePhase {
-  FT,
-  FMT,
-  COUPURE,
-  RETOUR_UNITE
-}
 
-export enum LieuPhase {
-  SUR_SITE,
-  A_L_ECOLE
-}

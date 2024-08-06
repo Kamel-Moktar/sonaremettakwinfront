@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DomaineService} from "../../../services/domaine/domaine.service";
@@ -9,7 +9,7 @@ import {DomaineService} from "../../../services/domaine/domaine.service";
   styleUrls: ['./update-domaine.component.css']
 })
 export class UpdateDomaineComponent {
-  title:String="Modifier Client ";
+  title: String = "Modifier Client ";
 
 
   formGroup: FormGroup = this.fb.group({
@@ -28,20 +28,19 @@ export class UpdateDomaineComponent {
     private fb: FormBuilder,
     private router: Router,
     private domaineService: DomaineService,
-    private activateRoute:ActivatedRoute
+    private activateRoute: ActivatedRoute
   ) {
   }
 
-  footer: any="";
+  footer: any = "";
 
 
+  ngOnInit() {
 
-  ngOnInit(){
+    const id = this.activateRoute.snapshot.url[1]
 
-    const id=this.activateRoute.snapshot.url[1]
-
-    this.domaineService.getById(id).subscribe(res=>{
-      this.formGroup= this.fb.group({
+    this.domaineService.getById(id).subscribe(res => {
+      this.formGroup = this.fb.group({
         id: [res.id, Validators.required],
         name: [res.name, Validators.required],
         shortName: [res.shortName, Validators.required],
@@ -57,13 +56,12 @@ export class UpdateDomaineComponent {
     })
 
 
-
   }
 
 
   onValidate() {
     this.domaineService.add({
-      id:this.formGroup.value.id,
+      id: this.formGroup.value.id,
       name: this.formGroup.value.name,
       shortName: this.formGroup.value.shortName,
       adresse: this.formGroup.value.adresse,
@@ -73,12 +71,10 @@ export class UpdateDomaineComponent {
       idFiscal: this.formGroup.value.if,
       idStatistic: this.formGroup.value.ns,
       numArticle: this.formGroup.value.nArticle
-    }).subscribe( ()=>{
+    }).subscribe(() => {
         this.onCancel();
       }
-
     )
-
 
 
   }

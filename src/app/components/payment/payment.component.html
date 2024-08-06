@@ -22,10 +22,10 @@
 
       </thead>
       <tbody>
-      <tr *ngFor="let a of this.payments ;let i=index "   title="Object :{{a.object}}.
+      <tr *ngFor="let a of this.payments ;let i=index " title="Object :{{a.object}}.
        Reference :{{a.reference}}">
         <td style="text-align: center"> {{a.id}}</td>
-        <td >
+        <td>
           <h6 *ngIf="a.customer">{{a.customer.shortName}}</h6>
           <h6 *ngIf="!a.customer">Non localisé</h6>
         </td>

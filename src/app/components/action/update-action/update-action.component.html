@@ -23,8 +23,8 @@
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Domaine: </label></div>
           <div class="col col-3" *ngIf="domaines">
-            <select class='form-select form-control' formControlName="dom" >
-              <option class='form-select'  *ngFor='let option of domaines'
+            <select class='form-select form-control' formControlName="dom">
+              <option class='form-select' *ngFor='let option of domaines'
                       [value]="option.name">{{option.name}}</option>
             </select>
           </div>

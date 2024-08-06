@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 import {Router} from "@angular/router";
 import {BenefitService} from "../../services/benefit/benefit.service";
@@ -13,33 +13,32 @@ export class BenefitComponent {
   title: any = 'Prestation';
   benefits: any;
 
-  constructor(private benefitService:BenefitService, private router: Router) {
+  constructor(private benefitService: BenefitService, private router: Router) {
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.refresh()
 
   }
 
   refresh() {
     this.benefitService.getAll().subscribe(
-      (res)=>{//est une prog asynchrone pour éviter le blocage
-      this.benefits=res
+      (res) => {//est une prog asynchrone pour éviter le blocage
+        this.benefits = res
 
 
-      //  console.log(res)
-    })
-
-  }
-
-
-
-  onUpdate(a:any) {
-    this.router.navigateByUrl("updatbenefit/"+a.id)
+        //  console.log(res)
+      })
 
   }
 
-  onDelete(a:any):void {
+
+  onUpdate(a: any) {
+    this.router.navigateByUrl("updatbenefit/" + a.id)
+
+  }
+
+  onDelete(a: any): void {
     if (confirm("Voulez vous vraiment supprimer ce Client  ?")) {
 
       this.benefitService.delete(a).subscribe(() => {
@@ -47,7 +46,6 @@ export class BenefitComponent {
       })
     }
   }
-
 
 
   onAddBenefit() {

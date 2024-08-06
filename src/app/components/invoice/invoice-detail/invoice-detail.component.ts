@@ -91,7 +91,7 @@ export class InvoiceDetailComponent {
   }
 
   onPrint1() {
-  this.router.navigateByUrl("print-invoice/"+this.invoiceId)
+    this.router.navigateByUrl("print-invoice/" + this.invoiceId)
   }
 }
 
