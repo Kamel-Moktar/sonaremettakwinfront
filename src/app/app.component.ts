@@ -81,4 +81,12 @@ export class AppComponent {
   onStagiaireCalled() {
     this.router.navigateByUrl("stagiaire")
   }
+
+  onHotelCalled() {
+    this.router.navigateByUrl("hotel")
+  }
+
+  onReservatioCalled() {
+    this.router.navigateByUrl("reservation/0")
+  }
 }

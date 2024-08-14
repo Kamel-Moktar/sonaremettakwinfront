@@ -57,6 +57,7 @@ export class DetailStagiaireComponent {
   ) {
   }
 
+
   footer: any = "";
   customers: any[] = [];
   selectedCustomer: any
@@ -64,6 +65,7 @@ export class DetailStagiaireComponent {
   wilayas: any[] = []
   communes: any[] = []
   sessions: any[] = []
+
 
   ngOnInit() {
 

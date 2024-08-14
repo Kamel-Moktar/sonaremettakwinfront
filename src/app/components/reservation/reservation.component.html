@@ -59,68 +59,53 @@
 
     <div *ngIf="session" class="row m-2  round1">
 
-      <div class="col m-2"><h3><u>{{title}}</u> </h3></div>
-      <div class="col col-auto m-2">
-        <button (click)="onAdd()" class="btn btn-outline-success align-content-end">
-          <span class="fa fa-plus"></span>
-          Ajouter
-        </button>
-      </div>
-      <div class="col col-auto m-2">
-        <button (click)="onRetour()" class="btn btn-outline-success align-content-end">
-          <span class="fa fa-arrow-left"></span>
-          Session
-        </button>
-      </div>
+      <div class="col m-2"><h3>{{title}}</h3></div>
+
     </div>
 
   </div>
-  <div *ngIf="session" class="card-body">
-    <table class="table table-striped  table-bordered table-hover">
+  <div class="card-body">
+    <table class="table table-striped  table-bordered table-hover" id="listeTable">
+
       <thead>
       <tr class="text-center">
-        <th style="width: 5%">code</th>
-        <th style="width: 50%">Nom</th>
-        <th style="width: 10%">Date Debut</th>
-        <th style="width: 10%">Date Fin</th>
-        <th style="width: 10%">Type Phase</th>
-        <th style="width: 10%">lieu</th>
-
-
+        <th style="width: 2%">N°</th>
+        <th style="width: 3%">Code Stag</th>
+        <th style="width: 15%">Nom</th>
+        <th style="width: 15%">Prénom</th>
+        <th style="width: 5%">Date de naissance</th>
+        <th style="width: 15%">Client</th>
+        <th style="width: 40%">Déclencheur(CB ou note d'inscription)</th>
+        <th style="width: 5%">Date d'arrivé</th>
+      </tr>
       </thead>
       <tbody>
+      <tr *ngFor="let a of this.inscriptions ;let i=index ">
+        <td style="text-align: center"> {{i}}</td>
+        <td [ngStyle]="{'text-align' : 'center', 'background': a.arriveDate?'':'green'}"> {{a.stagiaire.id}}</td>
+        <td> {{a.stagiaire.familyName}}</td>
+        <td>{{a.stagiaire.firstName}} </td>
+        <td> {{a.stagiaire.birthDay |date:"dd/MM/yyyy"}}</td>
+        <td> {{a.stagiaire.customer.shortName}}</td>
+        <td> {{a.inscriptionReference}}</td>
+        <td> {{a.arriveDate|date:"dd/MM/yyyy"}}</td>
 
-      <tr *ngFor="let a of this.phases ;let i=index ">
-        <td style="text-align: center"> {{a.id}}</td>
-        <td> {{a.name}}</td>
-        <td align="center"> {{a.startDate| date: "dd/MM/YYYY"}}</td>
-        <td align="center"> {{a.endDate | date: "dd/MM/YYYY"}}</td>
-        <td> {{a.typePhase}}</td>
-        <td> {{a.lieuPhase }}</td>
         <td>
           <div class="container">
-            <button (click)="onUpdate(a)" class="btn btn-outline-success">
-              <span class="fa fa-pencil"> </span>
+            <button *ngIf="a.arriveDate"  (click)="onDetail(a)" class="btn btn-outline-success btn-sm" title="Attestation">
+              <span class="fa fa-hotel"> </span>
             </button>
           </div>
         </td>
-        <td>
-          <div class="container">
-            <button (click)="onDelete(a)" class="btn btn-outline-success">
-              <span class="fa fa-trash-o"> </span>
-            </button>
-          </div>
-        </td>
+
       </tr>
       </tbody>
     </table>
   </div>
   <div class="card-header">
-
-
-
-
+    <!--    Total : <strong>{{totalEntreprise}}</strong> &nbsp;Enregistrements-->
   </div>
+
 </div>
 
 
@@ -135,20 +120,22 @@
       <tr class="text-center">
         <th style="width: 5%"></th>
         <th style="width: 15%">
-          <form [formGroup]="fg">
-            <input (keyup)="onSearch()" [formControlName]="'name'" [placeholder]="'Lib Session'" class="form-control"
+          <form [formGroup]="fg1">
+            <input (keyup)="onSearchSession()" [formControlName]="'name'" [placeholder]="'Lib Session'"
+                   class="form-control"
                    type="text">
           </form>
         </th>
         <th style="width: 20%">
-          <form [formGroup]="fg">
-            <input (keyup)="onSearch()" [formControlName]="'theme'" [placeholder]="'thème'" class="form-control"
+          <form [formGroup]="fg1">
+            <input (keyup)="onSearchSession()" [formControlName]="'theme'" [placeholder]="'thème'" class="form-control"
                    type="text">
           </form>
 
         <th style="width: 20%">
-          <form [formGroup]="fg">
-            <input (keyup)="onSearch()" [formControlName]="'dd'" [placeholder]="'date debut'" class="form-control"
+          <form [formGroup]="fg1">
+            <input (keyup)="onSearchSession()" [formControlName]="'dd'" [placeholder]="'date debut'"
+                   class="form-control"
                    type="text">
           </form>
         </th>
@@ -187,6 +174,5 @@
   <div class="modal-footer">
   </div>
 </ng-template>
-
 
 

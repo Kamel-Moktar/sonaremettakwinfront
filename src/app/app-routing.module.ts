@@ -60,6 +60,10 @@ import {InscriptionComponent} from "./components/inscription/inscription.compone
 import {DeclencheurComponent} from "./components/inscription/declencheur/declencheur.component";
 import {UpdateAraveDateComponent} from "./components/inscription/update-arave-date/update-arave-date.component";
 import {PrintListStagiaireComponent} from "./components/inscription/print-list-stagiaire/print-list-stagiaire.component";
+import {HotelComponent} from "./components/hotel/hotel.component";
+import {AddHotelComponent} from "./components/hotel/add-hotel/add-hotel.component";
+import {ReservationComponent} from "./components/reservation/reservation.component";
+import {DetailReservationComponent} from "./components/reservation/detail-reservation/detail-reservation.component";
 
 const routes: Routes = [
   {path: "customer", component: CustomerComponent},
@@ -131,6 +135,13 @@ const routes: Routes = [
   {path: 'declencheur/:inscriptionId', component:DeclencheurComponent},
   {path: 'update-arrive-date/:inscriptionId', component:UpdateAraveDateComponent},
   {path: 'printlist/:sessionId', component:PrintListStagiaireComponent},
+
+
+  {path:'hotel',component:HotelComponent},
+  {path:'add-hotel',component:AddHotelComponent},
+
+  {path:'reservation/:id',component:ReservationComponent},
+  {path:'detail-reservation/:inscriptionId',component:DetailReservationComponent}
 
 ]
 

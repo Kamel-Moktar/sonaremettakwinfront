@@ -81,6 +81,8 @@
             </li>
             <li><a (click)="onDomaineCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Domaine</a>
             </li>
+            <li><a (click)="onHotelCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Hôtel</a>
+            </li>
           </ul>
         </div>
       </li>
@@ -116,6 +118,24 @@
             <li><a (click)="onStagiaireCalled()"
                    class="link-dark d-inline-flex text-decoration-none rounded">Stagiaire</a></li>
             <li><a (click)="onInsciptionCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Liste/Promotion</a>
+            </li>
+
+          </ul>
+        </div>
+      </li>
+
+      <li class="mb-1">
+        <button aria-expanded="false"
+                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                data-bs-target="#logistique" data-bs-toggle="collapse">
+          <span class="fa fa-hotel"></span>
+          &nbsp; Logistique
+        </button>
+        <div class="collapse" id="logistique">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a (click)="onReservatioCalled()"
+                   class="link-dark d-inline-flex text-decoration-none rounded">Reservation</a></li>
+            <li><a (click)="onHotelCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Hotel</a>
             </li>
 
           </ul>

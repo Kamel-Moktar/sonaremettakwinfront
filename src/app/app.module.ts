@@ -68,6 +68,11 @@ import { UpdateInscriptionComponent } from './components/inscription/update-insc
 import { DeclencheurComponent } from './components/inscription/declencheur/declencheur.component';
 import { UpdateAraveDateComponent } from './components/inscription/update-arave-date/update-arave-date.component';
 import { PrintListStagiaireComponent } from './components/inscription/print-list-stagiaire/print-list-stagiaire.component';
+import { HotelComponent } from './components/hotel/hotel.component';
+import { AddHotelComponent } from './components/hotel/add-hotel/add-hotel.component';
+import { UpdateHotelComponent } from './components/hotel/update-hotel/update-hotel.component';
+import { ReservationComponent } from './components/reservation/reservation.component';
+import { DetailReservationComponent } from './components/reservation/detail-reservation/detail-reservation.component';
 
 
 
@@ -139,6 +144,11 @@ function NgbModule() {
       DeclencheurComponent,
       UpdateAraveDateComponent,
       PrintListStagiaireComponent,
+      HotelComponent,
+      AddHotelComponent,
+      UpdateHotelComponent,
+      ReservationComponent,
+      DetailReservationComponent,
 
   ],
   imports: [
