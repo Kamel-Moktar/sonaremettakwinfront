@@ -15,6 +15,13 @@
       <div class="col ">
 
         <div class="row m-2">
+        <div class="col col-4 text-end"><label> Libellé court: </label></div>
+        <div class="col col-4"><input class="form-control" [formControlName]="'shortName'" placeholder="Abbriviation " type="text"></div>
+        <div class="col"><h6 style="color:red">(*)</h6></div>
+      </div>
+
+
+        <div class="row m-2">
           <div class="col col-4 text-end"><label> Nom ou raison social: </label></div>
           <div class="col col-7"><input [formControlName]="'name'" class="form-control" placeholder="Nom de client"
                                         type="text"></div>
@@ -22,11 +29,6 @@
         </div>
 
 
-        <div class="row m-2">
-          <div class="col col-4 text-end"><label> Libellé court: </label></div>
-          <div class="col col-4"><input class="form-control" [formControlName]="'shortName'" placeholder="Abbriviation " type="text"></div>
-          <div class="col"><h6 style="color:red">(*)</h6></div>
-        </div>
 
         <div class="row m-2">
           <div class="col col-4 text-end"><label>Adresse : </label></div>
@@ -66,6 +68,27 @@
           <div class="col col-4 text-end"><label>  Numéro Article d'Imposition: </label></div>
           <div class="col col-2"><input class="form-control" [formControlName]="'nArticle'"placeholder="Numéro d'article  " type="text"></div>
 
+        </div>
+
+        <div class="row m-2">
+          <div class="col col-4 text-end"><label> Exonéré à la tax: </label></div>
+          <div class="col col">
+            <label class="aa">
+              <input type="checkbox" name="checkbox" [formControlName]="'exempt'"/>
+              &nbsp;
+            </label>
+
+
+          </div>
+        </div>
+        <div class="row m-2">
+          <div class="col col-4 text-end"><label> Meme Entreprise: </label></div>
+          <div class="col col">
+            <label class="aa">
+              <input type="checkbox" name="checkbox" [formControlName]="'sameCompany'"/>
+              &nbsp;
+            </label>
+          </div>
         </div>
 
         <div class="row">

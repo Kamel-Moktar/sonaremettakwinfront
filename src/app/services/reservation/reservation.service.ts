@@ -18,8 +18,19 @@ export class ReservationService {
     return this.httpClient.get<any>(url)
   }
 
+  getRoomType() {
+    const url = this.baseUrl + "/roomtype"
+    return this.httpClient.get<any>(url)
+  }
+
   getAllBySession(sessionId: any) {
-    const url = this.baseUrl + "/allbysession/" + sessionId
+    const url = this.baseUrl + "/bysession/" + sessionId
+    return this.httpClient.get<any>(url)
+
+  }
+
+  getFavoriteBooking(sessionId: any) {
+    const url = this.baseUrl + "/favoritebooking/" + sessionId
     return this.httpClient.get<any>(url)
 
   }

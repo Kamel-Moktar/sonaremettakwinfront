@@ -33,6 +33,11 @@ export class InvoiceService {
     return this.http.post<any[]>(url, param)
   }
 
+  public getTurnover(param: any) {
+    let url = this.baseUrl + "/turnover"
+    return this.http.post<any[]>(url, param)
+  }
+
   public getUnpaidInvoice(searchParm: any) {
     let url = this.baseUrl + "/unpaidinvoice"
     return this.http.post<any[]>(url, searchParm)

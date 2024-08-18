@@ -19,6 +19,7 @@ export class UpdateBenefitComponent {
     unit: ["Repas"],
     description: ["", Validators.required],
     price: [0, Validators.required],
+    tva:[0, Validators.required]
 
   })
 
@@ -35,6 +36,7 @@ export class UpdateBenefitComponent {
   uniteMesures: any[] = [];
   selectedUniteMesure: any
   selected: any;
+  tva: any =BenefitService.tva();
 
 
   ngOnInit() {
@@ -52,9 +54,9 @@ export class UpdateBenefitComponent {
         id: [res.id, Validators.required],
         unit: [res.unitMeasurement.name],
         designation: [res.designation, Validators.required],
-        description: [res.description, Validators.required],
-        price: [res.price, Validators.required]
-
+        description: [res.description],
+        price: [res.price, Validators.required],
+        tva:[res.tva, Validators.required]
       })
 
 
@@ -76,7 +78,7 @@ export class UpdateBenefitComponent {
         designation: this.formGroup.value.designation,
         description: this.formGroup.value.description,
         price: this.formGroup.value.price,
-        sakina: this.formGroup.value.sakina,
+        tva: this.formGroup.value.tva,
         unitMeasurement: this.selectedUniteMesure
       }).subscribe(() => {
           this.onCancel();

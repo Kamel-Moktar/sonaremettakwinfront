@@ -73,6 +73,7 @@
               <tr class="text-center">
                 <th style="width: 5%">#</th>
                 <th style="width: 50%">Prestation</th>
+                <th style="width: 5%" *ngIf="invoice.amountIncludingTax!=invoice.amountExcludingTax">tva</th>
                 <th style="width: 15%">Nombre</th>
                 <th style="width: 10%">Qte</th>
                 <th style="width: 10%">P.U</th>
@@ -85,6 +86,7 @@
                 <td style="text-align: center"> {{i}}</td>
 
                 <td> {{a.benefit.designation}} <label *ngIf="a.observation"> ({{a.observation}})</label></td>
+                <td align="center" *ngIf="invoice.amountIncludingTax!=invoice.amountExcludingTax" > {{a.benefit.tva|percent}} </td>
                 <td align="left"
                     *ngIf="a.unit"> {{a.number}}&nbsp;{{a.number == 1 ? a.unit.name : a.unit.name + "s"}}</td>
                 <td align="center"> {{a.quantity}}</td>
@@ -120,14 +122,21 @@
               <div class="col-6">
                 <table class="table table-striped  border-black table-bordered table-hover">
                   <tr>
-                    <td align="right"><h6>Montant HT :</h6></td>
+                    <td align="right">
+                      <h6 *ngIf="invoice.amountIncludingTax!=invoice.amountExcludingTax">Montant HT :</h6>
+                      <h6 *ngIf="invoice.amountIncludingTax==invoice.amountExcludingTax">Montant total :</h6> </td>
                     <td align="right"><h6>{{invoice.amountExcludingTax|number :".2"}}&nbsp;DA</h6></td>
                   </tr>
-                  <tr>
+                  <tr *ngIf="amountTax9">
                     <td align="right"><h6>Montant TVA (9%):</h6></td>
-                    <td align="right"><h6>{{invoice.amountTax|number :".2"}}&nbsp;DA</h6></td>
+                    <td align="right"><h6>{{amountTax9|number :".2"}}&nbsp;DA</h6></td>
                   </tr>
-                  <tr>
+
+                  <tr *ngIf="amountTax19">
+                    <td align="right"><h6>Montant TVA (19%):</h6></td>
+                    <td align="right"><h6>{{amountTax19|number :".2"}}&nbsp;DA</h6></td>
+                  </tr>
+                  <tr *ngIf="invoice.amountIncludingTax!=invoice.amountExcludingTax">
                     <td align="right"><h6>Montant TTC :</h6></td>
                     <td align="right"><h6>{{invoice.amountIncludingTax|number :".2"}}&nbsp;DA</h6></td>
                   </tr>

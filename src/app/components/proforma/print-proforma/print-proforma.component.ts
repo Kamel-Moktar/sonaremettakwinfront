@@ -15,7 +15,8 @@ export class PrintProformaComponent {
   lignes: any;
   proformaId: any
   title= "Impression de la facture proforma ";
-
+  amountTax9: any;
+  amountTax19: any;
 
   constructor(public proformaService: ProformaService,
               private activateRoute: ActivatedRoute,
@@ -28,7 +29,14 @@ export class PrintProformaComponent {
 
   ngOnInit() {
     this.proformaId = this.activateRoute.snapshot.url[1].path
+    this.offreService.getOffreByProformaByTva({proformaId:this.proformaId,tauxTva:0.09}).subscribe(res=>{
+      console.log(res)
+      this.amountTax9=res
+    })
 
+    this.offreService.getOffreByProformaByTva({proformaId:this.proformaId,tauxTva:0.19}).subscribe(res=>{
+      this.amountTax19=res
+    })
     this.proformaService.getProformaById(this.proformaId).subscribe(
       (proformaRes) => {
         this.proforma = proformaRes

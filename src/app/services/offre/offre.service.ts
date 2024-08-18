@@ -16,6 +16,11 @@ export class OffreService {
     return this.httpClient.get<any>(url)
   }
 
+  public getOffreByProformaByTva(param: any) {
+    let url = this.baseUrl + "/byproformabytva"
+    return this.httpClient.post<any>(url,param)
+  }
+
   public getOffreById(id: any) {
     let url = this.baseUrl + "/byid/" + id
     return this.httpClient.get<any>(url)

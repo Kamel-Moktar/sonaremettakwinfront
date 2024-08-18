@@ -20,19 +20,19 @@ export class AddSaleComponent {
     number: [1, Validators.required],
     qte: ["", Validators.required],
     price: ["", Validators.required],
-    obs: ["", Validators.required]
-
+    obs: [""],
+    benefit: ["", Validators.required],
+    u: ["", Validators.required]
 
   })
 
   footer: any = "";
   benefits: any[] = [];
-  selectedBenefit: any
   selected: any;
   invoice: any
   invoiceId: any;
   units: any[] = [];
-  unit: any
+
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -51,8 +51,7 @@ export class AddSaleComponent {
     this.invoiceId = this.activateRoute.snapshot.url[1].path
     this.benefitService.getAll().subscribe(res => {
       this.benefits = res
-      if (this.benefits.length > 0)
-        this.selectedBenefit = this.benefits[0]
+
     })
 
     this.invoiceService.getInvoiceById(this.invoiceId).subscribe(
@@ -62,20 +61,33 @@ export class AddSaleComponent {
 
     this.uniteMesureService.getUnits().subscribe(
       (res) => {
-        if (this.units.length > 0)
-          this.unit = this.units[0]
         this.units = res
+
+
       })
   }
 
   onValidate() {
 
-    if (this.selectedBenefit != null) {
+
+
+
+    if (this.formGroup.valid) {
+      let benefit
+      this.benefits.forEach(u => {
+        if (u.designation == this.formGroup.value.benefit) benefit = u
+      })
+
+      let unit
+      this.units.forEach(u => {
+        if (u.name == this.formGroup.value.u) unit = u
+      })
+
       this.saleService.add({
-        benefit: this.selectedBenefit,
+        benefit:benefit,
         invoice: this.invoice,
         number: this.formGroup.value.number,
-        unit: this.unit,
+        unit: unit,
         quantity: this.formGroup.value.qte,
         price: this.formGroup.value.price,
         observation: this.formGroup.value.obs
@@ -90,29 +102,8 @@ export class AddSaleComponent {
     this.router.navigateByUrl("invoice-detail/" + this.invoice.id)
   }
 
-  customerSelected(event: any) {
-    let value = event.target.value;
-    console.log(value)
-    this.benefits.forEach(u => {
 
-      if (u.designation === value) {
-        this.selectedBenefit = u;
 
-      }
-    })
-    // console.log(this.selectedCustomer)
-  }
 
-  unitSelected(event: any) {
-    let value = event.target.value;
-    console.log(value)
-    this.units.forEach(u => {
-
-      if (u.name === value) {
-        this.unit = u;
-
-      }
-    })
-  }
 }
 

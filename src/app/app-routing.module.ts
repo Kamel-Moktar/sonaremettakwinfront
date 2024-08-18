@@ -64,6 +64,8 @@ import {HotelComponent} from "./components/hotel/hotel.component";
 import {AddHotelComponent} from "./components/hotel/add-hotel/add-hotel.component";
 import {ReservationComponent} from "./components/reservation/reservation.component";
 import {DetailReservationComponent} from "./components/reservation/detail-reservation/detail-reservation.component";
+import {UpdateReservationComponent} from "./components/reservation/update-reservation/update-reservation.component";
+import {UpdateHotelComponent} from "./components/hotel/update-hotel/update-hotel.component";
 
 const routes: Routes = [
   {path: "customer", component: CustomerComponent},
@@ -139,10 +141,11 @@ const routes: Routes = [
 
   {path:'hotel',component:HotelComponent},
   {path:'add-hotel',component:AddHotelComponent},
+  {path:'update-hotel/:hotelId',component:UpdateHotelComponent},
 
   {path:'reservation/:id',component:ReservationComponent},
-  {path:'detail-reservation/:inscriptionId',component:DetailReservationComponent}
-
+  {path:'detail-reservation/:inscriptionId',component:DetailReservationComponent},
+  {path:'update-reservation/:reservationId',component:UpdateReservationComponent}
 ]
 
 

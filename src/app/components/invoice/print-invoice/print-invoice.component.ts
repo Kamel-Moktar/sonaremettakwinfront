@@ -14,7 +14,8 @@ export class PrintInvoiceComponent {
   lignes: any;
   invoiceId: any
   title = "Impression de la facture ";
-
+  amountTax9: any;
+  amountTax19: any;
 
   constructor(public invoiceService: InvoiceService,
               private activateRoute: ActivatedRoute,
@@ -27,6 +28,14 @@ export class PrintInvoiceComponent {
   ngOnInit() {
     this.invoiceId = this.activateRoute.snapshot.url[1].path
 
+    this.saleService.getOffreByProformaByTva({invoiceId: this.invoiceId, tauxTva: 0.09}).subscribe(res => {
+      console.log(res)
+      this.amountTax9 = res
+    })
+
+    this.saleService.getOffreByProformaByTva({invoiceId: this.invoiceId, tauxTva: 0.19}).subscribe(res => {
+      this.amountTax19 = res
+    })
     this.invoiceService.getInvoiceById(this.invoiceId).subscribe(
       (invoiceRes) => {
         this.invoice = invoiceRes

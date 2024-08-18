@@ -1,4 +1,4 @@
-<div class="card m-3">
+<div class="card">
   <div class="card-header ">
     <div class="row">
       <div class="col"><h6>{{title}}</h6></div>
@@ -10,38 +10,37 @@
       </div>
     </div>
   </div>
-
   <div class="card-body m-lg-5">
     <form [formGroup]="formGroup">
+
+
       <div class="col ">
+
+
         <div class="row m-2">
-          <div class="col col-2 text-end"><label> Nombre: </label></div>
-          <div class="col col-2"><input [formControlName]="'number'" class="form-control" placeholder="Nombre"
-                                        type="text"></div>
-          <div class="col col-2">
-            <select [formControlName]="'u'" class='form-select form-control'>
-              <option *ngFor='let option of units' [value]="option.name"
-                      class='form-select' id={{option.name}}>{{option.name}}</option>
-            </select>
-          </div>
+          <div class="col col-2 text-end"><label> Date d'arrivé: </label></div>
+          <div class="col col-4"><input [formControlName]="'dd'"
+                                        class="form-control" id="dateD" type="date" ></div>
           <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
         <div class="row m-2">
-          <div class="col col-2 text-end"><label> Qte: </label></div>
-          <div class="col col-2"><input [formControlName]="'qte'" class="form-control" placeholder="Qte" type="text">
-          </div>
+          <div class="col col-2 text-end"><label> Date de depart: </label></div>
+          <div class="col col-4"><input [formControlName]="'df'"
+                                        class="form-control" id="datef" type="date"></div>
           <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
+
         <div class="row m-2">
-          <div class="col  col-2 text-end"><label> P.U: </label></div>
-          <div class="col col-2"><input [formControlName]="'price'" class="form-control" placeholder="P.U" type="text">
+          <div class="col col-2 text-end"><label> Type de chambre: </label></div>
+
+          <div class="col ">
+          <select class='form-select form-control' formControlName="roomType">
+            <option class='form-select' *ngFor='let option of roomType'
+                    [value]="option">{{option}}</option>
+          </select>
           </div>
           <div class="col"><h6 style="color:red">(*)</h6></div>
-        </div>
-        <div class="row m-2">
-          <div class="col col-2 text-end"><label> Obs: </label></div>
-          <div class="col col"><input [formControlName]="'obs'" class="form-control" placeholder="obs" type="text">
-          </div>
+
         </div>
         <div class="row">
           <div class="col">
@@ -62,7 +61,7 @@
       <div class="col"><h3>{{footer}}</h3></div>
 
     </div>
-
-
   </div>
 </div>
+
+

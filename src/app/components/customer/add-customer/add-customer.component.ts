@@ -21,7 +21,9 @@ export class AddCustomerComponent {
     rc: [""],
     if: [""],
     ns: [""],
-    nArticle: [""]
+    nArticle: [""],
+    exempt:[false],
+    sameCompany:[false]
 
   })
 
@@ -36,6 +38,8 @@ export class AddCustomerComponent {
 
 
   onValidate() {
+
+
     if(this.formGroup.valid){
     this.customerService.add({
       name: this.formGroup.value.name,
@@ -46,7 +50,9 @@ export class AddCustomerComponent {
       numRc: this.formGroup.value.rc,
       idFiscal: this.formGroup.value.if,
       idStatistic: this.formGroup.value.ns,
-      numArticle: this.formGroup.value.nArticle
+      numArticle: this.formGroup.value.nArticle,
+      exemptFromTax:this.formGroup.value.exempt,
+      sameCompany:this.formGroup.value.sameCompany,
     }).subscribe(() => {
         this.onCancel();
       }

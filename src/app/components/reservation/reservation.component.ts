@@ -21,6 +21,7 @@ export class ReservationComponent {
   sessions: any[] = []
   session: any
   stagiaire: any
+  favoriteBooking :any
 
 
 
@@ -40,7 +41,8 @@ export class ReservationComponent {
     private modalService: NgbModal,
     private fb: FormBuilder,
     private datePipe: DatePipe,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private reservationService:ReservationService
   ) {
   }
 
@@ -50,6 +52,10 @@ export class ReservationComponent {
       this.sessions = ss
     })
     let session_id = this.activateRoute.snapshot.url[1].path
+    this.reservationService.getFavoriteBooking(session_id).subscribe(res=>{
+      this.favoriteBooking=res
+    })
+
     if (session_id != "0") {
       this.sessionService.getById(session_id).subscribe(res => {
         this.session = res

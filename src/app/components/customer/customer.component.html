@@ -35,8 +35,8 @@
           <thead>
           <tr class="text-center">
             <th style="width: 5%">Code Client</th>
-            <th style="width: 30%">Nom ou raison social</th>
             <th style="width: 15%">Libellé court</th>
+            <th style="width: 30%">Nom ou raison social</th>
             <th style="width: 25%">Adresse</th>
             <th style="width: 5%">Téléphone</th>
             <th style="width: 5%">fax</th>
@@ -44,14 +44,16 @@
             <th style="width: 5%">Numéro d'Identification Fiscal (NIF)</th>
             <th style="width: 5%">Numéro d'Identification Statistiques (NIS)</th>
             <th style="width: 5%">Numéro Article d'Imposition</th>
+            <th style="width: 1%">exo</th>
+            <th style="width: 1%;writing-mode: horizontal-tb ">mmffffff</th>
 
           </thead>
           <tbody>
 
           <tr *ngFor="let a of this.customers ;let i=index ">
             <td style="text-align: center"> {{a.id}}</td>
-            <td> {{a.name}}</td>
             <td> {{a.shortName}}</td>
+            <td> {{a.name}}</td>
             <td> {{a.adresse}}</td>
             <td> {{a.phoneNumber}}</td>
             <td> {{a.fax}}</td>
@@ -59,6 +61,8 @@
             <td> {{a.idFiscal}}</td>
             <td> {{a.idStatistic}}</td>
             <td> {{a.numArticle}}</td>
+            <td> {{a.exemptFromTax}}</td>
+            <td> {{a.sameCompany}}</td>
             <td>
               <div class="container">
                 <button (click)="onUpdate(a)" class="btn btn-outline-success">

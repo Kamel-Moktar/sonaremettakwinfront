@@ -16,7 +16,8 @@ export class InvoiceDetailComponent {
   invoiceId: any = 0;
   benefits: any[] = []
   invoice: any
-
+  amountTax9: any;
+  amountTax19: any;
   constructor(private router: Router,
               private activateRoute: ActivatedRoute,
               public invoiceService: InvoiceService,
@@ -28,7 +29,14 @@ export class InvoiceDetailComponent {
   ngOnInit() {
     this.invoiceId = this.activateRoute.snapshot.url[1].path
 
+    this.saleService.getOffreByProformaByTva({invoiceId:this.invoiceId,tauxTva:0.09}).subscribe(res=>{
+      console.log(res)
+      this.amountTax9=res
+    })
 
+    this.saleService.getOffreByProformaByTva({invoiceId:this.invoiceId,tauxTva:0.19}).subscribe(res=>{
+      this.amountTax19=res
+    })
     this.benefitService.getAll().subscribe(
       (res) => {
         this.benefits = res

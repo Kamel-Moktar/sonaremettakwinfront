@@ -41,4 +41,8 @@ export class BenefitService {
     const url = this.baseUrl + "/update"
     return this.httpClient.put(url, benefit)
   }
+
+  public static tva(){
+    return [0.09,0.19]
+  }
 }

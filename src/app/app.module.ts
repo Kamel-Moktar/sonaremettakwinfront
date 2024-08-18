@@ -73,6 +73,7 @@ import { AddHotelComponent } from './components/hotel/add-hotel/add-hotel.compon
 import { UpdateHotelComponent } from './components/hotel/update-hotel/update-hotel.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { DetailReservationComponent } from './components/reservation/detail-reservation/detail-reservation.component';
+import { UpdateReservationComponent } from './components/reservation/update-reservation/update-reservation.component';
 
 
 
@@ -149,6 +150,7 @@ function NgbModule() {
       UpdateHotelComponent,
       ReservationComponent,
       DetailReservationComponent,
+      UpdateReservationComponent,
 
   ],
   imports: [

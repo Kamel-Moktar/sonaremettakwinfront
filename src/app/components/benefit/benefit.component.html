@@ -15,8 +15,9 @@
       <thead>
       <tr class="text-center">
         <th style="width: 5%">code</th>
-        <th style="width: 35%">Designation</th>
+        <th style="width: 30%">Designation</th>
         <th style="width: 40%">Description</th>
+        <th style="width: 5%">tva</th>
         <th style="width: 10%">Prix</th>
         <th style="width: 10%">Unité de mesure</th>
 
@@ -27,6 +28,7 @@
         <td style="text-align: center"> {{a.id}}</td>
         <td> {{a.designation}}</td>
         <td> {{a.description}}</td>
+        <td style="text-align: center"> <b>{{a.tva|percent}}</b> </td>
         <td> {{a.price}}</td>
         <td> {{a.unitMeasurement.name}}</td>
 

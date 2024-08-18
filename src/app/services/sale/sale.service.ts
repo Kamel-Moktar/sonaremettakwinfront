@@ -15,7 +15,10 @@ export class SaleService {
     let url = this.baseUrl + "/byinvoice/" + invoice.id
     return this.httpClient.get<any>(url)
   }
-
+  public getOffreByProformaByTva(param: any) {
+    let url = this.baseUrl + "/byinvoicebytva"
+    return this.httpClient.post<any>(url,param)
+  }
   public getSaleById(id: any) {
     let url = this.baseUrl + "/byid/" + id
     return this.httpClient.get<any>(url)

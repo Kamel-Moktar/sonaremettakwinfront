@@ -9,7 +9,7 @@
         </button>
 
       </div>
-      <div class="col col-auto"  *ngIf="proforma.amountIncludingTax===proforma.remains">
+      <div class="col col-auto" >
         <button (click)="onAdd()" class="btn btn-outline-success align-content-end">
           <span class="fa fa-plus"></span>
         </button>
@@ -33,6 +33,7 @@
         <tr class="text-center">
           <th style="width: 5%">#</th>
           <th style="width: 50%">Prestation</th>
+          <th style="width: 5%">tva</th>
           <th style="width: 15%">Nombre</th>
           <th style="width: 10%">Qte</th>
           <th style="width: 10%">P.U</th>
@@ -45,20 +46,21 @@
           <td style="text-align: center"> {{i}}</td>
 
           <td> {{a.benefit.designation}} <label *ngIf="a.observation"> ({{a.observation}})</label></td>
+          <td align="center"> {{a.benefit.tva|percent}} </td>
           <td align="left" *ngIf="a.unit"> {{a.number}}&nbsp;{{a.number==1?a.unit.name:a.unit.name+"s"}}</td>
           <td align="center"> {{a.quantity}}</td>
           <td align="right"> {{a.price| number:".2"}} </td>
           <td align="right"> {{a.price * a.quantity | number:".2"}}</td>
 
 
-          <td  *ngIf="a.proforma.amountIncludingTax===a.proforma.remains">
+          <td>
             <div class="container"  >
               <button (click)="onUpdate(a)" class="btn btn-outline-success">
                 <span class="fa fa-pencil"> </span>
               </button>
             </div>
           </td>
-          <td  *ngIf="a.proforma.amountIncludingTax===a.proforma.remains">
+          <td>
             <div class="container">
               <button (click)="onDelete(a)" class="btn btn-outline-success">
                 <span class="fa fa-trash-o"> </span>
@@ -79,9 +81,15 @@
               <td align="right"><h6>Montant HT :</h6></td>
               <td align="right"><h6>{{proforma.amountExcludingTax|number :".2"}}&nbsp;DA</h6></td>
             </tr>
-            <tr>
+
+            <tr *ngIf="amountTax9">
               <td align="right"><h6>Montant TVA (9%):</h6></td>
-              <td align="right"><h6>{{proforma.amountTax|number :".2"}}&nbsp;DA</h6></td>
+              <td align="right"><h6>{{amountTax9|number :".2"}}&nbsp;DA</h6></td>
+            </tr>
+
+            <tr *ngIf="amountTax19">
+              <td align="right"><h6>Montant TVA (19%):</h6></td>
+              <td align="right"><h6>{{amountTax19|number :".2"}}&nbsp;DA</h6></td>
             </tr>
             <tr>
               <td align="right"><h6>Montant TTC :</h6></td>

@@ -38,7 +38,7 @@ export class UpdateSaleComponent {
   }
 
   footer: any = "";
-  benefits: any[] = [];
+
   selectedBenefit: any
   selected: any;
   invoice: any
@@ -56,7 +56,7 @@ export class UpdateSaleComponent {
       this.formGroup = this.fb.group({
         id: [sale.id],
         number: [sale.number, Validators.required],
-        u: [sale.unit.name],
+        u: ["sale.unit.name"],
         qte: [sale.quantity, Validators.required],
         price: [sale.price, Validators.required],
         obs: [sale.observation]
@@ -64,8 +64,7 @@ export class UpdateSaleComponent {
 
       this.uniteMesureService.getUnits().subscribe(
         (res) => {
-          if (this.units.length > 0)
-            this.unit = this.units[0]
+
           this.units = res
         })
 
@@ -76,22 +75,20 @@ export class UpdateSaleComponent {
 
   onValidate() {
 
-    this.units.forEach(a => {
-
-      if (a.name === this.formGroup.value.u) {
-        this.unit = a;
-
-      }
-    })
 
 
-    if (this.selectedBenefit != null) {
-      this.saleService.add({
+    if (this.formGroup.valid) {
+      let unit
+      this.units.forEach(u => {
+        if (u.name == this.formGroup.value.u) unit = u
+      })
+
+      this.saleService.update({
         id: this.formGroup.value.id,
         benefit: this.selectedBenefit,
         invoice: this.invoice,
         number: this.formGroup.value.number,
-        unit: this.unit,
+        unit: unit,
         quantity: this.formGroup.value.qte,
         price: this.formGroup.value.price,
         observation: this.formGroup.value.obs
@@ -108,22 +105,7 @@ export class UpdateSaleComponent {
     this.router.navigateByUrl("invoice-detail/" + this.invoice.id)
   }
 
-  customerSelected(event: any) {
 
-
-    const value = event.target.value;
-
-
-    this.benefits.forEach(u => {
-      if (u.shortName == value) {
-        this.selectedBenefit = u;
-        console.log(this.selectedBenefit)
-      }
-    })
-
-    // console.log(this.selectedCustomer)
-
-  }
 
 
 }

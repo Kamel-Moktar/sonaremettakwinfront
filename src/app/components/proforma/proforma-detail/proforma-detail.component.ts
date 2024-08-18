@@ -17,7 +17,8 @@ export class ProformaDetailComponent {
   proformaId: any = 0;
   benefits: any[] = []
   proforma: any
-
+  amountTax9: any;
+  amountTax19: any;
   constructor(private router: Router,
               private activateRoute: ActivatedRoute,
               public proformaService: ProformaService,
@@ -29,7 +30,14 @@ export class ProformaDetailComponent {
   ngOnInit() {
     this.proformaId = this.activateRoute.snapshot.url[1].path
 
+     this.offreService.getOffreByProformaByTva({proformaId:this.proformaId,tauxTva:0.09}).subscribe(res=>{
+       console.log(res)
+       this.amountTax9=res
+     })
 
+    this.offreService.getOffreByProformaByTva({proformaId:this.proformaId,tauxTva:0.19}).subscribe(res=>{
+      this.amountTax19=res
+    })
     this.benefitService.getAll().subscribe(
       (res) => {
         this.benefits = res
@@ -49,6 +57,7 @@ export class ProformaDetailComponent {
   }
 
   // convertir-nombre-lettre
+
 
 
   onAddLigne() {

@@ -21,7 +21,9 @@ export class UpdateCustomerComponent {
     rc: [""],
     if: [""],
     ns: [""],
-    nArticle: [""]
+    nArticle: [""],
+    exempt:[false],
+    sameCompany:[false]
   })
 
   constructor(
@@ -51,7 +53,9 @@ export class UpdateCustomerComponent {
         rc: [res.numRc],
         if: [res.idFiscal],
         ns: [res.idStatistic],
-        nArticle: [res.numArticle]
+        nArticle: [res.numArticle],
+        exempt:[res.exemptFromTax],
+        sameCompany:[res.sameCompany]
       })
 
     })
@@ -72,7 +76,9 @@ export class UpdateCustomerComponent {
       numRc: this.formGroup.value.rc,
       idFiscal: this.formGroup.value.if,
       idStatistic: this.formGroup.value.ns,
-      numArticle: this.formGroup.value.nArticle
+      numArticle: this.formGroup.value.nArticle,
+      exemptFromTax:this.formGroup.value.exempt,
+      sameCompany:this.formGroup.value.sameCompany,
     }).subscribe( ()=>{
         this.onCancel();
       }

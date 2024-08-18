@@ -75,8 +75,8 @@
         <th style="width: 15%">Prénom</th>
         <th style="width: 5%">Date de naissance</th>
         <th style="width: 15%">Client</th>
-        <th style="width: 40%">Déclencheur(CB ou note d'inscription)</th>
         <th style="width: 5%">Date d'arrivé</th>
+        <th style="width: 40%">Reservation</th>
       </tr>
       </thead>
       <tbody>
@@ -84,11 +84,11 @@
         <td style="text-align: center"> {{i}}</td>
         <td [ngStyle]="{'text-align' : 'center', 'background': a.arriveDate?'':'green'}"> {{a.stagiaire.id}}</td>
         <td> {{a.stagiaire.familyName}}</td>
-        <td>{{a.stagiaire.firstName}} </td>
+        <td> {{a.stagiaire.firstName}} </td>
         <td> {{a.stagiaire.birthDay |date:"dd/MM/yyyy"}}</td>
         <td> {{a.stagiaire.customer.shortName}}</td>
-        <td> {{a.inscriptionReference}}</td>
         <td> {{a.arriveDate|date:"dd/MM/yyyy"}}</td>
+        <td> <div *ngFor="let f of favoriteBooking"> <div *ngIf="f.inscription.id==a.id"> <b>{{f.hotel.name}}</b> du {{f.arriveDate|date :"dd/MM/YYYY"}} au {{f.leavingDate|date :"dd/MM/YYYY"}}</div>  </div></td>
 
         <td>
           <div class="container">

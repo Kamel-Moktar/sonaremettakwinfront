@@ -17,6 +17,7 @@ export class AddBenefitComponent {
     designation: ["", Validators.required],
     description: [""],
     price: [""],
+    tva:[0.19, Validators.required]
 
 
   })
@@ -24,6 +25,7 @@ export class AddBenefitComponent {
   uniteMesures: any[] = [];
   selectedUniteMesure: any
   selected: any;
+  tva: any=BenefitService.tva();
 
 
   constructor(
@@ -48,6 +50,7 @@ export class AddBenefitComponent {
         designation: this.formGroup.value.designation,
         description: this.formGroup.value.description,
         price: this.formGroup.value.price,
+        tva:this.formGroup.value.tva,
         unitMeasurement: this.selectedUniteMesure
 
       }).subscribe(() => {
