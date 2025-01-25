@@ -41,6 +41,11 @@ export class AddBenefitComponent {
     this.uniteMesureService.getAll('*').subscribe(res => {//est une prog asynchrone pour éviter le blocage
       this.uniteMesures = res
     })
+
+
+    this.benefitService.tva1().subscribe(res=>{
+      console.log(res)
+    })
   }
 
   onValidate() {

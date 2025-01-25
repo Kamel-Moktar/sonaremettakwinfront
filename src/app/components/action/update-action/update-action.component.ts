@@ -20,7 +20,7 @@ export class UpdateActionComponent {
     objectif: [""],
     dureDay: ["", Validators.required],
     dureHour: ["", Validators.required],
-    dom: ["aa", Validators.required]
+    domaine: ["aa", Validators.required]
 
   })
   footer: any = "";

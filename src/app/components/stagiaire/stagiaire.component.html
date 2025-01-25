@@ -2,7 +2,7 @@
   <div class="card-header ">
     <div class="row">
       <div class="col"><h6>{{title}}</h6></div>
-      <div class="col col-auto">
+      <div class="col col-auto" *ngIf="!isJustForConsultation">
         <button (click)="onAddStagiaire()" class="btn btn-outline-success align-content-end">
           <span class="fa fa-plus"></span>
           Ajouter
@@ -16,26 +16,20 @@
       <thead>
       <tr class="text-center">
         <th style="width: 5%"></th>
-        <th style="width: 20%">
+        <th style="width: 40%" colspan="2">
           <form [formGroup]="fg">
-            <input (keyup)="onSearch()" [formControlName]="'familyName'" [placeholder]="'Nom'"
+            <input (keyup)="onSearch()" [formControlName]="'familyName'" [placeholder]="'Nom & prénom'"
                    class="form-control"
                    type="text">
           </form>
         </th>
-        <th style="width: 20%">
-          <form [formGroup]="fg">
-            <input (keyup)="onSearch()" [formControlName]="'firstName'" [placeholder]="'Prénom'"
-                   class="form-control"
-                   type="text">
-          </form>
-        </th>
+
         <th style="width: 10%">
-          <form [formGroup]="fg">
-            <input (keyup)="onSearch()" [formControlName]="'birthDay'" [placeholder]="'Date de naissance'"
-                   class="form-control"
-                   type="text">
-          </form>
+<!--          <form [formGroup]="fg">-->
+<!--            <input (keyup)="onSearch()" [formControlName]="'birthDay'" [placeholder]="'Date de naissance'"-->
+<!--                   class="form-control"-->
+<!--                   type="text">-->
+<!--          </form>-->
         </th>
         <th style="width: 15%">
           <form [formGroup]="fg">
@@ -44,6 +38,7 @@
                    type="text">
           </form>
         </th>
+        <th style="width: 1%"></th>
         <th style="width: 30%"></th>
       </tr>
 
@@ -53,6 +48,8 @@
         <th style="width: 20%">Prénom</th>
         <th style="width: 10%">Date de naissance</th>
         <th style="width: 15%">Client</th>
+        <th style="width: 1%">M F</th>
+
         <th style="width: 30%">Adresse</th>
       </tr>
       </thead>
@@ -63,6 +60,8 @@
         <td>{{a.firstName}} </td>
         <td> {{a.birthDay |date:"dd/MM/yyyy"}}</td>
         <td> {{a.customer.shortName}}</td>
+        <td>{{a.sexe}} </td>
+
         <td> {{a.adresse}}</td>
         <td>
           <div class="container">
@@ -71,14 +70,14 @@
             </button>
           </div>
         </td>
-        <td>
-          <div class="container">
+        <td *ngIf="!isJustForConsultation">
+          <div class="container" >
             <button (click)="onUpdate(a)" class="btn btn-outline-success" title="Modifier">
               <span class="fa fa-pencil"> </span>
             </button>
           </div>
         </td>
-        <td>
+        <td *ngIf="!isJustForConsultation">
           <div class="container">
             <button (click)="onDelete(a)" class="btn btn-outline-success" title="Supprimer">
               <span class="fa fa-trash-o"> </span>

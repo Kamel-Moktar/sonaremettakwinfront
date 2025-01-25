@@ -18,4 +18,26 @@ export class UtilsService {
   }
 
 
+  compareDate(d1:any,d2 :any){
+
+     console.log(d2)
+    if(d1&&d2){
+    let year1 = d1.getFullYear()
+    let month1 = d1.getMonth() + 1
+    let day1 = d1.getDate()
+
+    let year2 = d2.getFullYear()
+    let month2 = d2.getMonth() + 1
+    let day2 = d2.getDate()
+
+    if(year1+month1+day1>year2+month2+day2) return 1
+    if(year1+month1+day1==year2+month2+day2) return 0
+    if(year1+month1+day1<year2+month2+day2) return -1
+  }
+
+    return -1
+  }
+
+
+
 }

@@ -47,7 +47,7 @@ export class ActionComponent {
   }
 
   onDelete(a: any): void {
-    if (confirm("Voulez vous vraiment supprimer ce Client  ?")) {
+    if (confirm("Voulez vous vraiment supprimer cette action   ?")) {
 
       this.actionService.delete(a).subscribe(() => {
         this.refresh()
@@ -63,6 +63,12 @@ export class ActionComponent {
 
   onSearch() {
     this.refresh()
+  }
+
+  onDetail(a:any) {
+
+    this.router.navigateByUrl("formation-dispositif/"+a.id)
+
   }
 }
 

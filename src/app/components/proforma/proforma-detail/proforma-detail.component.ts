@@ -31,7 +31,7 @@ export class ProformaDetailComponent {
     this.proformaId = this.activateRoute.snapshot.url[1].path
 
      this.offreService.getOffreByProformaByTva({proformaId:this.proformaId,tauxTva:0.09}).subscribe(res=>{
-       console.log(res)
+
        this.amountTax9=res
      })
 

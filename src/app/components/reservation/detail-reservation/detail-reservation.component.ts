@@ -66,7 +66,7 @@ export class DetailReservationComponent {
 
   }
 refresh(){
-  this.reservationService.getAllByStagiaire(this.selectedInscription.id).subscribe(book=>{
+  this.reservationService.getAllByInscription(this.selectedInscription.id).subscribe(book=>{
     this.reservations=book
 
 

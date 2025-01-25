@@ -18,7 +18,7 @@
         <div class="row m-2">
           <div class="col  col-2 text-end"><label> Nom: </label></div>
           <div class="col col-4"><input [formControlName]="'familyName'" class="form-control" placeholder="Nom"
-                                      type="text"></div>
+                                        type="text"></div>
           <div class="col"><h6 style="color:#ff0000">(*)</h6></div>
         </div>
 
@@ -26,35 +26,38 @@
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Prénom: </label></div>
           <div class="col col-4"><input [formControlName]="'firstName'" class="form-control" placeholder="Prénom"
-                                      type="text"></div>
+                                        type="text"></div>
           <div class="col"><h6 style="color:#ff0000">(*)</h6></div>
         </div>
 
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Date de naissance: </label></div>
-          <div class="col col-4"><input [formControlName]="'birthDay'" class="form-control" placeholder="Date de naissance"
+          <div class="col col-4"><input [formControlName]="'birthDay'" class="form-control"
+                                        placeholder="Date de naissance"
                                         type="date"></div>
-          <div class="col"><h6 style="color:#ff0000">(*)</h6></div>
+<!--          <div class="col"><h6 style="color:#ff0000">(*)</h6></div>-->
         </div>
 
         <div class="row m-2">
           <div class="col  col-2 text-end"><label> Wilaya de naissance: </label></div>
           <div class="col col-3">
-            <select class='form-select form-control' formControlName="wilaya" (change)="onWilayaSelect()">
-              <option class='form-select'  *ngFor='let option of wilayas'
-                      [value]="option.wilayaName">{{option.wilayaName}}</option>
+            <select (change)="onWilayaSelect()" class='form-select form-control' formControlName="wilaya">
+              <option *ngFor='let option of wilayas' [value]="option.wilayaName"
+                      class='form-select'>{{option.wilayaName}}</option>
             </select>
           </div>
-          <div class="col  col-2 text-end"  *ngIf="formGroup.value.wilaya!='ETRANGER'"><label> Commune de naissance: </label></div>
-          <div  class="col col-3" *ngIf="formGroup.value.wilaya!='ETRANGER'">
-            <select class='form-select form-control' formControlName="commune" >
-              <option class='form-select'  *ngFor='let option of communes'
-                      [value]="option.communeName">{{option.communeName}}</option>
+          <div *ngIf="formGroup.value.wilaya!='ETRANGER'" class="col  col-2 text-end"><label> Commune de
+            naissance: </label></div>
+          <div *ngIf="formGroup.value.wilaya!='ETRANGER'" class="col col-3">
+            <select class='form-select form-control' formControlName="commune">
+              <option *ngFor='let option of communes' [value]="option.communeName"
+                      class='form-select'>{{option.communeName}}</option>
             </select>
           </div>
 
-          <div class="col  col-2 text-end" *ngIf="formGroup.value.wilaya=='ETRANGER'"><label> Lieu de naissance: </label></div>
-          <div  class="col col-3" *ngIf="formGroup.value.wilaya=='ETRANGER'">
+          <div *ngIf="formGroup.value.wilaya=='ETRANGER'" class="col  col-2 text-end"><label> Lieu de
+            naissance: </label></div>
+          <div *ngIf="formGroup.value.wilaya=='ETRANGER'" class="col col-3">
             <input [formControlName]="'birthPlace'" class="form-control" placeholder="Lieu de naissance"
                    type="text">
 
@@ -63,17 +66,48 @@
         </div>
 
         <div class="row m-2">
+
+          <div class="col  col-2 text-end"><label> Sexe: </label></div>
+          <div class="col col-1">
+            <select class='form-select form-control' formControlName="sexe">
+              <option *ngFor='let option of stagiaireService.getSexe()'
+                      class='form-select'>{{option}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row m-2">
           <div class="col  col-2 text-end"><label> Adresse: </label></div>
           <div class="col "><input [formControlName]="'adresse'" class="form-control" placeholder="Adresse"
-                                      type="text"></div>
+                                   type="text"></div>
 
         </div>
 
+        <div class="row m-2">
+
+          <div class="col  col-2 text-end"><label> Niveau Scolaire: </label></div>
+          <div class="col col-2">
+            <select class='form-select form-control' formControlName="school">
+              <option *ngFor='let option of stagiaireService.getSchoolLevel()'
+                      class='form-select'>{{option}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row m-2">
+
+          <div class="col  col-2 text-end"><label> GSP: </label></div>
+          <div class="col col-2">
+            <select class='form-select form-control' formControlName="gsp">
+              <option *ngFor='let option of stagiaireService.getGSP()'
+                      class='form-select'>{{option}}</option>
+            </select>
+          </div>
+        </div>
 
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Téléphone: </label></div>
           <div class="col col-4"><input [formControlName]="'phoneNumber'" class="form-control" placeholder="Téléphone"
-                                      type="text"></div>
+                                        type="text"></div>
 
         </div>
 
@@ -81,7 +115,7 @@
         <div class="row m-2">
           <div class="col col-2 text-end"><label> E-Mail: </label></div>
           <div class="col col-4"><input [formControlName]="'mailAdresse'" class="form-control" placeholder="E-Mail"
-                                      type="text"></div>
+                                        type="text"></div>
 
         </div>
 
@@ -126,7 +160,7 @@
   </div>
 </div>
 
-<ng-template #actionModal let-modal >
+<ng-template #actionModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="strictureModal">Client </h4>
     <button (click)="modal.dismiss('Cross click')" aria-label="Close" class="btn-close" type="button"></button>
@@ -139,7 +173,8 @@
 
         <th style="width: 15%">
           <form [formGroup]="fg">
-            <input (keyup)="onSearch()" [formControlName]="'shortName'" [placeholder]="'Libellé court'" class="form-control"
+            <input (keyup)="onSearch()" [formControlName]="'shortName'" [placeholder]="'Libellé court'"
+                   class="form-control"
                    type="text">
           </form>
         </th>

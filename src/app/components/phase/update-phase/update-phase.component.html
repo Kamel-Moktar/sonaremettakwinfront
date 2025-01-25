@@ -42,7 +42,7 @@
           <div class="col col-2" *ngIf="typePhases">
             <select class='form-select form-control' formControlName="type">
               <option class='form-select' *ngFor='let option of typePhases'
-                      [value]="option">{{option}}</option>
+                      [value]="option">{{option.type}}</option>
             </select>
           </div>
           <div class="col"><h6 style="color:#ff0000">(*)</h6></div>

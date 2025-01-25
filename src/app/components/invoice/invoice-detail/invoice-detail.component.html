@@ -4,26 +4,33 @@
       <div *ngIf="invoice" class="col"><h6>{{title}}&nbsp;N°: {{invoiceService.formatInvoiceNumber(invoice)}}
         du {{invoice.date|date:"dd/MM/yyyy"}} </h6></div>
       <div class="col col-auto">
-        <button (click)="onPrint1( )" class="btn btn-outline-success align-content-end">
+        <button (click)="onPrint1( )" class="btn btn-outline-success align-content-end"  title="Imprimer  Facture">
           <span class="fa fa-print"></span>
         </button>
 
       </div>
       <div class="col col-auto" *ngIf="invoice.amountIncludingTax===invoice.remains">
-        <button (click)="onAdd()" class="btn btn-outline-success align-content-end">
+        <button (click)="onAdd()" class="btn btn-outline-success align-content-end"  title="Prestation nouvelle ">
           <span class="fa fa-plus"></span>
         </button>
 
       </div>
+
+      <div class="col col-auto" >
+        <button (click)="onAttachement()" class="btn btn-outline-success align-content-end" title="Attachment ">
+          <span class="fa fa-group"></span>
+        </button>
+
+      </div>
       <div class="col col-auto">
-        <button (click)="onCancel()" class="btn btn-outline-success align-content-end">
+        <button (click)="onCancel()" class="btn btn-outline-success align-content-end"  title="Retour ">
           <span class="fa fa-arrow-left"></span>
         </button>
       </div>
 
     </div>
-    <div class="row  d-inline"><strong> -Objet :</strong> {{invoice.object}}. &nbsp;</div>
-    <div class="row d-inline"><strong>-Ref:</strong> {{invoice.reference}}</div>
+    <div class="row  d-inline"><strong> &nbsp; -Objet :</strong> {{invoice.object}}. &nbsp;</div>
+    <div class="row d-inline"><strong>-Objet-Ref:</strong> {{invoice.reference}}</div>
   </div>
 
   <div class="card-body"  *ngIf="invoice">
@@ -50,7 +57,7 @@
           <td align="left" *ngIf="a.unit"> {{a.number}}&nbsp;{{a.number == 1 ? a.unit.name : a.unit.name + "s"}}</td>
           <td align="center"> {{a.quantity}}</td>
           <td align="right"> {{a.price| number:".2"}} </td>
-          <td align="right"> {{a.price * a.quantity | number:".2"}}</td>
+          <td align="right"> {{a.price * a.quantity*a.number | number:".2"}}</td>
 
 
           <td *ngIf="a.invoice.amountIncludingTax===a.invoice.remains">

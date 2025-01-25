@@ -54,4 +54,16 @@ export class StagiaireService {
     const url = this.baseUrl + "/update"
     return this.httpClient.post(url, stagiaire)
   }
+
+  public getSexe(){
+    return ['M','F'];
+  }
+
+  public getSchoolLevel(){
+    return ["1AM","2AM","3AM","4AM","1AS","2AS","3AS","BAC","BAC+1","BAC+2","BAC+3","BAC+4","BAC+5"]
+  }
+
+  public getGSP(){
+    return ["CADRE","MAITRISE","EXECUTION"]
+  }
 }

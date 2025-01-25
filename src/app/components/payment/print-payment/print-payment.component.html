@@ -1,1 +1,52 @@
-<p>print-payment works!</p>
+<div  class="card">
+  <div class="card-header ">
+    <div class="row">
+<!--      <div *ngIf="session" class="col"><h6>{{title}}&nbsp;:<strong> {{session.action.name}}({{session.name}})-->
+<!--        du {{session.startDate|date:"dd/MM/yyyy"}} au   {{session.endDate|date:"dd/MM/yyyy"}}</strong></h6></div>-->
+      <div class="col col-auto">
+        <button [useExistingCss]="true" class="btn btn-outline-success align-content-end" ngxPrint
+                printSectionId="printPart" styleSheetFile="assets/print-styl/session.scss">
+          <span class="fa fa-print"></span>
+
+        </button>
+      </div>
+      <div class="col col-auto">
+        <button (click)="onCancel()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-arrow-left"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid" id="printPart">
+      <div class="row no-gutters"><h2><strong>.</strong></h2></div>
+
+      <app-header></app-header>
+
+
+      <div class="row no-gutters " style="text-align: center">
+        <h3><u> <strong> Etat d'encaissement </strong></u></h3>
+      </div>
+      <div class="row">&nbsp;</div>
+      <div class="row">&nbsp;</div>
+
+      <div class="row no-gutters items-group1">
+        <div class="card-body">
+          <div>
+            <table class="table table-striped border-black  table-bordered table-hover">
+
+              //
+            </table>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+        <div class="row  text-end"><strong> Le President Directeur Général </strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

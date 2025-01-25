@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col"><h6>{{title}}</h6></div>
+      <div class="col col-auto">
+        <button (click)="onShow()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-tasks"></span>
+
+        </button>
+      </div>
+
+      <div class="col col-auto">
+        <button (click)="onDelletWeek()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-arrow-left"></span>
+
+        </button>
+      </div>
+
+      <div class="col col-auto">
+        <button (click)="onAddWeek()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa fa-arrow-right"></span>
+
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-bordered " style="font-size: 6pt">
+      <thead>
+      <tr>
+        <th style="width: 20%">Action</th>
+        <th>Date debut</th>
+        <th>Date fin</th>
+        <th>Eff</th>
+        <th *ngFor="let d of periode">
+          <div
+            [ngStyle]="{'background-color': (d.type!='week') ? 'yellow' :''}">{{d.day|date:"yy"}}&nbsp; {{d.day|date:"MM"}}&nbsp; {{d.day|date:"dd"}}</div>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let r of  choronogrammeRows">
+        <td>{{r.session.action.name}}({{r.session.name}})</td>
+        <td>{{r.session.startDate|date:"dd/MM/yy"}}</td>
+        <td>{{r.session.endDate|date:"dd/MM/yy"}}</td>
+        <td>-</td>
+
+        <td *ngFor="let d of periode"  >
+          <div *ngFor="let c of r.cellules" >
+            <div *ngIf="utils.formatDate(c.date)===utils.formatDate(d.day)"  >
+              {{c.typePhase.label}}
+            </div>
+          </div>
+        </td>
+
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-header">
+    <!--    Total : <strong>{{totalEntreprise}}</strong> &nbsp;Enregistrements-->
+  </div>
+
+</div>
+
+

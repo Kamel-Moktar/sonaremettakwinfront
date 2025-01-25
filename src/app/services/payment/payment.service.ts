@@ -18,6 +18,11 @@ export class PaymentService {
     return this.http.get<any>(url)
   }
 
+  public identification(id:any) {
+    let url = this.baseUrl + "/identification/"+id
+    return this.http.get<any>(url)
+  }
+
   public getEncaissementByPayment(paymentId: any) {
     let url = this.baseUrl + "/encaissementbypayment/" + paymentId
     return this.http.get<any[]>(url)
@@ -30,6 +35,8 @@ export class PaymentService {
 
   public add(payment: any) {
     let url = this.baseUrl + "/add"
+
+
     return this.http.post(url, payment)
 
   }
@@ -41,7 +48,8 @@ export class PaymentService {
 
   public update(payment: any) {
     let url = this.baseUrl + "/update"
-    return this.http.post(url, payment)
+    console.log(payment)
+    return this.http.put(url, payment)
   }
 
 

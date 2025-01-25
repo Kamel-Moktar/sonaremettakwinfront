@@ -34,9 +34,7 @@ export class CustomerComponent {
 
     this.customerService.getAllParam({name:this.fg.value.name,shortName:this.fg.value.shortName}).subscribe(
       res => {
-
         this.customers = res
-
         // console.log(res)
       })
   }

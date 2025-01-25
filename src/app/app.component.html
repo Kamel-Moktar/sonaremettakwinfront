@@ -23,6 +23,15 @@
             <li><a (click)="onEncaissement()"
                    class="link-dark d-inline-flex text-decoration-none rounded">Encaissement</a>
             </li>
+
+            <li><a (click)="onSearchStagiaire()"
+                   class="link-dark d-inline-flex text-decoration-none rounded">Stagiaire</a>
+            </li>
+
+            <li><a (click)="onChronogramme()"
+                   class="link-dark d-inline-flex text-decoration-none rounded">Chronogramme</a>
+            </li>
+
             <!-- <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onFCommun()" >Commun</a></li>-->
           </ul>
         </div>
@@ -97,6 +106,8 @@
         <div class="collapse" id="plan">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a (click)="onActionCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Action</a>
+            </li>
+            <li><a (click)="onModuleCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Module</a>
             </li>
             <li><a (click)="onSessionClic()" class="link-dark d-inline-flex text-decoration-none rounded">Session</a>
             </li>

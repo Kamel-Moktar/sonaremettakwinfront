@@ -53,7 +53,13 @@
         <td> {{a.objectif}}</td>
         <td> {{a.duration}}</td>
         <td> {{a.durationHour}}</td>
-
+        <td>
+          <div class="container">
+            <button (click)="onDetail(a)" class="btn btn-outline-success">
+              <span class="fa fa-info-circle"> </span>
+            </button>
+          </div>
+        </td>
         <td>
           <div class="container">
             <button class="btn btn-outline-success" (click)="onUpdate(a)">
@@ -77,6 +83,10 @@
   </div>
 
 </div>
+
+
+
+
 
 
 

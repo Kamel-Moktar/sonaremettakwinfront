@@ -8,6 +8,7 @@ import {DecoupageService} from "../../../services/decoupage/decoupage.service";
 import {UtilsService} from "../../../services/utils/utils.service";
 import {InscriptionService} from "../../../services/inscription/inscription.service";
 import {DatePipe} from "@angular/common";
+import {ReservationService} from "../../../services/reservation/reservation.service";
 
 @Component({
   selector: 'app-detail-stagiaire',
@@ -28,6 +29,7 @@ export class DetailStagiaireComponent {
     firstName: ["", Validators.required],
     birthPlace: [""],
     adresse: [""],
+
     phoneNumber: [""],
     mailAdresse: [""],
     wilaya: [""],
@@ -42,18 +44,20 @@ export class DetailStagiaireComponent {
 
   })
   private closeResult = "";
+  reservations: any[] = [];
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private stagiaireService: StagiaireService,
+    public  stagiaireService: StagiaireService,
     private customerService: CustomerService,
     private modalService: NgbModal,
     private decoupageService: DecoupageService,
     private activateRoute: ActivatedRoute,
     private utils: UtilsService,
     private inscriptionService: InscriptionService,
-    private datePipe:DatePipe
+    private datePipe: DatePipe,
+    private reservationService: ReservationService
   ) {
   }
 
@@ -65,6 +69,7 @@ export class DetailStagiaireComponent {
   wilayas: any[] = []
   communes: any[] = []
   sessions: any[] = []
+  private mode: any;
 
 
   ngOnInit() {
@@ -80,9 +85,16 @@ export class DetailStagiaireComponent {
     })
 
     let stagiaireId = this.activateRoute.snapshot.url[1]
+    this.mode = this.activateRoute.snapshot.url[2]
     this.inscriptionService.getAllByStagiaire(stagiaireId).subscribe(res => {
       this.sessions = res
     })
+
+    this.reservationService.getAllByStagiaire(stagiaireId).subscribe(book => {
+      this.reservations = book
+    })
+
+
     this.stagiaireService.getById(stagiaireId).subscribe(res => {
       this.selected = res
       this.selectedCustomer = res.customer
@@ -94,11 +106,25 @@ export class DetailStagiaireComponent {
       let prenom = document.getElementById("prenom");
       if (prenom) prenom.setAttribute("value", res.firstName)
       let date = document.getElementById("date");
-      if (date) date.setAttribute("value",<string>this.datePipe.transform(res.birthDay, 'dd/MM/yyyy') )
+      if (date) date.setAttribute("value", <string>this.datePipe.transform(res.birthDay, 'dd/MM/yyyy'))
 
       let lieu = document.getElementById("lieu");
 
       if (lieu) lieu.setAttribute("value", res.birthPlace)
+
+      let sexe = document.getElementById("sexe");
+
+      if (sexe) sexe.setAttribute("value", res.sexe)
+
+      let school = document.getElementById("school");
+
+      if (school) school.setAttribute("value", res.schoolLevel)
+
+
+      let gsp = document.getElementById("gsp");
+
+      if (gsp) gsp.setAttribute("value", res.gsp)
+
       let adresse = document.getElementById("adresse");
       if (adresse) adresse.setAttribute("value", res.adresse)
       let tph = document.getElementById("tph");
@@ -110,7 +136,8 @@ export class DetailStagiaireComponent {
 
 
   onCancel() {
-    this.router.navigateByUrl("stagiaire")
+    if (this.mode == 0) this.router.navigateByUrl("stagiaire")
+    this.router.navigateByUrl("search-stagiaire")
   }
 
 
@@ -134,6 +161,7 @@ export class DetailStagiaireComponent {
   onHistoryFormation() {
     this.historyFormation = !this.historyFormation
   }
+
   onHistoryFacturation() {
     this.historyFacturation = !this.historyFacturation
   }

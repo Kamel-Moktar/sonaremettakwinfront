@@ -74,6 +74,16 @@ import { UpdateHotelComponent } from './components/hotel/update-hotel/update-hot
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { DetailReservationComponent } from './components/reservation/detail-reservation/detail-reservation.component';
 import { UpdateReservationComponent } from './components/reservation/update-reservation/update-reservation.component';
+import { SearchStgaireComponent } from './components/search-stgaire/search-stgaire.component';
+import { HeaderComponent } from './components/print/header/header.component';
+import { ChronogrammeComponent } from './components/chronogramme/chronogramme.component';
+import { ModuleComponent } from './components/module/module.component';
+import { AddModuleComponent } from './components/module/add-module/add-module.component';
+import { UpdateModuleComponent } from './components/module/update-module/update-module.component';
+import { FormationDispositifComponent } from './components/action/formation-dispositif/formation-dispositif.component';
+import { RealisationDispositifComponent } from './components/phase/realisation-dispositif/realisation-dispositif.component';
+import { AttachementComponent } from './components/invoice/attachement/attachement.component';
+import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
 
 
 
@@ -151,6 +161,15 @@ function NgbModule() {
       ReservationComponent,
       DetailReservationComponent,
       UpdateReservationComponent,
+      SearchStgaireComponent,
+      HeaderComponent,
+      ChronogrammeComponent,
+      ModuleComponent,
+      AddModuleComponent,
+      UpdateModuleComponent,
+      FormationDispositifComponent,
+      RealisationDispositifComponent,
+      AttachementComponent,
 
   ],
   imports: [
@@ -161,7 +180,7 @@ function NgbModule() {
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxPrintModule,
-
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

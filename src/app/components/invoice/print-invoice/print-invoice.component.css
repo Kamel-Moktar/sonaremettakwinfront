@@ -18,6 +18,10 @@ p {
   font-size: 9pt;
 }
 
+h6{
+  font-size: 9pt;
+}
+
 .items-group {
   border-style: solid;
   border-color: gray;
@@ -54,7 +58,7 @@ p {
 @page {
   size: 210mm 297mm;
   /* Chrome sets own margins, we change these printer settings */
-  margin: 0 4mm 0 4mm;
+  margin: 0 10mm 0 10mm;
 }
 
 

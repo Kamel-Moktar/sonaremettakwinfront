@@ -39,6 +39,7 @@ export class EncaissementComponent {
   ngOnInit() {
     this.paymentId = this.activateRoute.snapshot.url[1].path
     this.refresh()
+
   }
 
   refresh() {
@@ -64,10 +65,11 @@ export class EncaissementComponent {
   }
 
   openInvoiceModal(content: any) {
+
     this.formGroup = this.fb.group({
-      number: [],
-      shortName: [],
-      date: []
+      number: [""],
+      shortName: [""],
+      date: [""]
     });
 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', size: "lg"}).result.then((result) => {
@@ -104,7 +106,6 @@ export class EncaissementComponent {
           })
         } else alert("Le montant de l'encaissement est supérieure  au montant restant ")
       } else alert("Le montan encaisse doit etre supérieur  à 0 ")
-
     } else alert("Veuillez introduire  le montant encaissé")
   }
 
@@ -112,20 +113,21 @@ export class EncaissementComponent {
     if (confirm("Voulez vous vraiment supprimer cette ligne  ?")) {
       this.paymentService.deleteEncaissement(a).subscribe(() => {
         this.refresh()
-      //  this.refreshInvoices({number: number, shortName: shortName, date: date})
+      //this.refreshInvoices({number: number, shortName: shortName, date: date})
       })
     }
   }
-
 
   onSearch() {
     this.refreshInvoices({number: this.formGroup.value.number, shortName: this.formGroup.value.shortName, date:this.formGroup.value.date})
   }
 
   refreshInvoices(searchParam: any) {
-    this.invoiceService.getDebtsParam(searchParam).subscribe((ls) => {
+    this.invoiceService.getDebtsParam(searchParam).subscribe(ls => {
+      console.log(searchParam)
+
       this.invoices = []
-      ls.forEach(e => {
+     ls.forEach(e => {
           this.invoices.push({
             invoice: e,
             fg: this.fb.group({

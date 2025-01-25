@@ -2,6 +2,11 @@
   <div class="card-header ">
     <div class="row">
       <div class="col"><h6>{{title}}</h6></div>
+      <div class="col col-auto m-2">
+        <button (click)="openPrintList()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-print"></span>
+        </button>
+      </div>
       <div class="col col-auto">
         <button (click)="onAddPayment()" class="btn btn-outline-success align-content-end">
           <span class="fa fa-plus"></span>
@@ -35,6 +40,13 @@
 
         <td>
           <div class="container">
+            <button (click)="onIdentification(a)" class="btn btn-outline-success">
+              <span class="fa fa-search"> </span>
+            </button>
+          </div>
+        </td>
+        <td>
+          <div class="container">
             <button (click)="onDetail(a)" class="btn btn-outline-success">
               <span class="fa fa-info-circle"> </span>
             </button>
@@ -64,6 +76,5 @@
   </div>
 
 </div>
-
 
 

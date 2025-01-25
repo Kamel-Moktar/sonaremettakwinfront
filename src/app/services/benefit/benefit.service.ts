@@ -42,7 +42,14 @@ export class BenefitService {
     return this.httpClient.put(url, benefit)
   }
 
-  public static tva(){
-    return [0.09,0.19]
+  public tva1() {
+    const url = this.baseUrl + "/tva"
+    return this.httpClient.get(url)
   }
+
+  public static tva(){
+    return [0,0.09,0.19]
+  }
+
+
 }

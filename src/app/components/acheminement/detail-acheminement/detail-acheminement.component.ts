@@ -46,7 +46,7 @@ export class DetailAcheminementComponent {
       this.selectedShippingSlip = res
     })
 
-    this.refreshInvoices({number: "*", shortName: "*", date: "*"})
+    this.refreshInvoices({number: "", shortName: "", date: ""})
 
   }
 

@@ -21,15 +21,18 @@ export class AddStagiaireComponent {
 
   formGroup: FormGroup = this.fb.group({
 
-    birthDay: ["", Validators.required],
+    birthDay: [""],
     familyName: ["", Validators.required],
-    firstName: ["", Validators.required],
+    firstName: ["",Validators.required],
     birthPlace: [""],
     adresse: [""],
     phoneNumber: [""],
     mailAdresse: [""],
     wilaya:[""],
-    commune:[""]
+    commune:[""],
+    sexe:["M"],
+    school:[""],
+    gsp:[""]
 
   })
 
@@ -44,7 +47,7 @@ export class AddStagiaireComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private stagiaireService: StagiaireService,
+    public stagiaireService: StagiaireService,
     private customerService: CustomerService,
     private modalService: NgbModal,
     private decoupageService :DecoupageService,
@@ -95,7 +98,10 @@ export class AddStagiaireComponent {
         adresse: this.formGroup.value.adresse,
         phoneNumber: this.formGroup.value.phoneNumber,
         mailAdresse: this.formGroup.value.mailAdresse,
-        customer: this.selectedCustomer
+        customer: this.selectedCustomer,
+        sexe: this.formGroup.value.sexe,
+        schoolLevel: this.formGroup.value.school,
+        gsp: this.formGroup.value.gsp
 
       }).subscribe( stag => {
          if(this.form!=0){
@@ -170,7 +176,7 @@ export class AddStagiaireComponent {
   onWilayaSelect() {
     let wilayaName=this.formGroup.value.wilaya
 
-
+console.log(wilayaName)
 
     this.decoupageService.getCommune(wilayaName).subscribe(res=>{
       this.communes=res

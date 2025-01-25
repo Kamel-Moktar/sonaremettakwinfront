@@ -6,7 +6,6 @@ import {CustomerService} from "../../../services/customer/customer.service";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {DecoupageService} from "../../../services/decoupage/decoupage.service";
 import {UtilsService} from "../../../services/utils/utils.service";
-import {SessionService} from "../../../services/session/session.service";
 import {InscriptionService} from "../../../services/inscription/inscription.service";
 
 @Component({
@@ -17,12 +16,12 @@ import {InscriptionService} from "../../../services/inscription/inscription.serv
 export class UpdateStagiaireComponent {
 
   title: String = "Update stagiaire";
-  inscriptionId :any
+  inscriptionId: any
   inscription: any
 
   formGroup: FormGroup = this.fb.group({
 
-    birthDay: ["", Validators.required],
+    birthDay: [""],
     familyName: ["", Validators.required],
     firstName: ["", Validators.required],
     birthPlace: [""],
@@ -30,8 +29,11 @@ export class UpdateStagiaireComponent {
     phoneNumber: [""],
     mailAdresse: [""],
     wilaya: [""],
-    commune: [""]
+    commune: [""],
 
+    school: [""],
+    gsp: [""],
+    sexe: [""]
   })
 
   fg: FormGroup = this.fb.group({
@@ -45,13 +47,13 @@ export class UpdateStagiaireComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private stagiaireService: StagiaireService,
+    public  stagiaireService: StagiaireService,
     private customerService: CustomerService,
     private modalService: NgbModal,
     private decoupageService: DecoupageService,
     private activateRoute: ActivatedRoute,
     private utils: UtilsService,
-    private inscriptionService :InscriptionService
+    private inscriptionService: InscriptionService
   ) {
   }
 
@@ -75,11 +77,11 @@ export class UpdateStagiaireComponent {
     })
 
     let stagiaireId = this.activateRoute.snapshot.url[1]
-    this.inscriptionId= this.activateRoute.snapshot.url[2]
+    this.inscriptionId = this.activateRoute.snapshot.url[2]
 
-  if(this.inscriptionId!=0) this.inscriptionService.getById(this.inscriptionId).subscribe(res=>{
-     this.inscription=res
-   })
+    if (this.inscriptionId != 0) this.inscriptionService.getById(this.inscriptionId).subscribe(res => {
+      this.inscription = res
+    })
 
     this.stagiaireService.getById(stagiaireId).subscribe(res => {
       this.selected = res
@@ -94,10 +96,13 @@ export class UpdateStagiaireComponent {
       })
 
       this.formGroup = this.fb.group({
-        birthDay: [this.utils.formatDate(res.birthDay), Validators.required],
+        birthDay: [this.utils.formatDate(res.birthDay)],
         familyName: [res.familyName, Validators.required],
         firstName: [res.firstName, Validators.required],
         birthPlace: [res.birthPlace],
+        sexe: [res.sexe],
+        school: [res.scholeLvel],
+        gsp: [res.gsp],
         adresse: [res.adresse],
         phoneNumber: [res.phoneNumber],
         mailAdresse: [res.mailAdresse],
@@ -114,14 +119,18 @@ export class UpdateStagiaireComponent {
     if (this.formGroup.valid && this.selectedCustomer) {
       let birthPlace = ""
       if (this.formGroup.value.wilaya == "ETRANGER") birthPlace = this.formGroup.value.birthPlace
-      else birthPlace = this.formGroup.value.commune + "W." + this.formGroup.value.wilaya
+      else birthPlace = this.formGroup.value.commune + "-W." + this.formGroup.value.wilaya
 
       this.stagiaireService.update({
         id: this.selected.id,
         firstName: this.formGroup.value.firstName,
         familyName: this.formGroup.value.familyName,
         birthDay: this.formGroup.value.birthDay,
-        birthPlace: this.formGroup.value.birthPlace,
+        birthPlace: birthPlace,
+        sexe: this.formGroup.value.sexe,
+        schoolLevel:this.formGroup.value.school,
+        gsp:this.formGroup.value.gsp,
+
         adresse: this.formGroup.value.adresse,
         phoneNumber: this.formGroup.value.phoneNumber,
         mailAdresse: this.formGroup.value.mailAdresse,
@@ -138,8 +147,8 @@ export class UpdateStagiaireComponent {
   }
 
   onCancel() {
-    if(this.inscriptionId==0)this.router.navigateByUrl("stagiaire")
-    else this.router.navigateByUrl("inscription/"+this.inscription.session.id)
+    if (this.inscriptionId == 0) this.router.navigateByUrl("stagiaire")
+    else this.router.navigateByUrl("inscription/" + this.inscription.session.id)
 
   }
 

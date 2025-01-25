@@ -24,8 +24,8 @@
         <div class="formation">{{inscription.session.action.name}}({{inscription.session.name}})</div>
         <div class="du">{{inscription.session.startDate|date : "dd/MM/yyyy"}}</div>
         <div class="au">{{inscription.session.endDate|date : "dd/MM/yyyy"}}</div>
-        <div class="duree_jour">{{inscription.session.action.duration}}</div>
-        <div class="duree_heure">{{inscription.session.action.durationHour}}</div>
+        <div class="duree_jour">{{inscription.session.action.duration}} jours</div>
+        <div class="duree_heure">({{inscription.session.action.durationHour}}H)</div>
         <div class="edition">{{edition|date : "dd/MM/yyyy"}}</div>
       </div>
     </div>

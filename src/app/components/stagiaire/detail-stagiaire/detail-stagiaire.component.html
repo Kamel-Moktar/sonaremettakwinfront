@@ -49,13 +49,37 @@
 
 
         <div class="row m-2">
+          <div class="col  col-2 text-end"><label> Sexe: </label></div>
+          <div class="col col-1">
+            <input [disabled]="true" class="form-control" id="sexe"
+                   type="text">
+
+          </div>
+        </div>
+
+        <div class="row m-2">
           <div class="col  col-2 text-end"><label> Adresse: </label></div>
           <div class="col "><input [disabled]="true" class="form-control" id="adresse" placeholder="Adresse"
                                    type="text"></div>
 
         </div>
 
+        <div class="row m-2">
+          <div class="col  col-2 text-end"><label> Niveau Scolaire: </label></div>
+          <div class="col col-2">
+            <input [disabled]="true" class="form-control" id="school"
+                   type="text">
 
+          </div>
+        </div>
+        <div class="row m-2">
+          <div class="col  col-2 text-end"><label> GSP: </label></div>
+          <div class="col col-2">
+            <input [disabled]="true" class="form-control" id="gsp"
+                   type="text">
+
+          </div>
+        </div>
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Téléphone: </label></div>
           <div class="col col-4"><input [disabled]="true" class="form-control" id="tph" placeholder="Téléphone"
@@ -99,7 +123,7 @@
       <div class="col col-6">
         <button (click)="onHistoryFacturation()" class="btn btn-outline-success align-content-end">
           <span class="fa fa-history"></span>
-          Historique de facturation
+          Historique de Logistique
           <span *ngIf="!historyFacturation" class="fa fa-toggle-down"></span>
           <span *ngIf="historyFacturation" class="fa fa-toggle-up"></span>
         </button>
@@ -107,7 +131,7 @@
     </div>
 
     <div class="row">
-      <div  class="col col-6">
+      <div class="col col-6">
         <table *ngIf="historyFormation" class="table table-striped  table-bordered table-hover">
 
           <thead>
@@ -139,26 +163,20 @@
         <table class="table table-striped  table-bordered table-hover">
           <thead>
           <tr class="text-center">
-            <th style="width: 5%">N°</th>
-            <th style="width: 25%">Date </th>
-            <th style="width: 10%">Montant HT</th>
-            <th style="width: 10%">Montant TTC</th>
-            <th style="width: 10%">Rest</th>
+            <th style="width: 5%">N° Reservation</th>
+            <th style="width: 40%">Nom hotel</th>
+            <th style="width: 15%">Du</th>
+            <th style="width: 15%">Au</th>
+            <th style="width: 20%">Type de chambre</th>
           </thead>
           <tbody>
-          <tr *ngFor="let a of this.sessions ;let i=index ">
-            <td style="text-align: center"> {{a.session.id}}</td>
-            <td> {{a.session.action.name}}({{a.session.name}})</td>
-            <td align="center"> {{a.session.startDate| date: "dd/MM/YYYY"}}</td>
-            <td align="center"> {{a.session.endDate | date: "dd/MM/YYYY"}}</td>
+          <tr *ngFor="let a of this.reservations ;let i=index ">
+            <td style="text-align: center"> {{a.id}}</td>
+            <td> {{a.hotel.name}}</td>
+            <td style="text-align: center"> {{a.arriveDate|date:"dd/MM/YYYY"}}</td>
+            <td style="text-align: center"> {{a.leavingDate|date:"dd/MM/YYYY"}}</td>
+            <td style="text-align: center"> {{a.roomType}}</td>
             <td>
-              <div class="container">
-                <button (click)="onStagiaire(a)" class="btn btn-outline-success" title="Stagiaires inscrits">
-                  <span class="fa fa-group"> </span>
-                </button>
-              </div>
-            </td>
-          </tr>
           </tbody>
         </table>
       </div>

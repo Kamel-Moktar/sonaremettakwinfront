@@ -39,6 +39,11 @@ export class ReservationService {
     const url = this.baseUrl + "/allbystagiaire/" + stagiaireId
     return this.httpClient.get<any>(url)
   }
+  getAllByInscription(inscriptionId: any) {
+    const url = this.baseUrl + "/allbyinscription/" +inscriptionId
+    return this.httpClient.get<any>(url)
+  }
+
 
   getById(id: any) {
     const url = this.baseUrl + "/byid/" + id

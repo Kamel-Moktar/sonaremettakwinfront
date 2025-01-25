@@ -66,6 +66,14 @@ import {ReservationComponent} from "./components/reservation/reservation.compone
 import {DetailReservationComponent} from "./components/reservation/detail-reservation/detail-reservation.component";
 import {UpdateReservationComponent} from "./components/reservation/update-reservation/update-reservation.component";
 import {UpdateHotelComponent} from "./components/hotel/update-hotel/update-hotel.component";
+import {SearchStgaireComponent} from "./components/search-stgaire/search-stgaire.component";
+import {ChronogrammeComponent} from "./components/chronogramme/chronogramme.component";
+import {ModuleComponent} from "./components/module/module.component";
+import {AddModuleComponent} from "./components/module/add-module/add-module.component";
+import {UpdateModuleComponent} from "./components/module/update-module/update-module.component";
+import {FormationDispositifComponent} from "./components/action/formation-dispositif/formation-dispositif.component";
+import {RealisationDispositifComponent} from "./components/phase/realisation-dispositif/realisation-dispositif.component";
+import {AttachementComponent} from "./components/invoice/attachement/attachement.component";
 
 const routes: Routes = [
   {path: "customer", component: CustomerComponent},
@@ -94,7 +102,7 @@ const routes: Routes = [
   {path: "addpayment", component: AddPaymentComponent},
   {path: "update-payment/:di", component: UpdatePaymentComponent},
   {path: "encaissement/:id", component: EncaissementComponent},
-  {path: "print-payment/:id", component: PrintPaymentComponent},
+  {path: "print-payment", component: PrintPaymentComponent},
   {path: "turnover", component: TurnoverComponent},
   {path: "debts", component: DebtsComponent},
 
@@ -126,7 +134,7 @@ const routes: Routes = [
   {path:'stagiaire' , component:  StagiaireComponent},
   {path: 'add-stagiaire/:form', component: AddStagiaireComponent},
   {path: 'update-stagiaire/:stagiaireId/:inscriptionID',component:UpdateStagiaireComponent},
-  {path: 'detail-stagiaire/:stagiaireId',component:DetailStagiaireComponent},
+  {path: 'detail-stagiaire/:stagiaireId/:mode',component:DetailStagiaireComponent},
 
   {path:'domaine' , component:  DomaineComponent},
   {path: 'add-domaine', component: AddDomaineComponent},
@@ -145,7 +153,22 @@ const routes: Routes = [
 
   {path:'reservation/:id',component:ReservationComponent},
   {path:'detail-reservation/:inscriptionId',component:DetailReservationComponent},
-  {path:'update-reservation/:reservationId',component:UpdateReservationComponent}
+  {path:'update-reservation/:reservationId',component:UpdateReservationComponent},
+
+  {path:'search-stagiaire',component:SearchStgaireComponent},
+
+  {path:'chronogramme',component:ChronogrammeComponent},
+
+
+  {path:'module',component:ModuleComponent},
+  {path:'add-module',component:AddModuleComponent},
+  {path:'update-module/:id',component:UpdateModuleComponent},
+
+  {path:'formation-dispositif/:id',component:FormationDispositifComponent},
+  {path:'realisation-dispositif/:id',component:RealisationDispositifComponent},
+
+
+  {path:'attachement/:id',component:AttachementComponent}
 ]
 
 

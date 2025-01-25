@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 
 import {Router} from "@angular/router";
@@ -24,6 +24,8 @@ export class StagiaireComponent {
 
     }
   );
+  @Input()
+  isJustForConsultation=false
 
   constructor(public stagiaireService: StagiaireService,
               private router: Router,
@@ -67,7 +69,8 @@ export class StagiaireComponent {
   }
 
   onDetail(a: any) {
-    this.router.navigateByUrl("detail-stagiaire/" + a.id)
+    if(this.isJustForConsultation)this.router.navigateByUrl("detail-stagiaire/" + a.id+"/1")
+    else this.router.navigateByUrl("detail-stagiaire/" + a.id+"/0")
   }
 
 

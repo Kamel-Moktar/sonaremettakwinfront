@@ -18,18 +18,19 @@
           <tr class="text-center">
             <th style="width: 5%"></th>
 
-            <th style="width: 30%">
-              <form [formGroup]="fg">
-                <input (keyup)="onSearch()" [formControlName]="'name'" [placeholder]="'Nom Client'" class="form-control"
-                       type="text">
-              </form>
-            </th>
+
             <th style="width: 15%">
               <form [formGroup]="fg">
                 <input (keyup)="onSearch()" [formControlName]="'shortName'" [placeholder]="'Libellé court'" class="form-control"
                        type="text">
               </form>
             </th>
+            <th style="width: 30%">
+            <form [formGroup]="fg">
+              <input (keyup)="onSearch()" [formControlName]="'name'" [placeholder]="'Nom Client'" class="form-control"
+                     type="text">
+            </form>
+          </th>
           </tr>
           </thead>
           <thead>

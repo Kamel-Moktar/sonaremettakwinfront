@@ -62,6 +62,13 @@ export class PhaseService {
     const url = this.baseUrl + "/update"
     return this.httpClient.put(url, benefit)
   }
+
+
+  public getChronogramme(param:any) {
+
+    const url = this.baseUrl + "/chronogramme"
+    return this.httpClient.post<any>(url, param)
+  }
 }
 
 

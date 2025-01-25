@@ -34,7 +34,7 @@
           <div class="col col-2 text-end"><label> Date de naissance: </label></div>
           <div class="col col-4"><input [formControlName]="'birthDay'" class="form-control" placeholder="Date de naissance"
                                         type="date"></div>
-          <div class="col"><h6 style="color:#ff0000">(*)</h6></div>
+<!--          <div class="col"><h6 style="color:#ff0000">(*)</h6></div>-->
         </div>
 
         <div class="row m-2">
@@ -63,10 +63,42 @@
         </div>
 
         <div class="row m-2">
+
+          <div class="col  col-2 text-end"><label> Sexe: </label></div>
+          <div class="col col-1">
+            <select class='form-select form-control' formControlName="sexe">
+              <option *ngFor='let option of stagiaireService.getSexe()'
+                      class='form-select'>{{option}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row m-2">
           <div class="col  col-2 text-end"><label> Adresse: </label></div>
           <div class="col "><input [formControlName]="'adresse'" class="form-control" placeholder="Adresse"
                                    type="text"></div>
 
+        </div>
+
+        <div class="row m-2">
+
+          <div class="col  col-2 text-end"><label> Niveau Scolaire: </label></div>
+          <div class="col col-2">
+            <select class='form-select form-control' formControlName="school">
+              <option *ngFor='let option of stagiaireService.getSchoolLevel()'
+                      class='form-select'>{{option}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row m-2">
+
+          <div class="col  col-2 text-end"><label> GSP: </label></div>
+          <div class="col col-2">
+            <select class='form-select form-control' formControlName="gsp">
+              <option *ngFor='let option of stagiaireService.getGSP()'
+                      class='form-select'>{{option}}</option>
+            </select>
+          </div>
         </div>
 
 

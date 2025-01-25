@@ -2,6 +2,9 @@ import {Component} from '@angular/core';
 
 import {Router} from "@angular/router";
 import {PaymentService} from "../../services/payment/payment.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {CustomerService} from "../../services/customer/customer.service";
 
 @Component({
   selector: 'app-payment',
@@ -12,8 +15,17 @@ export class PaymentComponent {
 
   payments?: any[];
   title: any = 'Règlement ';
+  customers: any[]=[];
 
-  constructor(public paymentService: PaymentService, private router: Router) {
+
+
+  private selectedCustomer:any;
+  private closeResult: any;
+  constructor(public paymentService: PaymentService,
+              private router: Router,
+              private fb:FormBuilder,
+
+  ) {
   }
 
   ngOnInit(): void {
@@ -48,5 +60,17 @@ export class PaymentComponent {
 
   onDetail(a: any) {
     this.router.navigateByUrl("encaissement/" + a.id)
+  }
+
+
+  openPrintList() {
+    this.router.navigateByUrl("print-payment")
+  }
+
+  onIdentification(a: any) {
+    this.paymentService.identification(a.id).subscribe(res=>{
+      console.log(res)
+    })
+
   }
 }

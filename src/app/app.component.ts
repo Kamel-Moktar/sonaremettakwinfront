@@ -15,6 +15,7 @@ export class AppComponent {
 
 
   onCustomerCalled() {
+
   this.router.navigateByUrl("customer");
   }
 
@@ -88,5 +89,17 @@ export class AppComponent {
 
   onReservatioCalled() {
     this.router.navigateByUrl("reservation/0")
+  }
+
+  onSearchStagiaire(){
+    this.router.navigateByUrl("search-stagiaire")
+  }
+
+  onChronogramme() {
+    this.router.navigateByUrl("chronogramme")
+  }
+
+  onModuleCalled() {
+    this.router.navigateByUrl("module")
   }
 }

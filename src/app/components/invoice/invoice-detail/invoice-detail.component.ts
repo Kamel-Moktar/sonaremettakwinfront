@@ -101,5 +101,9 @@ export class InvoiceDetailComponent {
   onPrint1() {
     this.router.navigateByUrl("print-invoice/" + this.invoiceId)
   }
+
+  onAttachement() {
+    this.router.navigateByUrl("attachement/" + this.invoiceId)
+  }
 }
 
