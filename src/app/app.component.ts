@@ -102,4 +102,8 @@ export class AppComponent {
   onModuleCalled() {
     this.router.navigateByUrl("module")
   }
+
+  onPrice() {
+    this.router.navigateByUrl("price")
+  }
 }

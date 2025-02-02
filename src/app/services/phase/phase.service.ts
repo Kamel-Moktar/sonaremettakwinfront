@@ -17,6 +17,12 @@ export class PhaseService {
     return this.httpClient.get<any>(url)
   }
 
+
+  getAllBySessionForBilling(id:any) {
+    const url = this.baseUrl + "/billing/"+id
+    return this.httpClient.get<any>(url)
+  }
+
   getAllBySession(sessionId: any) {
     const url = this.baseUrl + "/allbysession/" + sessionId
     return this.httpClient.get<any>(url)
@@ -51,16 +57,18 @@ export class PhaseService {
 
   }
 
-  public add(benefit: any) {
+  public add(phase: any) {
     const url = this.baseUrl + "/add"
-    return this.httpClient.post(url, benefit)
+    return this.httpClient.post(url, phase)
 
   }
 
 
-  public update(benefit: any) {
+  public update(phase: any) {
     const url = this.baseUrl + "/update"
-    return this.httpClient.put(url, benefit)
+
+
+    return this.httpClient.put(url, phase)
   }
 
 
@@ -69,6 +77,8 @@ export class PhaseService {
     const url = this.baseUrl + "/chronogramme"
     return this.httpClient.post<any>(url, param)
   }
+
+
 }
 
 

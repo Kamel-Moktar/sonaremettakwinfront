@@ -20,8 +20,8 @@ export class UpdatePhaseComponent {
     name: ["", Validators.required],
     dd: ["", Validators.required],
     df: ["", Validators.required],
-    type: [Validators.required],
-    lieu: []
+    typePh: [Validators.required],
+    dureDay: [Validators.required]
   })
 
   fg: FormGroup = this.fb.group({
@@ -31,7 +31,7 @@ export class UpdatePhaseComponent {
   footer: any = "";
   session: any;
   selected: any
-
+  selectedTypePhase: any
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -58,8 +58,8 @@ export class UpdatePhaseComponent {
           name: [ph.name, Validators.required],
           dd: [this.utils.formatDate(ph.startDate), Validators.required],
           df: [this.utils.formatDate(ph.endDate), Validators.required],
-          type: [ph.typePhase, Validators.required],
-          lieu: [ph.lieuPhase]
+          typePh: [ph.typePhase.type, Validators.required],
+          dureDay: [ph.duration]
         })
 
 
@@ -79,19 +79,32 @@ export class UpdatePhaseComponent {
 
   }
 
+
+
+
+
+
+
+
   onValidate() {
+
+
+    const v = this.formGroup.value.typePh;
+    console.log(v)
+    this.typePhases.forEach(u => {
+      if (u.type == v) this.selectedTypePhase = u
+    })
     if (this.formGroup.valid && this.session) {
       if (this.formGroup.value.df >= this.formGroup.value.dd) {
         if (this.formGroup.value.df <= this.utils.formatDate(this.session.endDate) && this.formGroup.value.dd >= this.utils.formatDate(this.session.startDate)) {
-          this.phaseService.add({
+          this.phaseService.update({
             id: this.selected.id,
             name: this.formGroup.value.name,
             startDate: this.formGroup.value.dd,
             endDate: this.formGroup.value.df,
             session: this.session,
-            typePhase: this.formGroup.value.type,
-            lieuPhase: this.formGroup.value.type == 'FT' ? this.formGroup.value.lieu : null,
-
+            typePhase: this.selectedTypePhase,
+            duration: this.formGroup.value.dureDay
           }).subscribe(() => {
             this.onCancel();
           })
@@ -105,6 +118,18 @@ export class UpdatePhaseComponent {
   onCancel() {
     this.router.navigateByUrl("phase/" + this.session.id)
   }
+  calculerDure() {
 
+    let duration = this.utils.dureOuvrable(this.formGroup.value.dd,this.formGroup.value.df)
+
+    this.formGroup = this.fb.group({
+      name: [this.formGroup.value.name, Validators.required],
+      dd: [this.utils.formatDate(this.formGroup.value.dd), Validators.required],
+      df: [this.utils.formatDate(this.formGroup.value.df), Validators.required],
+      type: [this.formGroup.value.type, Validators.required],
+
+      dureDay: [duration, Validators.required],
+    })
+  }
 
 }

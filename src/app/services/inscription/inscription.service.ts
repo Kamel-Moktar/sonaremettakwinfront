@@ -20,9 +20,20 @@ export class InscriptionService {
   getAllBySession(sessionId: any) {
     const url = this.baseUrl + "/allbysession/" + sessionId
     return this.httpClient.get<any>(url)
+  }
+
+  getAllByCustomerBySession(cId: any,sId: any) {
+    const url = this.baseUrl + "/customer/" + cId+"/"+sId
+    return this.httpClient.get<any>(url)
 
   }
 
+  getSessionByCustomer(cId: any) {
+
+    const url = this.baseUrl + "/session/" + cId
+    return this.httpClient.get<any>(url)
+
+  }
   getAllByStagiaire(stagiaireId: any) {
     const url = this.baseUrl + "/allbystagiaire/" + stagiaireId
     return this.httpClient.get<any>(url)
@@ -55,8 +66,6 @@ export class InscriptionService {
   updateDeclencheur(declencheur: any) {
     const url = this.baseUrl + "/updatedeclencheur"
     return this.httpClient.put(url, declencheur)
-
-
   }
 
 

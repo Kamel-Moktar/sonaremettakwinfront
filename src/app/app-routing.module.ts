@@ -74,6 +74,12 @@ import {UpdateModuleComponent} from "./components/module/update-module/update-mo
 import {FormationDispositifComponent} from "./components/action/formation-dispositif/formation-dispositif.component";
 import {RealisationDispositifComponent} from "./components/phase/realisation-dispositif/realisation-dispositif.component";
 import {AttachementComponent} from "./components/invoice/attachement/attachement.component";
+import {UpdatePriceComponent} from "./components/price/update-price/update-price.component";
+import {AddPriceComponent} from "./components/price/add-price/add-price.component";
+import {PriceComponent} from "./components/price/price.component";
+import {UpdateInvoiceDetailComponent} from "./components/invoice-detail/update-invoice-detail/update-invoice-detail.component";
+import {AddInvoiceDetailComponent} from "./components/invoice-detail/add-invoice-detail/add-invoice-detail.component";
+import {PrintAttachementComponent} from "./components/invoice/print-attachement/print-attachement.component";
 
 const routes: Routes = [
   {path: "customer", component: CustomerComponent},
@@ -168,7 +174,17 @@ const routes: Routes = [
   {path:'realisation-dispositif/:id',component:RealisationDispositifComponent},
 
 
-  {path:'attachement/:id',component:AttachementComponent}
+  {path:'attachement/:id',component:AttachementComponent},
+  {path:'update-invoice-detail/:id',component:UpdateInvoiceDetailComponent},
+  {path:'add-invoice-detail/:id/:id1',component:AddInvoiceDetailComponent},
+  {path:'print-attachement/:id',component:PrintAttachementComponent},
+
+  {path:'add-price',component:AddPriceComponent},
+  {path:'update-price/:id',component:UpdatePriceComponent},
+  {path:'price',component:PriceComponent},
+
+
+
 ]
 
 

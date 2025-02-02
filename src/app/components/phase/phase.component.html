@@ -84,7 +84,7 @@
         <th style="width: 10%">Date Debut</th>
         <th style="width: 10%">Date Fin</th>
         <th style="width: 10%">Type Phase</th>
-        <th style="width: 10%">lieu</th>
+        <th style="width: 10%">Durée</th>
 
 
       </thead>
@@ -96,7 +96,7 @@
         <td align="center"> {{a.startDate| date: "dd/MM/YYYY"}}</td>
         <td align="center"> {{a.endDate | date: "dd/MM/YYYY"}}</td>
         <td> {{a.typePhase.type}}</td>
-        <td> {{a.lieuPhase }}</td>
+        <td> {{a.duration }}</td>
         <td>
           <div class="container">
             <button (click)="onUpdate(a)" class="btn btn-outline-success">

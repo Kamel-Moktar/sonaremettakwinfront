@@ -11,7 +11,8 @@ export class PrintAttestationComponent {
   title: any = "Attestation";
   inscription: any
   edition = new Date()
-
+  eng:any ="/DG/DPRD/AF/2025"
+  back:any="/assets/print-styl/attestation.css"
   constructor(private inscriptionService: InscriptionService,
               private  router: Router,
               private activateRoute: ActivatedRoute

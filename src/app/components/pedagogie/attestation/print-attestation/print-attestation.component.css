@@ -96,11 +96,22 @@ p{font-size: 9pt;}
 
 :root {
   --p: 110mm;
+  --decal:20
+}
+
+.eng {
+  position: absolute;
+  top: 77.2mm;
+  left: 50mm;
+  font-size: 14pt;
+  font-family: Calibri, Papyrus, fantasy;
+  font-weight: bold;
+
 }
 .name {
   position: absolute;
-  top: 110mm;
-  left: 75mm;
+  top: 124.2mm;
+  left: 62mm;
   font-size: 14pt;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
@@ -109,7 +120,7 @@ p{font-size: 9pt;}
 
 .date_naissance {
   position: absolute;
-  top: 120mm;
+  top: 133mm;
   left: 74mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
@@ -118,8 +129,8 @@ p{font-size: 9pt;}
 
 .lieu_naissance {
   position: absolute;
-  top: 120mm;
-  left: 135mm;
+  top: 133mm;
+  left: 120mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
@@ -127,7 +138,7 @@ p{font-size: 9pt;}
 
 .formation {
   position: absolute;
-  top: 130mm;
+  top: 141mm;
   left: 120mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
@@ -136,8 +147,8 @@ p{font-size: 9pt;}
 
 .du {
   position: absolute;
-  top: 140mm;
-  left: 75mm;
+  top: 149.5mm;
+  left: 55mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
@@ -145,7 +156,7 @@ p{font-size: 9pt;}
 
 .au {
   position: absolute;
-  top: 140mm;
+  top: 149.5mm;
   left: 130mm;
   font-family:Calibri, Papyrus, fantasy;
   font-weight: bold;
@@ -153,16 +164,16 @@ p{font-size: 9pt;}
 }
 .duree_jour {
   position: absolute;
-  top: 150mm;
-  left: 70mm;
+  top: 157.5mm;
+  left: 55mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
 }
 .duree_heure {
   position: absolute;
-  top: 150mm;
-  left:91mm;
+  top: 157.5mm;
+  left:75mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
@@ -170,8 +181,8 @@ p{font-size: 9pt;}
 
 .edition {
   position: absolute;
-  top: 170mm;
-  left:91mm;
+  top: 174.3mm;
+  left:75mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;

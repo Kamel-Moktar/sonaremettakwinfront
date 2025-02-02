@@ -45,6 +45,7 @@ export class InvoiceDetailComponent {
     this.invoiceService.getInvoiceById(this.invoiceId).subscribe(
       (res) => {
         this.invoice = res
+        this.title = 'Détail Facture N°: ' + this.invoiceService.formatInvoiceNumber(res)+" de  "+this.invoice.customer.shortName
         this.saleService.getSaleByInvoice(this.invoice).subscribe(
           (res) => {
             this.lignes = res

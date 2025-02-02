@@ -84,6 +84,12 @@ import { FormationDispositifComponent } from './components/action/formation-disp
 import { RealisationDispositifComponent } from './components/phase/realisation-dispositif/realisation-dispositif.component';
 import { AttachementComponent } from './components/invoice/attachement/attachement.component';
 import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
+import { PriceComponent } from './components/price/price.component';
+import { AddPriceComponent } from './components/price/add-price/add-price.component';
+import { UpdatePriceComponent } from './components/price/update-price/update-price.component';
+import { AddInvoiceDetailComponent } from './components/invoice-detail/add-invoice-detail/add-invoice-detail.component';
+import { UpdateInvoiceDetailComponent } from './components/invoice-detail/update-invoice-detail/update-invoice-detail.component';
+import { PrintAttachementComponent } from './components/invoice/print-attachement/print-attachement.component';
 
 
 
@@ -170,6 +176,12 @@ function NgbModule() {
       FormationDispositifComponent,
       RealisationDispositifComponent,
       AttachementComponent,
+      PriceComponent,
+      AddPriceComponent,
+      UpdatePriceComponent,
+      AddInvoiceDetailComponent,
+      UpdateInvoiceDetailComponent,
+      PrintAttachementComponent,
 
   ],
   imports: [

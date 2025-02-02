@@ -20,7 +20,7 @@ export class UtilsService {
 
   compareDate(d1:any,d2 :any){
 
-     console.log(d2)
+
     if(d1&&d2){
     let year1 = d1.getFullYear()
     let month1 = d1.getMonth() + 1
@@ -38,6 +38,17 @@ export class UtilsService {
     return -1
   }
 
+dureOuvrable(d1:any,d2:any){
+  let dd = new Date(d1)
+  let df = new Date(d2)
 
+  let duration = (df.getTime() - dd.getTime()) / (1000 * 60 * 60 * 24)
+
+
+  if(duration<=6)return duration
+
+ return  (Math.floor(duration/7))*5
+
+}
 
 }

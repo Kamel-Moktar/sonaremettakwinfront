@@ -1,8 +1,3 @@
-:root {
-  --p: 91mm;
-}
-
-
 html, body, h1, h2, h3, h4, p, img { margin: 0;} /* margin reset*/
 h1{font-size: 18pt; font-weight: 350; margin-bottom: 0.1cm;}
 h2{font-size: 16pt; font-weight: 350;}
@@ -42,6 +37,7 @@ p{font-size: 9pt;}
   /* Chrome sets own margins, we change these printer settings */
   margin: 0 4mm 0 4mm;
 }
+
 
 
 
@@ -98,73 +94,85 @@ p{font-size: 9pt;}
   grid-area: da;
 }
 
+:root {
+  --p: 110mm;
+  --decal:20
+}
+.eng {
+  position: absolute;
+  top: 59mm;
+  left: 48mm;
+  font-size: 14pt;
+  font-family: Calibri, Papyrus, fantasy;
+  font-weight: bold;
 
+}
 .name {
   position: absolute;
-  top:var(--p);
-  left: 75mm;
+  top: 106.5mm;
+  left: 62mm;
   font-size: 14pt;
-  font-family: calibri, Papyrus, fantasy;
+  font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
 
 }
 
 .date_naissance {
   position: absolute;
-  top: calc(var(--p) + 10mm);
+  top: 114mm;
   left: 74mm;
-  font-family: calibri, Papyrus, fantasy;
+  font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
 }
 
 .lieu_naissance {
   position: absolute;
-  top: calc(var(--p) + 10mm);
-  left: 135mm;
-  font-family: calibri, Papyrus, fantasy;
+  top: 114mm;
+  left: 120mm;
+  font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
 }
 
 .formation {
   position: absolute;
-  top: calc(var(--p) + 20mm);
+  top: 122mm;
   left: 120mm;
-  font-family: calibri, Papyrus, fantasy;
+  font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
 }
 
 .du {
   position: absolute;
-  top: calc(var(--p) + 30mm);
-  left: 75mm;
-  font-family: calibri, Papyrus, fantasy;
+  top: 130.7mm;
+  left: 55mm;
+  font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
 }
 
 .au {
   position: absolute;
-  top: calc(var(--p) + 30mm);
+  top: 130.7mm;
   left: 130mm;
-  font-family: calibri, Papyrus, fantasy;
+  font-family:Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
 }
 .duree_jour {
   position: absolute;
-  top: calc(var(--p) + 40mm);
-  left: 65mm;
+  top: 138.8mm;
+  left: 55mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
 }
 .duree_heure {
   position: absolute;
-  top: calc(var(--p) + 40mm);
-  left:87mm;
+  top: 138.8mm;
+  left:75mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
@@ -172,8 +180,8 @@ p{font-size: 9pt;}
 
 .edition {
   position: absolute;
-  top: calc(var(--p) + 60mm);
-  left:91mm;
+  top: 155.5mm;
+  left:75mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
