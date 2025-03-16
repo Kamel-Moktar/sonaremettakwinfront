@@ -38,7 +38,7 @@ export class UpdatePriceComponent {
 
     let priceId = this.activateRoute.snapshot.url[1].path
 
-    this.priceService.getById(priceId).subscribe(res => {
+    this.priceService.getById(priceId).subscribe((res:any) => {
       this.price = res
 
       if(res.action)this.title = "MAJ de  prix pour "+res.benefit.designation+" "+res.action.name

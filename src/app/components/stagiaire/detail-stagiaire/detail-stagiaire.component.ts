@@ -75,27 +75,27 @@ export class DetailStagiaireComponent {
   ngOnInit() {
 
 
-    this.customerService.getAll().subscribe(res => {
+    this.customerService.getAll().subscribe((res:any) => {
       this.customers = res
     })
 
-    this.decoupageService.getWilaya().subscribe(res => {
+    this.decoupageService.getWilaya().subscribe((res:any) => {
       this.wilayas = res
       this.wilayas.push({wilayaCode: '0', wilayaName: "ETRANGER"})
     })
 
     let stagiaireId = this.activateRoute.snapshot.url[1]
     this.mode = this.activateRoute.snapshot.url[2]
-    this.inscriptionService.getAllByStagiaire(stagiaireId).subscribe(res => {
+    this.inscriptionService.getAllByStagiaire(stagiaireId).subscribe((res:any)=> {
       this.sessions = res
     })
 
-    this.reservationService.getAllByStagiaire(stagiaireId).subscribe(book => {
+    this.reservationService.getAllByStagiaire(stagiaireId).subscribe((book:any) => {
       this.reservations = book
     })
 
 
-    this.stagiaireService.getById(stagiaireId).subscribe(res => {
+    this.stagiaireService.getById(stagiaireId).subscribe((res:any) => {
       this.selected = res
       this.selectedCustomer = res.customer
       let action = document.getElementById("action");
@@ -143,7 +143,7 @@ export class DetailStagiaireComponent {
 
   onSearch() {
 
-    this.customerService.getAllParam({name: this.fg.value.name, shortName: this.fg.value.shortName}).subscribe(res => {
+    this.customerService.getAllParam({name: this.fg.value.name, shortName: this.fg.value.shortName}).subscribe((res:any) => {
       this.customers = res
 
     })

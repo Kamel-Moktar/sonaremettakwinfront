@@ -48,28 +48,34 @@ export class ReservationComponent {
 
   ngOnInit(): void {
 
-    this.sessionService.getAll().subscribe(ss => {
+    this.sessionService.getAll().subscribe((ss:any) => {
       this.sessions = ss
     })
     let session_id = this.activateRoute.snapshot.url[1].path
-    this.reservationService.getFavoriteBooking(session_id).subscribe(res=>{
-      this.favoriteBooking=res
-    })
+
 
     if (session_id != "0") {
-      this.sessionService.getById(session_id).subscribe(res => {
+      this.sessionService.getById(session_id).subscribe((res:any) => {
         this.session = res
         this.showSession()
         this.refresh()
+      })
+
+      this.reservationService.getFavoriteBooking(session_id).subscribe(res=>{
+        this.favoriteBooking=res
       })
     }
   }
 
   refresh(): void {
     this.inscriptionService.getAllBySession(this.session.id).subscribe(
-      res => {
+      (res:any) => {
         this.inscriptions = res
       })
+
+    this.reservationService.getFavoriteBooking(this.session.id).subscribe((res:any)=>{
+      this.favoriteBooking=res
+    })
   }
 
 
@@ -88,6 +94,7 @@ export class ReservationComponent {
 
 
   showSession() {
+
     let name = document.getElementById("name");
     let theme = document.getElementById("theme");
     let startDate = document.getElementById("startDate");
@@ -130,7 +137,7 @@ export class ReservationComponent {
       name: this.fg1.value.name,
       theme: this.fg1.value.theme,
       date: this.fg1.value.dd
-    }).subscribe(res => {
+    }).subscribe((res:any)=> {
       this.sessions = res
     })
   }

@@ -15,6 +15,7 @@ export class AddDomaineComponent {
 
   formGroup: FormGroup = this.fb.group({
     name: ["", Validators.required],
+    color:[]
 
 
   })
@@ -33,7 +34,7 @@ export class AddDomaineComponent {
     if (this.formGroup.valid) {
       this.domaineService.add({
         name: this.formGroup.value.name,
-
+        color:this.formGroup.value.name
       }).subscribe(() => {
           this.onCancel();
         }

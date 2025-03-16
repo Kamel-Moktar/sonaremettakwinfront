@@ -34,7 +34,7 @@ export class PaymentComponent {
 
   refresh(): void {
     this.paymentService.getAll().subscribe(
-      res => {
+      (res:any) => {
         this.payments = res
       })
   }

@@ -49,18 +49,18 @@ export class AddSaleComponent {
   ngOnInit() {
 
     this.invoiceId = this.activateRoute.snapshot.url[1].path
-    this.benefitService.getAll().subscribe(res => {
+    this.benefitService.getAll().subscribe((res:any)=> {
       this.benefits = res
 
     })
 
     this.invoiceService.getInvoiceById(this.invoiceId).subscribe(
-      (res) => {
+      (res:any) => {
         this.invoice = res
       })
 
     this.uniteMesureService.getUnits().subscribe(
-      (res) => {
+      (res:any) => {
         this.units = res
 
 

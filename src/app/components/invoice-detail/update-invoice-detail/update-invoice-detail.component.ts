@@ -37,7 +37,7 @@ export class UpdateInvoiceDetailComponent {
     let id = this.activateRoute.snapshot.url[1].path
 
     this.invoiceDetailService.getById(id).subscribe(
-      res => {
+      (res:any) => {
       this.selected = res
       this.formGroup = this.fb.group({
         qte: [res.qte, Validators.required],
@@ -50,8 +50,7 @@ export class UpdateInvoiceDetailComponent {
 
   onValidate() {
     if (this.formGroup.valid) {
-
-      this.invoiceDetailService.update({
+      let invoiceDetail:any={
         id: this.selected.id,
         benefit: this.selected.benefit,
         invoice: this.selected.invoice,
@@ -61,10 +60,19 @@ export class UpdateInvoiceDetailComponent {
         qte: this.formGroup.value.qte,
         price: this.formGroup.value.price,
         obs: this.formGroup.value.obs
-      }).subscribe(() => {
+      }
+
+
+
+
+      this.invoiceDetailService.update(invoiceDetail).subscribe(() => {
+
+        this.invoiceDetailService.refresh(invoiceDetail).subscribe(res=>{
           this.onCancel();
-        }
-      )
+        })
+
+
+        } )
     } else alert("Veuillez sélectionner une prestation ")
   }
 

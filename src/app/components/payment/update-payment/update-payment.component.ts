@@ -45,7 +45,7 @@ export class UpdatePaymentComponent {
   ngOnInit() {
 
     let paymentId=this.activateRoute.snapshot.url[1].path
-    this.paymentService.getPaymentById(paymentId).subscribe(res=>{
+    this.paymentService.getPaymentById(paymentId).subscribe((res:any)=>{
       this.selected=res
        this.showCustomer(res)
       this.formGroup= this.fb.group({
@@ -53,7 +53,7 @@ export class UpdatePaymentComponent {
         montant: [res.amount, Validators.required],
         reference: [res.reference, Validators.required],
     })
-    this.customerService.getAll().subscribe(res => {
+    this.customerService.getAll().subscribe((res:any)=> {
       this.customers = res
 
       })
@@ -103,7 +103,7 @@ export class UpdatePaymentComponent {
 
   onSearch() {
 
-    this.customerService.getAllParam({name: this.fg.value.name, shortName: this.fg.value.shortName}).subscribe(res => {
+    this.customerService.getAllParam({name: this.fg.value.name, shortName: this.fg.value.shortName}).subscribe((res:any) => {
       this.customers = res
 
     })

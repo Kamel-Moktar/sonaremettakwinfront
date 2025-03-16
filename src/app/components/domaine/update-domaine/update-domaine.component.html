@@ -15,9 +15,16 @@
       <div class="col ">
 
         <div class="row m-2">
-          <div class="col col-4 text-end"><label> Nom ou raison social: </label></div>
+          <div class="col col-4 text-end"><label> Nom de domaine : </label></div>
           <div class="col col-7"><input [formControlName]="'name'" class="form-control" placeholder="Nom de client"
                                         type="text"></div>
+          <div class="col"><h6 style="color:red">(*)</h6></div>
+        </div>
+
+        <div class="row m-2">
+          <div class="col col-4 text-end"><label> Couleur de domaine : </label></div>
+          <div class="col col-7"><input [formControlName]="'color'" class="form-control" placeholder="couleur de domaine"
+                                        type="color"></div>
           <div class="col"><h6 style="color:red">(*)</h6></div>
         </div>
 

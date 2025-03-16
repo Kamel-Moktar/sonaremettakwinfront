@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient,HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {DatePipe} from "@angular/common";
+import {SecurityService} from "../security/security.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,61 +10,63 @@ import {DatePipe} from "@angular/common";
 export class InvoiceService {
 
   baseUrl: any = environment.backendBaseUrl + "/invoice"
-
-  constructor(private http: HttpClient) {
+option:any ={
+  headers: new HttpHeaders({"Authorization": "Bearer " + this.securityService.loadToken()})
+}
+  constructor(private http: HttpClient,private securityService :SecurityService) {
   }
 
   public getAll() {
     let url = this.baseUrl + "/all"
-    return this.http.get<any[]>(url)
+    return this.http.get<any[]>(url, this.option)
   }
 
   public getDebts() {
     let url = this.baseUrl + "/debts"
-    return this.http.get<any[]>(url)
+    return this.http.get<any[]>(url, this.option)
   }
 
   public getDebtsParam(param: any) {
     let url = this.baseUrl + "/debtsparam"
-    return this.http.post<any[]>(url, param)
+    return this.http.post<any[]>(url, param, this.option)
   }
 
   public getAllParam(param: any) {
     let url = this.baseUrl + "/allparam"
-    return this.http.post<any[]>(url, param)
+    return this.http.post<any[]>(url, param, this.option)
   }
 
   public getTurnover(param: any) {
     let url = this.baseUrl + "/turnover"
-    return this.http.post<any[]>(url, param)
+    return this.http.post<any[]>(url, param, this.option)
   }
 
   public getUnpaidInvoice(searchParm: any) {
     let url = this.baseUrl + "/unpaidinvoice"
-    return this.http.post<any[]>(url, searchParm)
+    return this.http.post<any[]>(url, searchParm, this.option)
   }
 
 
   public add(invoice: any) {
     let url = this.baseUrl + "/add"
-    return this.http.post(url, invoice)
+    return this.http.post(url, invoice,this.option)
 
   }
 
   public delete(invoice: any) {
     let url = this.baseUrl + "/delete"
-    return this.http.post(url, invoice)
+    return this.http.post(url, invoice,this.option)
   }
 
   public update(invoice: any) {
     let url = this.baseUrl + "/update"
-    return this.http.post(url, invoice)
+    return this.http.post(url, invoice, this.option)
   }
 
 
   getInvoiceById(invoiceId: any) {
     let url = this.baseUrl + "/byid/" + invoiceId
-    return this.http.get<any>(url)
+    return this.http.get<any>(url, this.option)
 
   }
 

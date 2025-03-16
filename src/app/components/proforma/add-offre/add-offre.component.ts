@@ -52,7 +52,7 @@ export class AddOffreComponent {
   ngOnInit() {
 
     this.proformaId = this.activateRoute.snapshot.url[1].path
-    this.benefitService.getAll().subscribe(res => {
+    this.benefitService.getAll().subscribe((res:any) => {
       this.benefits = res
       if (this.benefits.length > 0)
         this.selectedBenefit = this.benefits[0]
@@ -64,7 +64,7 @@ export class AddOffreComponent {
       })
 
     this.uniteMesureService.getUnits().subscribe(
-      (res) => {
+      (res:any) => {
         this.units = res
         if (this.units.length > 0)
           this.unit = this.units[0]

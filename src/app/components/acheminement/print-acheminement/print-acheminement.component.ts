@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {InvoiceService} from "../../../services/invoice/invoice.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {SaleService} from "../../../services/sale/sale.service";
 import {AcheminementService} from "../../../services/acheminement/acheminement.service";
 
@@ -19,7 +19,8 @@ export class PrintAcheminementComponent {
 
   constructor(public shippingSlipService: AcheminementService,
               private activateRoute: ActivatedRoute,
-              public invoiceSservice :InvoiceService
+              public invoiceSservice :InvoiceService,
+              private router :Router
   ) {
 
   }
@@ -38,15 +39,12 @@ export class PrintAcheminementComponent {
 
   }
 
-  onPrint() {
-    let printDocument: any = document.getElementById("printPart")
-    if (printDocument != null) {
-      document.body.innerHTML = printDocument.innerHTML;
-      window.print()
-      window.close()
+
+
+
+
+    onCancel() {
+      this.router.navigateByUrl("detail-acheminement/" + this.shippingSlip.id)
     }
-  }
-
-
 
 }

@@ -22,7 +22,7 @@ export class AcheminementComponent {
 
   refresh(): void {
     this.shippingSlipService.getAll().subscribe(
-      res => {
+      (res:any) => {
         this.shippingSlips = res
 
       })

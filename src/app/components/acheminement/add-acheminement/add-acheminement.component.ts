@@ -38,7 +38,7 @@ export class AddAcheminementComponent {
   selected: any;
 
   ngOnInit(){
-    this.customerService.getAll().subscribe(res=>{
+    this.customerService.getAll().subscribe((res:any)=>{
       this.customers=res
       if(this.customers.length>0)
         this.selectedCustomer=this.customers[0]
@@ -70,7 +70,7 @@ export class AddAcheminementComponent {
     const value = event.target.value;
     this.customers.forEach(u=>{
       if(u.shortName==value) {this.selectedCustomer=u;
-        console.log(this.selectedCustomer)
+
       }
     })
 

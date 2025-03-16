@@ -34,7 +34,7 @@ export class ProformaComponent {
 
   refresh(): void {
     this.proformaService.getAllParam({number: this.formGroup.value.number, shortName: this.formGroup.value.shortName, date:this.formGroup.value.date}).subscribe(
-      res => {
+      (res:any)=> {
         this.proformas = res
       })
   }

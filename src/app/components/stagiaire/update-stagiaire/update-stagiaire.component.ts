@@ -67,11 +67,11 @@ export class UpdateStagiaireComponent {
 
   ngOnInit() {
 
-    this.customerService.getAll().subscribe(res => {
+    this.customerService.getAll().subscribe((res:any )=> {
       this.customers = res
     })
 
-    this.decoupageService.getWilaya().subscribe(res => {
+    this.decoupageService.getWilaya().subscribe((res:any) => {
       this.wilayas = res
       this.wilayas.push({wilayaCode: '0', wilayaName: "ETRANGER"})
     })
@@ -83,7 +83,7 @@ export class UpdateStagiaireComponent {
       this.inscription = res
     })
 
-    this.stagiaireService.getById(stagiaireId).subscribe(res => {
+    this.stagiaireService.getById(stagiaireId).subscribe((res:any) => {
       this.selected = res
       this.selectedCustomer = res.customer
       let action = document.getElementById("action");
@@ -91,7 +91,7 @@ export class UpdateStagiaireComponent {
 
       let bp = res.birthPlace
       let wilayaName = bp.slice(bp.indexOf('.') + 1)
-      this.decoupageService.getCommune(wilayaName).subscribe(res => {
+      this.decoupageService.getCommune(wilayaName).subscribe((res:any) => {
         this.communes = res
       })
 
@@ -170,7 +170,7 @@ export class UpdateStagiaireComponent {
 
   onSearch() {
 
-    this.customerService.getAllParam({name: this.fg.value.name, shortName: this.fg.value.shortName}).subscribe(res => {
+    this.customerService.getAllParam({name: this.fg.value.name, shortName: this.fg.value.shortName}).subscribe((res:any) => {
       this.customers = res
 
     })
@@ -202,7 +202,7 @@ export class UpdateStagiaireComponent {
     let wilayaName = this.formGroup.value.wilaya
 
 
-    this.decoupageService.getCommune(wilayaName).subscribe(res => {
+    this.decoupageService.getCommune(wilayaName).subscribe((res:any) => {
       this.communes = res
     })
   }

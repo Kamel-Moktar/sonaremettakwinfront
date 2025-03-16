@@ -35,7 +35,7 @@ export class InvoiceComponent {
 
   refresh(): void {
     this.invoiceService.getAllParam({number: this.formGroup.value.number, shortName: this.formGroup.value.shortName, date: this.formGroup.value.date}).subscribe(
-      res => {
+      (res:any) => {
         this.invoices = res
       })
   }

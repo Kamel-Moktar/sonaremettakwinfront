@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -91,6 +91,17 @@ import { AddInvoiceDetailComponent } from './components/invoice-detail/add-invoi
 import { UpdateInvoiceDetailComponent } from './components/invoice-detail/update-invoice-detail/update-invoice-detail.component';
 import { PrintAttachementComponent } from './components/invoice/print-attachement/print-attachement.component';
 
+import { UserComponent } from './components/security/user/user.component';
+import { AddUserComponent } from './components/security/user/add-user/add-user.component';
+import { UpdateUserComponent } from './components/security/user/update-user/update-user.component';
+import { ChangPswComponent } from './components/security/user/chang-psw/chang-psw.component';
+
+import { RoleComponent } from './components/security/role/role.component';
+import { AddRoleComponent } from './components/security/role/add-role/add-role.component';
+import { UpdateRoleComponent } from './components/security/role/update-role/update-role.component';
+import { PrintAllAttestationsComponent } from './components/pedagogie/attestation/print-all-attestations/print-all-attestations.component';
+import { AttestationComponent } from './components/pedagogie/attestation/attestation/attestation.component';
+
 
 
 
@@ -99,7 +110,7 @@ function NgbModule() {
 
 }
 
-@NgModule({
+@NgModule( {
   declarations: [
     AppComponent,
     CustomerComponent,
@@ -183,6 +194,17 @@ function NgbModule() {
       UpdateInvoiceDetailComponent,
       PrintAttachementComponent,
 
+      UserComponent,
+      AddUserComponent,
+      UpdateUserComponent,
+      ChangPswComponent,
+
+      RoleComponent,
+      AddRoleComponent,
+      UpdateRoleComponent,
+      PrintAllAttestationsComponent,
+      AttestationComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -192,10 +214,16 @@ function NgbModule() {
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxPrintModule,
+
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers: [DatePipe],
+  providers: [DatePipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
+  constructor() {
+
+  }
 }
+

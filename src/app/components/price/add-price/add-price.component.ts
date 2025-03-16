@@ -59,18 +59,18 @@ export class AddPriceComponent {
 
 
   ngOnInit() {
-    this.benefitService.getAll().subscribe(res => {
+    this.benefitService.getAll().subscribe((res:any) => {
       this.benefits = res
       if (this.benefits.length > 0)
         this.selectedBenefit = this.benefits[0]
     })
 
-    this.hotelService.getAll().subscribe(res => {
+    this.hotelService.getAll().subscribe((res:any) => {
       this.hotels = res
 
     })
 
-    this.actionService.getAll().subscribe(res => {
+    this.actionService.getAll().subscribe((res:any) => {
       this.actions = res
     })
 

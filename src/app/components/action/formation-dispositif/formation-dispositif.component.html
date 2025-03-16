@@ -59,7 +59,7 @@
 
 <ng-template #invoiceModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="strictureModal">Créances</h4>
+    <h4 class="modal-title" id="strictureModal">Module</h4>
     <button (click)="modal.dismiss('Cross click')" aria-label="Close" class="btn-close" type="button"></button>
   </div>
   <div class="modal-body">
@@ -91,11 +91,11 @@
       <thead>
       <tr class="text-center">
         <th style="width: 5%">code</th>
-        <th style="width: 15%">Module</th>
-        <th style="width: 15%">Domaine</th>
-        <th style="width: 15%">Durée</th>
-        <th style="width: 15%">Durée affecter</th>
-        <th style="width: 15%">Objectif</th>
+        <th style="width: 60%">Module</th>
+        <th style="width: 35%">Domaine</th>
+        <th style="width: 5%">Durée</th>
+        <th style="width: 10%">Durée affecter</th>
+<!--        <th style="width: 15%">Objectif</th>-->
       </tr>
       </thead>
       <tbody>
@@ -110,12 +110,12 @@
 
           </form>
         </td>
-        <td>
-          <form [formGroup]="a.fg">
+<!--        <td>-->
+<!--          <form [formGroup]="a.fg">-->
 
-            <input [formControlName]="'objectif'" class="form-control" placeholder="objectif" type="text">
-          </form>
-        </td>
+<!--            <input [formControlName]="'objectif'" class="form-control" placeholder="objectif" type="text">-->
+<!--          </form>-->
+<!--        </td>-->
         <td>
           <div class="container">
             <button (click)="modal.close(a)" class="btn btn-outline-dark" type="button">

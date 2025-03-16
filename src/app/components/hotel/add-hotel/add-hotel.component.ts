@@ -11,7 +11,7 @@ import {HotelService} from "../../../services/hotel/hotel.service";
 export class AddHotelComponent {
 
 
-  title: String = "Nouveau  Hotel";
+  title: String = "Nouveau  Hôtel";
 
 
   formGroup: FormGroup = this.fb.group({

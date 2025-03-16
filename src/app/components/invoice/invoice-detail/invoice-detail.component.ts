@@ -38,7 +38,7 @@ export class InvoiceDetailComponent {
       this.amountTax19=res
     })
     this.benefitService.getAll().subscribe(
-      (res) => {
+      (res:any) => {
         this.benefits = res
       })
 
@@ -47,7 +47,7 @@ export class InvoiceDetailComponent {
         this.invoice = res
         this.title = 'Détail Facture N°: ' + this.invoiceService.formatInvoiceNumber(res)+" de  "+this.invoice.customer.shortName
         this.saleService.getSaleByInvoice(this.invoice).subscribe(
-          (res) => {
+          (res:any) => {
             this.lignes = res
           })
 
@@ -89,7 +89,7 @@ export class InvoiceDetailComponent {
           (res) => {
             this.invoice = res
             this.saleService.getSaleByInvoice(this.invoice).subscribe(
-              (res) => {
+              (res:any) => {
                 this.lignes = res
               })
 

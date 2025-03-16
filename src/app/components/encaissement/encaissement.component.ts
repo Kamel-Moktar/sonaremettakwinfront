@@ -47,7 +47,7 @@ export class EncaissementComponent {
       (res) => {
         this.payment = res
         this.paymentService.getEncaissementByPayment(this.paymentId).subscribe(
-          (ls) => {
+          (ls:any) => {
             this.lignes = ls
           })
       })
@@ -123,11 +123,11 @@ export class EncaissementComponent {
   }
 
   refreshInvoices(searchParam: any) {
-    this.invoiceService.getDebtsParam(searchParam).subscribe(ls => {
+    this.invoiceService.getDebtsParam(searchParam).subscribe((ls:any) => {
       console.log(searchParam)
 
       this.invoices = []
-     ls.forEach(e => {
+     ls.forEach((e:any) => {
           this.invoices.push({
             invoice: e,
             fg: this.fb.group({

@@ -1,163 +1,258 @@
-<div class="toast-body align-text-top" style="background-color:#e0ebeb;cursor: pointer;">
-  <h4>{{title}}</h4>
-</div>
-<div class="row">
-  <div class="flex-shrink-0 p-3 bg-white" style="width: 180px;">
-    <a class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom" href="/">
-      <span class="fs-5 fw-semibold">Menu</span>
-    </a>
-    <ul class="list-unstyled ps-0">
-      <li class="mb-1">
-        <button aria-expanded="false"
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-target="#reporting" data-bs-toggle="collapse">
-          <span class="fa fa-bar-chart"></span>
-          &nbsp;&nbsp;Reporting
-        </button>
-        <div class="collapse" id="reporting">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a (click)="onCA()"
-                   class="link-dark d-inline-flex text-decoration-none rounded">Chiffre d'affaire</a></li>
-            <li><a (click)="oncCreance()"
-                   class="link-dark d-inline-flex text-decoration-none rounded">Créances</a></li>
-            <li><a (click)="onEncaissement()"
-                   class="link-dark d-inline-flex text-decoration-none rounded">Encaissement</a>
-            </li>
 
-            <li><a (click)="onSearchStagiaire()"
-                   class="link-dark d-inline-flex text-decoration-none rounded">Stagiaire</a>
-            </li>
 
-            <li><a (click)="onChronogramme()"
-                   class="link-dark d-inline-flex text-decoration-none rounded">Chronogramme</a>
-            </li>
+<script src="html2pdf.js"></script>
 
-            <!-- <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onFCommun()" >Commun</a></li>-->
-          </ul>
-        </div>
-      </li>
 
-      <li class="mb-1">
-        <button aria-expanded="false"
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-target="#offres" data-bs-toggle="collapse">
-          <span class="fa fa-shopping-bag"></span>
-          &nbsp;&nbsp;Offres
-        </button>
-        <div class="collapse" id="offres">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a (click)="onProForma()"
-                   class="link-dark d-inline-flex text-decoration-none rounded">Pro-forma</a></li>
+<div class="row  toast-body align-text-top " style="background-color:#e0ebeb;cursor: pointer;">
 
-          </ul>
-        </div>
-      </li>
-
-      <li class="mb-1">
-        <button aria-expanded="false"
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-target="#facturation" data-bs-toggle="collapse">
-
-          <span class="fa fa-tasks"></span>
-          &nbsp;&nbsp;Facturation
-        </button>
-        <div class="collapse" id="facturation">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a (click)="onInvoiceCalled()"
-                   class="link-dark d-inline-flex text-decoration-none rounded">Facturation</a></li>
-            <li><a (click)="oncAcheminement()"
-                   class="link-dark d-inline-flex text-decoration-none rounded">Acheminement</a></li>
-            <li><a (click)="onReglement()" class="link-dark d-inline-flex text-decoration-none rounded">Règlement</a>
-            </li>
-            <!--            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onFCommun()" >Commun</a></li>-->
-          </ul>
-        </div>
-      </li>
-      <li class="mb-1">
-        <button aria-expanded="false"
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-target="#orders-collapse" data-bs-toggle="collapse">
-          <span class="fa fa-briefcase"></span>
-          &nbsp; References
-        </button>
-        <div class="collapse" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a (click)="onCustomerCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Client</a>
-            </li>
-            <li><a (click)="onUniteMesureClic()" class="link-dark d-inline-flex text-decoration-none rounded">Unité de
-              mésure</a></li>
-            <li><a (click)="onPrestationCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Prestation</a>
-            </li>
-            <li><a (click)="onDomaineCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Domaine</a>
-            </li>
-            <li><a (click)="onHotelCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Hôtel</a>
-            </li>
-            <li><a (click)="onPrice()" class="link-dark d-inline-flex text-decoration-none rounded">Prix</a>
-            </li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="mb-1">
-        <button aria-expanded="false"
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-target="#plan" data-bs-toggle="collapse">
-          <span class="fa fa-calendar"></span>
-          &nbsp; Formation
-        </button>
-        <div class="collapse" id="plan">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a (click)="onActionCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Action</a>
-            </li>
-            <li><a (click)="onModuleCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Module</a>
-            </li>
-            <li><a (click)="onSessionClic()" class="link-dark d-inline-flex text-decoration-none rounded">Session</a>
-            </li>
-            <li><a (click)="onPhaseCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Phase</a>
-            </li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="mb-1">
-        <button aria-expanded="false"
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-target="#stagiaire" data-bs-toggle="collapse">
-          <span class="fa fa-graduation-cap"></span>
-          &nbsp; Inscription
-        </button>
-        <div class="collapse" id="stagiaire">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a (click)="onStagiaireCalled()"
-                   class="link-dark d-inline-flex text-decoration-none rounded">Stagiaire</a></li>
-            <li><a (click)="onInsciptionCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Liste/Promotion</a>
-            </li>
-
-          </ul>
-        </div>
-      </li>
-
-      <li class="mb-1">
-        <button aria-expanded="false"
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-target="#logistique" data-bs-toggle="collapse">
-          <span class="fa fa-hotel"></span>
-          &nbsp; Logistique
-        </button>
-        <div class="collapse" id="logistique">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a (click)="onReservatioCalled()"
-                   class="link-dark d-inline-flex text-decoration-none rounded">Reservation</a></li>
-            <li><a (click)="onHotelCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Hotel</a>
-            </li>
-
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="col bg-light m-lg-2   ">
-    <router-outlet></router-outlet>
+  <div class="col-8 m-1"><h4>&nbsp;{{title}}</h4></div>
+  <div (click)="onchangePsw()" *ngIf="login&&currentUser" class="col-2 text-end m-1">{{currentUser.name}}</div>
+  <div *ngIf="login && currentUser" class="col col-auto m-1">
+    <div class="container">
+      <button (click)="logout()" class="btn btn-outline-success btn-sm " title="Logout">
+        <span class="fa fa-power-off "> </span>
+      </button>
+    </div>
   </div>
 </div>
 
+<div *ngIf="!login" class="row">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <div class="row">
+      &nbsp;
+    </div>
+    <div class="row">
+      &nbsp;
+    </div>
+    <div class="row">
+      <form [formGroup]="formGroup">
+        <div class="col ">
+
+          <div class="row m-2">
+            <div class="col col-4 text-end"><label> Non d'utilisateur : </label></div>
+            <div class="col col-7"><input [formControlName]="'name'" class="form-control"
+                                          placeholder="Nom d'utilisateur"
+                                          type="text"></div>
+
+          </div>
+
+          <div class="row m-2">
+            <div class="col col-4 text-end"><label>Mot de passe : </label></div>
+            <div class="col col-7"><input [formControlName]="'psw'" class="form-control" placeholder="mot de passe "
+                                          type="password"></div>
+
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+            </div>
+            <div class="col">
+              <button (click)="onValidate()" class="btn btn-outline-success m-2">Validé</button>
+
+            </div>
+            <div class="col">
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="row">
+
+    </div>
+
+  </div>
+  <div class="col-3"></div>
+</div>
+
+
+<div *ngIf="login">
+
+  <div class="row">
+    <div class="flex-shrink-0 p-3 bg-white" style="width: 180px;">
+      <a class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+        <span class="fs-5 fw-semibold">Menu</span>
+      </a>
+
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button aria-expanded="false"
+                  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                  data-bs-target="#reporting" data-bs-toggle="collapse">
+            <span class="fa fa-bar-chart"></span>
+            &nbsp;&nbsp;Reporting
+          </button>
+          <div class="collapse" id="reporting">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a (click)="onCA()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Chiffre d'affaire</a></li>
+              <li><a (click)="oncCreance()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Créances</a></li>
+              <li><a (click)="onEncaissement()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Encaissement</a>
+              </li>
+
+              <li><a (click)="onSearchStagiaire()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Stagiaire</a>
+              </li>
+
+              <li><a (click)="onChronogramme()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Chronogramme</a>
+              </li>
+
+              <!-- <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onFCommun()" >Commun</a></li>-->
+            </ul>
+          </div>
+        </li>
+
+
+
+        <li class="mb-1" *ngIf="offre||administrateur">
+          <button aria-expanded="false"
+                  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                  data-bs-target="#offres" data-bs-toggle="collapse">
+            <span class="fa fa-shopping-bag"></span>
+            &nbsp;&nbsp;Offres
+          </button>
+          <div class="collapse" id="offres">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a (click)="onProForma()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Pro-forma</a></li>
+              <li><a (click)="onCustomerCalled()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Client</a>
+              </li>
+              <li><a (click)="onUniteMesureClic()" class="link-dark d-inline-flex text-decoration-none rounded">Unité de
+                mésure</a></li>
+              <li><a (click)="onPrestationCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Prestation</a>
+              </li>
+              <li><a (click)="onPrice()" class="link-dark d-inline-flex text-decoration-none rounded">Prix</a>
+              </li>
+            </ul>
+
+
+          </div>
+        </li>
+
+        <li class="mb-1" *ngIf="commercial||administrateur">
+          <button aria-expanded="false"
+                  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                  data-bs-target="#facturation" data-bs-toggle="collapse">
+
+            <span class="fa fa-tasks"></span>
+            &nbsp;&nbsp;Facturation
+          </button>
+          <div class="collapse" id="facturation">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a (click)="onInvoiceCalled()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Facturation</a></li>
+              <li><a (click)="oncAcheminement()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Acheminement</a></li>
+              <li><a (click)="onReglement()" class="link-dark d-inline-flex text-decoration-none rounded">Règlement</a>
+              </li>
+              <!--            <li><a class="link-dark d-inline-flex text-decoration-none rounded" (click)="onFCommun()" >Commun</a></li>-->
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1" *ngIf="ingenierie||administrateur">
+          <button aria-expanded="false"
+                  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                  data-bs-target="#orders-collapse" data-bs-toggle="collapse">
+            <span class="fa fa-briefcase"></span>
+            &nbsp; Ingénierie
+          </button>
+          <div class="collapse" id="orders-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+
+              <li><a (click)="onDomaineCalled()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Domaine</a>
+              </li>
+
+              <li><a (click)="onActionCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Action</a>
+              </li>
+              <li><a (click)="onModuleCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Module</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="mb-1" *ngIf="suivi||administrateur">
+          <button aria-expanded="false"
+                  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                  data-bs-target="#plan" data-bs-toggle="collapse">
+            <span class="fa fa-calendar"></span>
+            &nbsp;Planification
+          </button>
+          <div class="collapse" id="plan">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+
+              <li><a (click)="onSessionClic()" class="link-dark d-inline-flex text-decoration-none rounded">Session</a>
+              </li>
+              <li><a (click)="onPhaseCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Phase</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="mb-1"  *ngIf="suivi||administrateur">
+          <button aria-expanded="false"
+                  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                  data-bs-target="#stagiaire" data-bs-toggle="collapse">
+            <span class="fa fa-graduation-cap"></span>
+            &nbsp; Inscription
+          </button>
+          <div class="collapse" id="stagiaire">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a (click)="onStagiaireCalled()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Stagiaire</a></li>
+              <li><a (click)="onInsciptionCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Liste/Promotion</a>
+              </li>
+
+            </ul>
+          </div>
+        </li>
+
+        <li class="mb-1" *ngIf="logistique||administrateur">
+          <button aria-expanded="false"
+                  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                  data-bs-target="#logistique" data-bs-toggle="collapse">
+            <span class="fa fa-hotel"></span>
+            &nbsp; Logistique
+          </button>
+          <div class="collapse" id="logistique">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a (click)="onReservatioCalled()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Reservation</a></li>
+              <li><a (click)="onHotelCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Hotel</a>
+              </li>
+
+            </ul>
+          </div>
+        </li>
+
+        <li class="mb-1" *ngIf="administrateur">
+          <button aria-expanded="false"
+                  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                  data-bs-target="#admin" data-bs-toggle="collapse">
+            <span class="fa fa-gear"></span>
+            &nbsp;Administration
+          </button>
+          <div class="collapse" id="admin">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a (click)="onUserCalled()"
+                     class="link-dark d-inline-flex text-decoration-none rounded">Utilisateurs</a></li>
+              <!--            <li><a (click)="onHotelCalled()" class="link-dark d-inline-flex text-decoration-none rounded">Role</a>-->
+              <!--            </li>-->
+
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col bg-light m-lg-2   ">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

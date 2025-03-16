@@ -44,7 +44,7 @@ export class DebtsComponent {
     this.totalHT = 0
     this.totalTTC = 0
     this.nbInvoice = 0
-    this.invoiceService.getDebtsParam(searchParam).subscribe((ls) => {
+    this.invoiceService.getDebtsParam(searchParam).subscribe((ls:any) => {
       this.invoices = ls
       this.invoices.forEach(i => {
         this.totalHT = i.amountExcludingTax + this.totalHT

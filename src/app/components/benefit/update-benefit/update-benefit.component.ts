@@ -43,8 +43,8 @@ export class UpdateBenefitComponent {
 
 
     const id = this.activateRoute.snapshot.url[1].path
-    this.benefitService.getById(id).subscribe(res => {
-      this.uniteMesureService.getAll('*').subscribe(res => {//est une prog asynchrone pour éviter le blocage
+    this.benefitService.getById(id).subscribe((res:any) => {
+      this.uniteMesureService.getAll('*').subscribe((res:any) => {//est une prog asynchrone pour éviter le blocage
         this.uniteMesures = res
 
 

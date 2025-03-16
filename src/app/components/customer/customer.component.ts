@@ -33,7 +33,7 @@ export class CustomerComponent {
   refresh(): void {
 
     this.customerService.getAllParam({name:this.fg.value.name,shortName:this.fg.value.shortName}).subscribe(
-      res => {
+      (res:any)=> {
         this.customers = res
         // console.log(res)
       })

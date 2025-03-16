@@ -39,15 +39,15 @@ export class ProformaDetailComponent {
       this.amountTax19=res
     })
     this.benefitService.getAll().subscribe(
-      (res) => {
+      (res:any)=> {
         this.benefits = res
       })
 
     this.proformaService.getProformaById(this.proformaId).subscribe(
-      (res) => {
+      (res:any) => {
         this.proforma = res
         this.offreService.getOffreByProforma(this.proforma).subscribe(
-          (res) => {
+          (res:any)=> {
             this.lignes = res
           })
 
@@ -90,7 +90,7 @@ export class ProformaDetailComponent {
           (res) => {
             this.proforma = res
             this.offreService.getOffreByProforma(this.proforma).subscribe(
-              (res) => {
+              (res:any)=> {
                 this.lignes = res
               })
 

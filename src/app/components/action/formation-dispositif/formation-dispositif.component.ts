@@ -49,7 +49,7 @@ export class FormationDispositifComponent {
       (res) => {
         this.selectedAction = res
         this.formationDispositifService.getByAction(this.actionId).subscribe(
-          (ls) => {
+          (ls:any) => {
             this.lignes = ls
           })
       })
@@ -100,8 +100,7 @@ export class FormationDispositifComponent {
           this.formationDispositifService.add({
             module: this.selectedModule.module,
             action: this.selectedAction,
-            durationHour : this.selectedModule.fg.value.duree,
-            objectif : this.selectedModule.fg.value.objectif
+            durationHour : this.selectedModule.fg.value.duree
           }).subscribe(res => {
             this.refresh()
           })
@@ -129,7 +128,7 @@ export class FormationDispositifComponent {
   }
 
   refreshModules() {
-    this.moduleService.getAll(this.formGroup.value.module, this.formGroup.value.domaine).subscribe(ls => {
+    this.moduleService.getAll(this.formGroup.value.module, this.formGroup.value.domaine).subscribe((ls:any) => {
 
 
       this.modules = []

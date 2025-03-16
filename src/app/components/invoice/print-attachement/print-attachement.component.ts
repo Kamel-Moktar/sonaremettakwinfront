@@ -46,18 +46,18 @@ export class PrintAttachementComponent {
   refresh(): void {
 
     this.invoiceDetailService.getInvoice(this.invoice.id).subscribe(
-      res => {
+      (res:any)=> {
         this.invoiceDetails = res
 
       }
     )
     this.invoiceDetailService.getDistinctInscriptionByInvoice(this.invoice.id).subscribe(
-      res => {
+      (res:any) => {
         this.inscriptions = res
       })
 
     this.invoiceDetailService.getDistinctSessionByInvoice(this.invoice.id).subscribe(
-      res => {
+      (res:any) => {
         this.distinctSessions = res
 
       })

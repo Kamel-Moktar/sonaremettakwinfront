@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <div class="row">
+      &nbsp;
+    </div>
+    <div class="row">
+      &nbsp;
+    </div>
+    <div class="row">
+      <form [formGroup]="formGroup">
+        <div class="col ">
+          <div class="row m-2">
+            <div class="col col-4 text-end"><label> Nouveau mot de passe : </label></div>
+            <div class="col col-7"><input [formControlName]="'psw1'" class="form-control"
+                                          placeholder="Nouveau mot de passe "
+                                          type="password"></div>
+
+          </div>
+          <div class="row m-2">
+            <div class="col col-4 text-end"><label>Confirmer nouveau mot de passe : </label></div>
+            <div class="col col-7"><input [formControlName]="'psw2'" class="form-control"
+                                          placeholder="confirmer nouveau mot de passe "
+                                          type="password"></div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+            </div>
+
+            <div class="col col-auto">
+              <button (click)="onValidate()" class="btn btn-outline-success m-2">Validé</button>
+            </div>
+
+            <div class="col col-auto">
+              <button (click)="onCancel()" class="btn btn-outline-success m-2">Annuler</button>
+            </div>
+
+            <div class="col-4">
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="row">
+
+    </div>
+
+  </div>
+  <div class="col-3"></div>
+</div>
+
+

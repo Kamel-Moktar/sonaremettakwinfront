@@ -20,7 +20,8 @@ export class AddActionComponent {
     objectif: [""],
     dureDay: ["", Validators.required],
     dureHour: ["", Validators.required],
-    dom: ["aa", Validators.required]
+    dom: ["aa", Validators.required],
+    type: ["Formation", Validators.required]
 
   })
   footer: any = "";
@@ -31,15 +32,13 @@ export class AddActionComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private actionService: ActionService,
+    public actionService: ActionService,
     private domaineService: DomaineService
   ) {
-
-
   }
 
   ngOnInit() {
-    this.domaineService.getAll().subscribe(res => {//est une prog asynchrone pour éviter le blocage
+    this.domaineService.getAll().subscribe((res: any) => {//est une prog asynchrone pour éviter le blocage
       this.domaines = res
     })
 
@@ -58,8 +57,8 @@ export class AddActionComponent {
         objectif: this.formGroup.value.objectif,
         duration: this.formGroup.value.dureDay,
         durationHour: this.formGroup.value.dureHour,
-        domaine: this.selectedDomaine
-
+        domaine: this.selectedDomaine,
+        type:this.formGroup.value.type
       }).subscribe(() => {
           this.onCancel();
         }
@@ -83,7 +82,7 @@ export class AddActionComponent {
       dureDay: [this.formGroup.value.dureDay, Validators.required],
       dureHour: [this.formGroup.value.dureDay * 6, Validators.required],
       dom: [this.formGroup.value.dom, Validators.required],
-
+      type: [this.formGroup.value.type, Validators.required]
     })
   }
 }

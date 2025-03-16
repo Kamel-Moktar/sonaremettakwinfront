@@ -26,7 +26,7 @@ export class ModuleComponent {
 
   refresh(name:any, domaineName:any): void {
     this.moduleService.getAll(name,domaineName).subscribe(
-      res => {
+      (res:any) => {
         this.modules = res
         // console.log(res)
       })

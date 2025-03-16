@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {DatePipe} from "@angular/common";
+import {SecurityService} from "../security/security.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,59 +10,61 @@ import {DatePipe} from "@angular/common";
 export class AcheminementService {
 
   baseUrl: any = environment.backendBaseUrl + "/shippingslip"
+  option:any ={
+    headers: new HttpHeaders({"Authorization": "Bearer " + this.securityService.loadToken()}), observe: "body"
+  }
 
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private securityService :SecurityService) {
   }
 
   public getAll() {
     let url = this.baseUrl + "/all"
-    return this.http.get<any>(url)
+    return this.http.get<any>(url,this.option)
   }
 
   public getInvoiceByShippingSlip(shippingSlipId: any) {
     let url = this.baseUrl + "/invoicebyshippingslip/" + shippingSlipId
-    return this.http.get<any>(url)
+    return this.http.get<any>(url,this.option)
   }
 
   public getByShippingSlipInvoiceById(shippingSlipInvoiceId: any) {
     let url = this.baseUrl + "/shippingslipinvoicebyid/" + shippingSlipInvoiceId
-    return this.http.get<any>(url)
+    return this.http.get<any>(url,this.option)
   }
 
   public add(shippingSlip: any) {
     let url = this.baseUrl + "/add"
-    return this.http.post(url, shippingSlip)
+    return this.http.post(url, shippingSlip,this.option)
 
   }
 
   public delete(shippingSlip: any) {
-    let url = this.baseUrl + "/delete"
-    return this.http.post<any>(url, shippingSlip)
+    let url = this.baseUrl + "/"+shippingSlip.id
+    return this.http.delete <any>(url,this.option)
   }
 
   public update(shippingSlip: any) {
     let url = this.baseUrl + "/update"
-    return this.http.post(url, shippingSlip)
+    return this.http.post(url, shippingSlip,this.option)
   }
 
 
   getShippingSlipById(shippingSlipId: any) {
     let url = this.baseUrl + "/byid/" + shippingSlipId
-    return this.http.get<any>(url)
+    return this.http.get<any>(url,this.option)
 
   }
 
   accuse(shippingSlip: any) {
     let url = this.baseUrl + "/accuse"
-    return this.http.post<any>(url, shippingSlip)
+    return this.http.post<any>(url, shippingSlip,this.option)
 
   }
 
   public addInvoice(shppingSlipInvoice: any) {
     let url = this.baseUrl + "/addinvoice"
 
-    return this.http.post<any>(url, shppingSlipInvoice)
+    return this.http.post<any>(url, shppingSlipInvoice,this.option)
 
 
   }
@@ -79,13 +82,13 @@ export class AcheminementService {
   }
 
 
-  public deleteInvoice(invoice: any, shippingSlipId: any) {
-    let url = this.baseUrl + "/deleteinvoice"
-    return this.http.post<any>(url, invoice)
+  public deleteInvoice(id: any) {
+    let url = this.baseUrl + "/invoice/"+id
+    return this.http.delete<any>(url, this.option)
   }
 
   updateShippingSlipDetail(shippingSlipInvoice: any) {
     let url = this.baseUrl + "/updateinvoice"
-    return this.http.post(url, shippingSlipInvoice)
+    return this.http.post(url, shippingSlipInvoice,this.option)
   }
 }

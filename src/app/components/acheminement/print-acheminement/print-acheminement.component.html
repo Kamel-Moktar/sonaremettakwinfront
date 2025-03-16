@@ -5,8 +5,16 @@
         <h6>{{title}}&nbsp;N°: {{shippingSlipService.formatShippingSlipNumber(shippingSlip)}}
           du {{shippingSlip.date|date:"dd/MM/yyyy"}} </h6></div>
       <div class="col col-auto">
-        <button (click)="onPrint( )" class="btn btn-outline-success align-content-end">
+        <button [useExistingCss]="true" class="btn btn-outline-success align-content-end" ngxPrint
+                printSectionId="printPart" styleSheetFile="assets/print-styl/invoice.scss"
+        >
           <span class="fa fa-print"></span>
+
+        </button>
+      </div>
+      <div class="col col-auto">
+        <button (click)="onCancel()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-arrow-left"></span>
         </button>
       </div>
     </div>
@@ -14,19 +22,12 @@
   <div class="card-body">
     <div class="container-fluid" id="printPart">
       <div class="row no-gutters"><h2><strong>.</strong></h2></div>
-      <div class="row no-gutters">
-        <div class="col col-3">
-          <img src="../../assets/logo.bmp">
-        </div>
-        <div class="col">
-          <h2><strong> شركة سوناريم التكوين</strong></h2>
-          <h2><strong>SONAREM ETTAKWINE Spa - Filiale du GROUPE SONAREM CAPITAL SOCIAL : 10 000 000 DA</strong></h2>
-        </div>
-      </div>
-      <hr />
+      <app-header></app-header>
+
+      <hr/>
       <div class="row no-gutters ">
         <div class="col col-8">
-          <h6><strong>Direction Général.</strong></h6>
+          <h6><strong><p>Direction Général.</p></strong></h6>
         </div>
         <div *ngIf="shippingSlip" class="col col-4 text-end"><strong> Alger Le:
           &nbsp; {{shippingSlip.date| date :"dd/MM/yyyy"}} </strong></div>
@@ -65,34 +66,34 @@
 
       </div>
 
-      <div class="row no-gutters items-group">
+      <div class="row no-gutters items-group1">
 
         <div class="card-body">
           <div>
-            <table class="table  table-bordered table-hover">
+            <table class="table  border-black  table-bordered table-hover">
               <thead>
               <tr class="text-center">
-                <th style="width: 5%">#</th>
-                <th style="width: 80%">Designation</th>
-                <th style="width: 3%">N.page</th>
-                <th style="width: 12%">Obs</th>
+                <th style="width: 5%"><p>Num</p></th>
+                <th style="width: 80%">Designation<p></p></th>
+                <th style="width: 3%"><p>N.page</p></th>
+                <th style="width: 12%"><p>Obs</p></th>
               </tr>
               </thead>
               <tbody>
               <tr class="text-center">
                 <td></td>
-                <td><strong>Nous vous transmettons ci-joint :</strong></td>
+                <td><strong><p>Nous vous transmettons ci-joint :</p></strong></td>
                 <td></td>
                 <td></td>
               </tr>
               <tr *ngFor=" let a of this.lignes ;let i=index ">
-                <td style="text-align: center"> {{i}}</td>
-                <td>&nbsp;- La facture N°: <strong>{{invoiceSservice.formatInvoiceNumber(a.invoice)}}  </strong> du
+                <td style="text-align: center"><p>{{i}}</p></td>
+                <td><p>&nbsp;- La facture N°: <strong>{{invoiceSservice.formatInvoiceNumber(a.invoice)}}  </strong> du
                   <strong>{{a.invoice.date|date:'dd/mm/yyyy'}}</strong> d'un montant de
-                  <strong>{{a.invoice.amountIncludingTax|number:'0.2'}}</strong> &nbsp;DZD
+                  <strong>{{a.invoice.amountIncludingTax|number:'0.2'}}</strong> &nbsp;DZD</p>
                 </td>
-                <td align="center"> {{a.nbrPage}}</td>
-                <td> {{a.obs}}</td>
+                <td align="center"><p>{{a.nbrPage}}</p></td>
+                <td><p>{{a.obs}}</p></td>
               </tr>
               </tbody>
             </table>
@@ -106,17 +107,18 @@
         <div class="row">&nbsp;</div>
         <div class="row  text-end"><strong> Le President Directeur Général </strong></div>
       </div>
-      <div class="footer">
-        <hr />
-        <div class="row no-gutters" align="center">
+      <footer>
+        <hr/>
+        <div align="center" class="row no-gutters">
           <p>SONAREM ETTAKWINE Spa. -Adresse: 127, Bd Krim Belkacem-Telemly-ALGER.
             -Tel: 021714872-021714903. -RC N° : 900146434.</p>
         </div>
 
-        <div>&nbsp; </div>
-      </div>
-    </div>
+        <div>&nbsp;</div>
+      </footer>
+  </div>
 
 
   </div>
+
 </div>

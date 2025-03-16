@@ -54,7 +54,7 @@ export class AddPhaseComponent {
     if (session_id != "0") {
       this.sessionService.getById(session_id).subscribe(res => {
         this.session = res
-        this.phaseService.getPhasePropose(session_id).subscribe(ph => {
+        this.phaseService.getPhasePropose(session_id).subscribe((ph:any) => {
 
 
 
@@ -72,12 +72,12 @@ export class AddPhaseComponent {
       })
     }
 
-    this.phaseService.grtTypePhase().subscribe(res => {
+    this.phaseService.grtTypePhase().subscribe((res:any) => {
       this.typePhases = res
 
 
     })
-    this.phaseService.grtLieuPhase().subscribe(res => {
+    this.phaseService.grtLieuPhase().subscribe((res:any)=> {
       this.lieuPhases = res
 
 

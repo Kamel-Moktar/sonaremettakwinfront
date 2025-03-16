@@ -46,7 +46,7 @@ export class AddSessionComponent {
   }
 
   ngOnInit() {
-    this.actionService.getAll().subscribe(res => {//est une prog asynchrone pour éviter le blocage
+    this.actionService.getAll().subscribe((res:any) => {//est une prog asynchrone pour éviter le blocage
       this.actions = res
     })
 
@@ -78,7 +78,7 @@ export class AddSessionComponent {
 
 
   onSearch() {
-    this.actionService.getAllParam({name: this.fg.value.name, domainName: this.fg.value.domaine}).subscribe(res => {//est une prog asynchrone pour éviter le blocage
+    this.actionService.getAllParam({name: this.fg.value.name, domainName: this.fg.value.domaine}).subscribe((res:any) => {//est une prog asynchrone pour éviter le blocage
       this.actions = res
     })
   }

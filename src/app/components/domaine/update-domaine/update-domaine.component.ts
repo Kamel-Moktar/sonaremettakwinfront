@@ -10,18 +10,11 @@ import {DomaineService} from "../../../services/domaine/domaine.service";
 })
 export class UpdateDomaineComponent {
   title: String = "Modifier Client ";
-
+  domine :any
 
   formGroup: FormGroup = this.fb.group({
     name: ["", Validators.required],
-    shortName: ["", Validators.required],
-    adresse: ["", Validators.required],
-    phoneNumber: [""],
-    fax: [""],
-    rc: [""],
-    if: [""],
-    ns: [""],
-    nArticle: [""]
+    color:[]
   })
 
   constructor(
@@ -39,18 +32,12 @@ export class UpdateDomaineComponent {
 
     const id = this.activateRoute.snapshot.url[1]
 
-    this.domaineService.getById(id).subscribe(res => {
+    this.domaineService.getById(id).subscribe((res:any) => {
+      this.domine=res
       this.formGroup = this.fb.group({
         id: [res.id, Validators.required],
         name: [res.name, Validators.required],
-        shortName: [res.shortName, Validators.required],
-        adresse: [res.adresse, Validators.required],
-        phoneNumber: [res.phoneNumber],
-        fax: [res.fax],
-        rc: [res.numRc],
-        if: [res.idFiscal],
-        ns: [res.idStatistic],
-        nArticle: [res.numArticle]
+        color: [res.color]
       })
 
     })
@@ -60,17 +47,14 @@ export class UpdateDomaineComponent {
 
 
   onValidate() {
+
+
+
     this.domaineService.add({
-      id: this.formGroup.value.id,
+      id: this.domine.id,
       name: this.formGroup.value.name,
-      shortName: this.formGroup.value.shortName,
-      adresse: this.formGroup.value.adresse,
-      phoneNumber: this.formGroup.value.phoneNumber,
-      fax: this.formGroup.value.fax,
-      numRc: this.formGroup.value.rc,
-      idFiscal: this.formGroup.value.if,
-      idStatistic: this.formGroup.value.ns,
-      numArticle: this.formGroup.value.nArticle
+      color: this.formGroup.value.color,
+
     }).subscribe(() => {
         this.onCancel();
       }

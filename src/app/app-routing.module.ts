@@ -80,6 +80,16 @@ import {PriceComponent} from "./components/price/price.component";
 import {UpdateInvoiceDetailComponent} from "./components/invoice-detail/update-invoice-detail/update-invoice-detail.component";
 import {AddInvoiceDetailComponent} from "./components/invoice-detail/add-invoice-detail/add-invoice-detail.component";
 import {PrintAttachementComponent} from "./components/invoice/print-attachement/print-attachement.component";
+import {AddUserComponent} from "./components/security/user/add-user/add-user.component";
+import {UpdateUserComponent} from "./components/security/user/update-user/update-user.component";
+import {UserComponent} from "./components/security/user/user.component";
+
+import {ChangPswComponent} from "./components/security/user/chang-psw/chang-psw.component";
+import {AddRoleComponent} from "./components/security/role/add-role/add-role.component";
+import {UpdateRoleComponent} from "./components/security/role/update-role/update-role.component";
+import {RoleComponent} from "./components/security/role/role.component";
+import {SecurityService} from "./services/security/security.service";
+import {PrintAllAttestationsComponent} from "./components/pedagogie/attestation/print-all-attestations/print-all-attestations.component";
 
 const routes: Routes = [
   {path: "customer", component: CustomerComponent},
@@ -184,7 +194,17 @@ const routes: Routes = [
   {path:'price',component:PriceComponent},
 
 
+  {path:'add-user',component:AddUserComponent},
+  {path:'update-user/:id',component:UpdateUserComponent},
+  {path:'user',component:UserComponent},
 
+  {path:'change-psw/:id',component:ChangPswComponent},
+
+  {path:'add-role',component:AddRoleComponent},
+  {path:'update-role/:id',component:UpdateRoleComponent},
+  {path:'role',component:RoleComponent},
+
+  {path:'attestations/:id',component:PrintAllAttestationsComponent},
 ]
 
 
@@ -199,4 +219,25 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {
+
+  constructor( private securityService: SecurityService) {
+
+    // console.log("قققققققققققققققققققققققققققققققققققققققق")
+
+    // this.securityService.getCurrentUser(this.formGroup.value.name).subscribe(
+    //   (res: any) => {
+    //
+    //     this.currentUser = res
+    //
+    //     this.contextualiser(res)
+    //     this.login = true
+    //   }, (error) => {
+    //     alert("Session expirée  ")
+    //     this.login = false
+    //   })
+
+
+
+
+  }
 }

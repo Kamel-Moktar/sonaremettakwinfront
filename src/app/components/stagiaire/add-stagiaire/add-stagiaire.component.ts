@@ -70,11 +70,11 @@ export class AddStagiaireComponent {
   ngOnInit() {
 
     this.form=this.activateRoute.snapshot.url[1];
-    this.customerService.getAll().subscribe(res => {
+    this.customerService.getAll().subscribe((res:any )=> {
       this.customers = res
     })
 
-    this.decoupageService.getWilaya().subscribe(res=>{
+    this.decoupageService.getWilaya().subscribe((res:any)=>{
       this.wilayas=res
       this.wilayas.push({wilayaCode:'0',wilayaName:"ETRANGER"})
     })
@@ -145,7 +145,7 @@ export class AddStagiaireComponent {
 
   onSearch() {
 
-    this.customerService.getAllParam({name: this.fg.value.name, shortName: this.fg.value.shortName}).subscribe(res => {
+    this.customerService.getAllParam({name: this.fg.value.name, shortName: this.fg.value.shortName}).subscribe((res:any) => {
       this.customers = res
 
     })
@@ -178,7 +178,7 @@ export class AddStagiaireComponent {
 
 console.log(wilayaName)
 
-    this.decoupageService.getCommune(wilayaName).subscribe(res=>{
+    this.decoupageService.getCommune(wilayaName).subscribe((res:any)=>{
       this.communes=res
     })
   }

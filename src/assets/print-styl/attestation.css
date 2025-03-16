@@ -73,6 +73,14 @@ p{font-size: 9pt;}
 .div_with_bg {
   width: 297mm;
   height: 210mm;
+  background-image: url("/assets/attestation/participation.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.div_with_bg_f {
+  width: 297mm;
+  height: 210mm;
   background-image: url("/assets/attestation/formation.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -101,7 +109,7 @@ p{font-size: 9pt;}
 .eng {
   position: absolute;
   top: 59mm;
-  left: 48mm;
+  left: 25mm;
   font-size: 14pt;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
@@ -109,9 +117,10 @@ p{font-size: 9pt;}
 }
 .name {
   position: absolute;
-  top: 106.5mm;
-  left: 62mm;
-  font-size: 14pt;
+  top: 100mm;
+  left: 35mm;
+  text-align: center;
+  font-size: 18pt;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
 
@@ -119,8 +128,8 @@ p{font-size: 9pt;}
 
 .date_naissance {
   position: absolute;
-  top: 114mm;
-  left: 74mm;
+  top: 110mm;
+  left: 35mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
@@ -137,8 +146,20 @@ p{font-size: 9pt;}
 
 .formation {
   position: absolute;
-  top: 122mm;
-  left: 120mm;
+  text-align: center;
+  top: 118mm;
+  left: 97mm;
+  max-width: 180mm;
+  font-family: Calibri, Papyrus, fantasy;
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+.participation {
+  position: absolute;
+  top: 118mm;
+  left: 95mm;
+  max-width: 180mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
   font-size: 14pt;
@@ -146,11 +167,11 @@ p{font-size: 9pt;}
 
 .du {
   position: absolute;
-  top: 130.7mm;
+  top: 130.5mm;
   left: 55mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 
 .au {
@@ -167,7 +188,7 @@ p{font-size: 9pt;}
   left: 55mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 .duree_heure {
   position: absolute;
@@ -184,7 +205,7 @@ p{font-size: 9pt;}
   left:75mm;
   font-family: Calibri, Papyrus, fantasy;
   font-weight: bold;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 
 

@@ -8,6 +8,8 @@ import {InscriptionService} from "../../services/inscription/inscription.service
 import {StagiaireService} from "../../services/stagiaire/stagiaire.service";
 import * as XLSX from "xlsx";
 
+import {UtilsService} from "../../services/utils/utils.service";
+
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.component.html',
@@ -47,13 +49,14 @@ export class InscriptionComponent {
     private modalService: NgbModal,
     private fb: FormBuilder,
     private datePipe: DatePipe,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private utilsService:UtilsService
   ) {
   }
 
   ngOnInit(): void {
     this.onSearchStagiaire()
-    this.sessionService.getAll().subscribe(ss => {
+    this.sessionService.getAll().subscribe((ss:any) => {
       this.sessions = ss
     })
     let session_id = this.activateRoute.snapshot.url[1].path
@@ -68,7 +71,7 @@ export class InscriptionComponent {
 
   refresh(): void {
     this.inscriptionService.getAllBySession(this.session.id).subscribe(
-      res => {
+      (res:any) => {
         this.inscriptions = res
       })
   }
@@ -168,7 +171,7 @@ export class InscriptionComponent {
       name: this.fg1.value.name,
       theme: this.fg1.value.theme,
       date: this.fg1.value.dd
-    }).subscribe(res => {
+    }).subscribe((res:any) => {
       this.sessions = res
     })
   }
@@ -180,7 +183,7 @@ export class InscriptionComponent {
       birthDay: this.fg.value.birthDay,
       customer: this.fg.value.customer
     }).subscribe(
-      res => {
+      (res:any) => {
         this.stagiaires = res
       })
   }
@@ -201,12 +204,40 @@ export class InscriptionComponent {
   }
 
   openExportList() {
-    let element = document.getElementById('listeTable');
-    const ws = XLSX.utils.table_to_sheet(element);
+    if(this.inscriptions){
+    // let element = document.getElementById('listeTable');
+
+      let ins:any[]=[]
+
+      for(let i of this.inscriptions){
+        ins.push({
+          Code:i.stagiaire.id,
+          Nom: i.stagiaire.familyName,
+          Prenom:i.stagiaire.firstName,
+          DateNaissance:this.datePipe.transform(i.stagiaire.birthDay,"dd/MM/YYYY"),
+          Client: i.stagiaire.customer.shortName,
+          DateArrivee: this.datePipe.transform(i.arriveDate,"dd/MM/YYYY"),
+          Declencheur:i.inscriptionReference,
+          Session : i.session.action.name+"("+i.session.name+")",
+          Du :this.datePipe.transform(i.session.startDate,"dd/MM/YYYY"),
+          Au:this.datePipe.transform(i.session.endDate,"dd/MM/YYYY")
+
+        })
+
+      }
+
+
+
+    const ws = XLSX.utils.json_to_sheet(ins);
+
+
+
     const wb = XLSX.utils.book_new();
+
     XLSX.utils.book_append_sheet(wb, ws, "Liste");
     const filename = "liste des stagiaires.xlsx";
     XLSX.writeFile(wb, filename);
+    }
   }
 
   openPrintList() {
@@ -215,6 +246,12 @@ export class InscriptionComponent {
 
   onAtestation(a: any) {
     this.router.navigateByUrl("attestation/"+a.id)
+  }
+
+  downloadPDF() {
+
+    this.router.navigateByUrl("attestations/"+this.session.id)
+
   }
 }
 

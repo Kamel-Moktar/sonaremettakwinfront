@@ -37,12 +37,12 @@ export class DetailAcheminementComponent {
 
   ngOnInit() {
     this.shippingSlipId = this.activateRoute.snapshot.url[1].path
-    this.shippingSlipService.getInvoiceByShippingSlip(this.shippingSlipId).subscribe(res=>{
+    this.shippingSlipService.getInvoiceByShippingSlip(this.shippingSlipId).subscribe((res:any)=>{
       this.shippingSlipInvoices=res
       }
     )
 
-    this.shippingSlipService.getShippingSlipById(this.shippingSlipId).subscribe((res) => {
+    this.shippingSlipService.getShippingSlipById(this.shippingSlipId).subscribe((res:any) => {
       this.selectedShippingSlip = res
     })
 
@@ -68,14 +68,14 @@ export class DetailAcheminementComponent {
 
   onDelete(invoice: any) {
     if (confirm("Voulez vous vraiment supprimer cet ligne  ?")) {
-      this.shippingSlipService.deleteInvoice(invoice,this.shippingSlipId).subscribe(() => {
+      this.shippingSlipService.deleteInvoice(this.shippingSlipId).subscribe(() => {
         this.refresh()
       })
     }
   }
 
   onPrint1() {
-    this.ouvreNouvelOnglet("print-shippingslip/" + this.shippingSlipId)
+    this.router.navigateByUrl("print-shippingslip/" + this.shippingSlipId)
   }
 
   static getDismissReason(reason: any): string {
@@ -124,7 +124,7 @@ export class DetailAcheminementComponent {
   }
 
 refresh(){
-  this.shippingSlipService.getInvoiceByShippingSlip(this.shippingSlipId).subscribe(res=>{
+  this.shippingSlipService.getInvoiceByShippingSlip(this.shippingSlipId).subscribe((res:any)=>{
       this.shippingSlipInvoices=res
     }
   )
@@ -144,9 +144,9 @@ refresh(){
 
   refreshInvoices(searchParam: any) {
 
-    this.invoiceService.getAllParam(searchParam).subscribe((ls) => {
+    this.invoiceService.getAllParam(searchParam).subscribe((ls:any) => {
       this.invoices = []
-      ls.forEach(e => {
+      ls.forEach((e:any) => {
           this.invoices.push({
             invoice: e,
             fg: this.fb.group({

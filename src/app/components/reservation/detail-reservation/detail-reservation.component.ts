@@ -42,7 +42,7 @@ export class DetailReservationComponent {
     this.inscriptionService.getById(inscriptionId).subscribe(res => {
       this.selectedInscription = res
          this.refresh()
-      this.hotelService.getAll().subscribe(h => {
+      this.hotelService.getAll().subscribe((h:any) => {
         this.hotels = []
         h.forEach((e: any) => {
           this.hotels.push({
@@ -60,7 +60,7 @@ export class DetailReservationComponent {
     })
 
 
-    this.reservationService.getRoomType().subscribe(rt => {
+    this.reservationService.getRoomType().subscribe((rt:any) => {
       this.roomType = rt
     })
 

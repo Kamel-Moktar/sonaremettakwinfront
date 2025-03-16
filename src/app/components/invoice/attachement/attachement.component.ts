@@ -93,20 +93,18 @@ export class AttachementComponent {
   }
 
   refresh(): void {
-
     this.invoiceDetailService.getInvoice(this.invoice_id).subscribe(
-      res => {
+      (res:any)=> {
         this.invoiceDetails = res
-
       }
     )
     this.invoiceDetailService.getDistinctInscriptionByInvoice(this.invoice_id).subscribe(
-      res => {
+      (res:any)=> {
         this.inscriptions = res
       })
 
     this.invoiceDetailService.getDistinctSessionByInvoice(this.invoice_id).subscribe(
-      res => {
+      (res:any)=> {
         this.distinctSessions = res
 
       })
@@ -118,9 +116,7 @@ export class AttachementComponent {
 
       this.invoiceDetailService.delete(a.id).subscribe(() => {
         this.refresh()
-        this.invoiceDetailService.updateIsBilled(a).subscribe(res => {
-          this.refreshSession()
-        })
+        this.refreshSession()
       })
     }
   }
@@ -133,31 +129,29 @@ export class AttachementComponent {
   onSearch() {
     this.refresh()
   }
+
   traitement(session: any) {
-
-
     this.inscriptionService.getAllByCustomerBySession(this.customer.id, session.session.id).subscribe(
-      (res: any[]) => {
-
-        session.fg.value.phFgName.forEach((p: any) => {
-
-          res.forEach(ins => {
-            this.invoiceDetailService.add(
-              {
-                inscription: ins,
-                invoice: this.invoice,
-                phase: p
-              }).subscribe(res => {
-                this.refresh()
-                this.refreshSession()
-              }
-            )
-
+      (ins: any) => {
+        let param: any = {
+          inscriptions: ins,
+          invoice: this.invoice,
+          phases: session.fg.value.phFgName
+        }
+        this.invoiceDetailService.add(param).subscribe(res => {
+          session.fg.value.phFgName.forEach((ph:any)=>{
+            this.invoiceDetailService.refresh({
+              inscription:ins[0],
+              phase:ph,
+              invoice:this.invoice
+            }).subscribe(aa => {
+              this.refresh()
+              this.refreshSession()
+            })
           })
 
+
         })
-
-
       })
 
 
@@ -201,11 +195,11 @@ export class AttachementComponent {
 
 
   refreshSession() {
-    this.inscriptionService.getSessionByCustomer(this.customer.id).subscribe(ls => {
+    this.inscriptionService.getSessionByCustomer(this.customer.id).subscribe((ls:any) => {
         this.sessions = []
         ls.forEach((e: any) => {
             this.phaseService.getAllBySessionForBilling(e.id).subscribe(
-              res => {
+              (res:any) => {
                 let phs: any = []
                 for (let p of res) {
                   phs.push({
@@ -240,12 +234,12 @@ export class AttachementComponent {
 
   }
 
-  onAdd(a:any) {
-    this.router.navigateByUrl("add-invoice-detail/" + a.id+"/"+this.invoice.id)
+  onAdd(a: any) {
+    this.router.navigateByUrl("add-invoice-detail/" + a.id + "/" + this.invoice.id)
   }
 
   onPrint() {
-    this.router.navigateByUrl("print-attachement/"+this.invoice.id)
+    this.router.navigateByUrl("print-attachement/" + this.invoice.id)
   }
 }
 

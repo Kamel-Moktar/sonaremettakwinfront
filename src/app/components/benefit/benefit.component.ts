@@ -23,7 +23,7 @@ export class BenefitComponent {
 
   refresh() {
     this.benefitService.getAll().subscribe(
-      (res) => {//est une prog asynchrone pour éviter le blocage
+      (res:any)=> {//est une prog asynchrone pour éviter le blocage
         this.benefits = res
 
 

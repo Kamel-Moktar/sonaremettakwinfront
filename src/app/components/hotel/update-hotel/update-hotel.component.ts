@@ -11,7 +11,7 @@ import {HotelService} from "../../../services/hotel/hotel.service";
 export class UpdateHotelComponent {
 
 
-  title: String = "Nouveau  Hotel";
+  title: String = "Modifier  Hôtel";
 
 
   formGroup: FormGroup = this.fb.group({
@@ -33,7 +33,7 @@ export class UpdateHotelComponent {
   ngOnInit() {
 
     let hotelId = this.activateRoute.snapshot.url[1].path
-    this.hotelService.getById(hotelId).subscribe(res => {
+    this.hotelService.getById(hotelId).subscribe((res:any) => {
       this.selectedHotel = res
       this.formGroup = this.fb.group({
         name: [res.name, Validators.required],

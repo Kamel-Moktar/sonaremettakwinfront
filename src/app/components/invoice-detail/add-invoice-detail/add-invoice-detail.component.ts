@@ -46,18 +46,18 @@ export class AddInvoiceDetailComponent {
     let invoiceId = this.activateRoute.snapshot.url[2].path
 
 
-    this.invoiceService.getInvoiceById(invoiceId).subscribe(inv => {
+    this.invoiceService.getInvoiceById(invoiceId).subscribe((inv:any) => {
       this.selectedInvoice = inv
-      this.inscriptionService.getById(inscriptionId).subscribe(ins => {
+      this.inscriptionService.getById(inscriptionId).subscribe((ins:any) => {
         this.selectedInscription = ins
-        this.invoiceDetailService.getPhase(ins.id, inv.id).subscribe(ph => {
+        this.invoiceDetailService.getPhase(ins.id, inv.id).subscribe((ph:any) => {
 
           if (ph.length != 0) this.phase = ph[0]
         })
       })
 
     })
-    this.benefitService.getAll().subscribe(res => {
+    this.benefitService.getAll().subscribe((res:any)=> {
       this.benefits = res
     })
   }

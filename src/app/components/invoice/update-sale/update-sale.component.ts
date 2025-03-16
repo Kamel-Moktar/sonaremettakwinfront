@@ -48,7 +48,7 @@ export class UpdateSaleComponent {
 
     this.id = this.activateRoute.snapshot.url[1].path
 
-    this.saleService.getSaleById(this.id).subscribe(sale => {
+    this.saleService.getSaleById(this.id).subscribe((sale:any )=> {
 
       this.selectedBenefit = sale.benefit
       this.invoice = sale.invoice
@@ -63,7 +63,7 @@ export class UpdateSaleComponent {
       })
 
       this.uniteMesureService.getUnits().subscribe(
-        (res) => {
+        (res:any) => {
 
           this.units = res
         })

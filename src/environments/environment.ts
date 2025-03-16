@@ -4,9 +4,12 @@
 
 export const environment = {
   production: true,
-    backendBaseUrl:"http://localhost:8082"
-  // backendBaseUrl:"http://192.168.100.10:8082"
- };
+  // backendBaseUrl: "http://localhost:8082",
+  backendBaseUrl:"http://192.168.100.10:8082",
+  tokenName:"token",
+  currentUserId : "currentUserId"
+
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

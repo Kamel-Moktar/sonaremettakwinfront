@@ -20,7 +20,7 @@ export class DomaineComponent {
 
   refresh(): void {
     this.domaineService.getAll().subscribe(
-      res => {
+      (res:any) => {
         this.domaines = res
         // console.log(res)
       })

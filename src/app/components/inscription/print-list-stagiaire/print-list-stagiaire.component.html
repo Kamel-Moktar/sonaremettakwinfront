@@ -31,9 +31,9 @@
       <div class="row">&nbsp;</div>
       <div class="row">&nbsp;</div>
       <div class="row no-gutters">
-        <h5>
-          <strong> Session:</strong> {{session.action.name}}({{session.name}})
-            du {{session.startDate|date:"dd/MM/yyyy"}} au   {{session.endDate|date:"dd/MM/yyyy"}}
+       <h5>
+        <p><strong> Session:</strong> {{session.action.name}}({{session.name}})
+          du {{session.startDate|date:"dd/MM/yyyy"}} au   {{session.endDate|date:"dd/MM/yyyy"}}</p>
         </h5>
       </div>
       <div class="row no-gutters items-group1">
@@ -42,26 +42,26 @@
             <table class="table table-striped border-black  table-bordered table-hover">
               <thead>
               <tr class="text-center">
-                <th style="width: 2%">N°</th>
-                <th style="width: 3%">Code Stag</th>
-                <th style="width: 15%">Nom</th>
-                <th style="width: 15%">Prénom</th>
-                <th style="width: 5%">Date de naissance</th>
-                <th style="width: 15%">Client</th>
-                <th style="width: 40%">Déclencheur(CB ou note d'inscription)</th>
-                <th style="width: 5%">Date d'arrivé</th>
+                <th style="width: 2%"><p>N°</p>  </th>
+                <th style="width: 3%"><p>Code</p></th>
+                <th style="width: 15%"><p>Nom</p></th>
+                <th style="width: 15%"><p>Prénom</p></th>
+                <th style="width: 5%"><p>Date de naissance<p></p></th>
+                <th style="width: 30%"><p>Client</p></th>
+<!--                <th style="width: 25%">Déclencheur(CB ou note d'inscription)</th>-->
+<!--                <th style="width: 5%">Date d'arrivé</th>-->
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let a of this.lignes ;let i=index ">
-                <td style="text-align: center"> {{i}}</td>
-                <td [ngStyle]="{'text-align' : 'center', 'background': a.arriveDate?'':'green'}"> {{a.stagiaire.id}}</td>
-                <td> {{a.stagiaire.familyName}}</td>
-                <td> {{a.stagiaire.firstName}} </td>
-                <td> {{a.stagiaire.birthDay |date:"dd/MM/yyyy"}}</td>
-                <td> {{a.stagiaire.customer.shortName}}</td>
-                <td> {{a.inscriptionReference}}</td>
-                <td> {{a.arriveDate|date:"dd/MM/yyyy"}}</td>
+                <td style="text-align: center"><p> {{i}}</p></td>
+                <td [ngStyle]="{'text-align' : 'center', 'background': a.arriveDate?'':'green'}"><p> {{a.stagiaire.id}}</p></td>
+                <td><p> {{a.stagiaire.familyName}}</p></td>
+                <td><p> {{a.stagiaire.firstName}}</p> </td>
+                <td><p> {{a.stagiaire.birthDay |date:"dd/MM/yyyy"}}</p></td>
+                <td><p> {{a.stagiaire.customer.shortName}}</p></td>
+<!--                <td> {{a.inscriptionReference}}</td>-->
+<!--                <td> {{a.arriveDate|date:"dd/MM/yyyy"}}</td>-->
               </tr>
               </tbody>
             </table>

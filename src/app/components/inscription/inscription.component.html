@@ -60,11 +60,20 @@
     <div *ngIf="session" class="row m-2  round1">
 
       <div class="col m-2"><h3>{{title}}</h3></div>
+
+      <div class="col col-auto m-2">
+        <button (click)="downloadPDF()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-file-pdf-o"></span>
+        </button>
+      </div>
+
       <div class="col col-auto m-2">
         <button (click)="openExportList()" class="btn btn-outline-success align-content-end">
           <span class="fa fa-table"></span>
         </button>
       </div>
+
+
       <div class="col col-auto m-2">
         <button (click)="openPrintList()" class="btn btn-outline-success align-content-end">
           <span class="fa fa-print"></span>

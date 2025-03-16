@@ -35,7 +35,7 @@ export class UpdateAraveDateComponent {
   ngOnInit() {
     let inscriptionId = this.activateRoute.snapshot.url[1]
 
-    this.inscriptionService.getById(inscriptionId).subscribe(ins => {
+    this.inscriptionService.getById(inscriptionId).subscribe((ins:any) => {
       this.inscription = ins
       this.formGroup = this.fb.group({
         date: [ins.arriveDate ? this.utils.formatDate(ins.arriveDate) : this.utils.formatDate(ins.session.startDate)],

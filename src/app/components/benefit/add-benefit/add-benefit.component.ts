@@ -38,7 +38,7 @@ export class AddBenefitComponent {
 
 
   ngOnInit() {
-    this.uniteMesureService.getAll('*').subscribe(res => {//est une prog asynchrone pour éviter le blocage
+    this.uniteMesureService.getAll('*').subscribe((res:any) => {//est une prog asynchrone pour éviter le blocage
       this.uniteMesures = res
     })
 

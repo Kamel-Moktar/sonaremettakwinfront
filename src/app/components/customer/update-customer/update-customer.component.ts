@@ -42,7 +42,7 @@ export class UpdateCustomerComponent {
 
     const id=this.activateRoute.snapshot.url[1]
 
-    this.customerService.getById(id).subscribe(res=>{
+    this.customerService.getById(id).subscribe((res:any)=>{
       this.formGroup= this.fb.group({
         id: [res.id, Validators.required],
         name: [res.name, Validators.required],

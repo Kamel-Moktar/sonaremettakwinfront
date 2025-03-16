@@ -20,8 +20,8 @@ export class UpdateActionComponent {
     objectif: [""],
     dureDay: ["", Validators.required],
     dureHour: ["", Validators.required],
-    domaine: ["aa", Validators.required]
-
+    domaine: ["", Validators.required],
+    typ: ["", Validators.required],
   })
   footer: any = "";
   domaines: any[] = [];
@@ -31,7 +31,7 @@ export class UpdateActionComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private actionService: ActionService,
+    public actionService: ActionService,
     private domaineService: DomaineService,
     private activateRoute: ActivatedRoute
   ) {
@@ -41,9 +41,9 @@ export class UpdateActionComponent {
 
   ngOnInit() {
     const id = this.activateRoute.snapshot.url[1].path
-    this.actionService.getById(id).subscribe(res => {
+    this.actionService.getById(id).subscribe((res: any) => {
       this.selected = res;
-      this.domaineService.getAll().subscribe(res => {//est une prog asynchrone pour éviter le blocage
+      this.domaineService.getAll().subscribe((res: any) => {//est une prog asynchrone pour éviter le blocage
         this.domaines = res
       })
 
@@ -53,8 +53,8 @@ export class UpdateActionComponent {
         objectif: [res.objectif],
         dureDay: [res.duration, Validators.required],
         dureHour: [res.durationHour, Validators.required],
-        dom: [res.domaine.name, Validators.required],
-
+        domaine: [res.domaine.name, Validators.required],
+        typ: [res.type, Validators.required],
       })
 
 
@@ -62,7 +62,7 @@ export class UpdateActionComponent {
   }
 
   onValidate() {
-    const v = this.formGroup.value.dom;
+    const v = this.formGroup.value.domaine;
     this.domaines.forEach(u => {
       if (u.name == v) this.selectedDomaine = u
     })
@@ -74,7 +74,8 @@ export class UpdateActionComponent {
         objectif: this.formGroup.value.objectif,
         duration: this.formGroup.value.dureDay,
         durationHour: this.formGroup.value.dureHour,
-        domaine: this.selectedDomaine
+        domaine: this.selectedDomaine,
+        type:this.formGroup.value.typ
       }).subscribe(() => {
           this.onCancel();
         }
@@ -97,8 +98,8 @@ export class UpdateActionComponent {
       objectif: [this.formGroup.value.objectif],
       dureDay: [this.formGroup.value.dureDay, Validators.required],
       dureHour: [this.formGroup.value.dureDay * 6, Validators.required],
-      dom: [this.formGroup.value.dom, Validators.required],
-
+      domaine: [this.formGroup.value.domaine, Validators.required],
+      type: [this.formGroup.value.typ, Validators.required]
     })
   }
 }

@@ -22,7 +22,7 @@ export class HotelComponent {
 
   refresh(): void {
     this.hotelService.getAll().subscribe(
-      res => {
+      (res:any) => {
         this.hotels = res
         // console.log(res)
       })

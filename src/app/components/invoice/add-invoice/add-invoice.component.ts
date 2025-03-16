@@ -44,7 +44,7 @@ export class AddInvoiceComponent {
   selected: any;
 
   ngOnInit() {
-    this.customerService.getAll().subscribe(res => {
+    this.customerService.getAll().subscribe((res:any) => {
       this.customers = res
 
 
@@ -94,7 +94,7 @@ export class AddInvoiceComponent {
 
   onSearch() {
 
-    this.customerService.getAllParam({name: this.fg.value.name, shortName: this.fg.value.shortName}).subscribe(res => {
+    this.customerService.getAllParam({name: this.fg.value.name, shortName: this.fg.value.shortName}).subscribe((res:any) => {
       this.customers = res
 
     })

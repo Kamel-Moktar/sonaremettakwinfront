@@ -23,7 +23,7 @@
         <div class="row m-2">
           <div class="col col-2 text-end"><label> Domaine: </label></div>
           <div class="col col-3" *ngIf="domaines">
-            <select class='form-select form-control' formControlName="dom">
+            <select class='form-select form-control' [formControlName]="'domaine'">
               <option class='form-select' *ngFor='let option of domaines'
                       [value]="option.name">{{option.name}}</option>
             </select>
@@ -57,6 +57,15 @@
           <div class="col col"><input [formControlName]="'objectif'" class="form-control"
                                       placeholder="Objectif de la formation " type="text"></div>
 
+        </div>
+        <div class="row m-2">
+          <div class="col  col-2 text-end"><label> Type: </label></div>
+          <div class="col col-2">
+            <select class='form-select form-control' [formControlName]="'typ'">
+              <option *ngFor='let option of actionService.getType()'
+                      class='form-select' [value]="option" >{{option}}</option>
+            </select>
+          </div>
         </div>
 
         <div class="row">

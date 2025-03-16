@@ -34,9 +34,9 @@ export class DeclencheurComponent {
   ngOnInit() {
     let inscriptionId = this.activateRoute.snapshot.url[1]
 
-    this.inscriptionService.getById(inscriptionId).subscribe(ins => {
+    this.inscriptionService.getById(inscriptionId).subscribe((ins:any) => {
       this.inscription = ins
-      this.inscriptionService.getAllBySession(ins.session.id).subscribe(inss=>{
+      this.inscriptionService.getAllBySession(ins.session.id).subscribe((inss:any)=>{
         this.inscriptions=inss
       })
 

@@ -27,8 +27,8 @@ h6{
   border-color: gray;
   border-width: 1pt 1pt 1pt 1pt;
   border-radius: 1pt;
-  padding: 1pt 1pt 1pt 1pt;
-  margin: 1pt 0 1pt 0;
+  padding: 1px;
+  margin: 0 0mm 0 0mm;
 }
 
 .items-group1 {
@@ -37,7 +37,7 @@ h6{
   border-width: 0 0 0 0;
   border-radius: 1pt;
   padding: 1pt 1pt 1pt 1pt;
-  margin: 1pt 0 1pt 0;
+  margin: 0 0mm 0 0mm;
 }
 
 
@@ -108,4 +108,13 @@ h6{
   grid-area: da;
 }
 
+table, th, td {
 
+  padding: 0;
+  margin-inside: 0;
+margin-outside: 0;
+}
+table {
+  border-spacing: 0;
+
+}

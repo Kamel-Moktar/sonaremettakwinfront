@@ -25,60 +25,72 @@
 
 
       <div class="row no-gutters " style="text-align: center">
-        <h3><u> <strong>{{titre}}{{invoice.data|date:"dd/MM/YYYY"}}</strong></u></h3>
+        <h3><u> <strong> <p>{{titre}}{{invoice.data|date:"dd/MM/YYYY"}}</p> </strong></u></h3>
       </div>
-      <div class="row">&nbsp;</div>
-      <div class="row">&nbsp;</div>
+<!--      <div class="row">&nbsp;</div>-->
+<!--      <div class="row">&nbsp;</div>-->
 
       <div *ngFor="let s of distinctSessions">
         <div class="row items-group">
-          <div class="row m-2 round1">
-            <div class="row  m-2 ">
-              <div class="col"><b>Formation :</b></div>
-              <div class="col col-7">{{s.action.name}} ({{s.name}})</div>
+          <div class="row round1">
+            <div class="row ">
+              <div class="col col-2 text-end"><p><b>Formation :</b> </p></div>
+              <div class="col"><p>{{s.action.name}} ({{s.name}})</p> </div>
             </div>
           </div>
         </div>
         <div class="card-body">
-          <table class="table table-striped border-black  table-bordered table-hover" id="listeTable">
+          <table class="table  border-black  table-bordered table-hover m-0" id="listeTable"   >
 
             <thead>
-            <tr class="text-center">
-              <th style="width: 2%">N°</th>
-              <th style="width: 15%">Nom</th>
-              <th style="width: 15%">Prénom</th>
-              <th style="width: 80%">Détail</th>
+            <tr class="text-center" style="padding:1px">
+              <th style="width: 2%"><p>N°</p> </th>
+              <th style="width: 15%"><p>Nom</p> </th>
+              <th style="width: 15%"><p>Prénom</p></th>
+              <th style="width: 80%">
+                <div class="row">
+                  <div class="col col-9"><p>Designation</p> </div>
+                  <div class="col col-1" align=""><p>Qte</p></div>
+                  <div class="col col-1"><p>Prix</p></div>
+                </div>
+              </th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let a of this.inscriptions ;let i=index ">
-              <td *ngIf="a.session.id==s.id" style="text-align: center"> {{i}}</td>
-              <td *ngIf="a.session.id==s.id"> {{a.stagiaire.familyName}}</td>
-              <td *ngIf="a.session.id==s.id"> {{a.stagiaire.firstName}}</td>
+            <tr *ngFor="let a of this.inscriptions ;let i=index "  style="padding:1px">
+              <td *ngIf="a.session.id==s.id" style="text-align: center"><p>{{i}}</p> </td>
+              <td *ngIf="a.session.id==s.id"><p>{{a.stagiaire.familyName}}</p> </td>
+              <td *ngIf="a.session.id==s.id"><p>{{a.stagiaire.firstName}}</p> </td>
 
               <td *ngIf="a.session.id==s.id">
-                <table *ngIf="(a.session.id==s.id)" class="table">
-                  <thead>
-                  <th style="width: 70%">Prestation</th>
-                  <th style="width: 15%">Qte</th>
-                  <th style="width: 15%">Prix</th>
-                  <!--            <th style="width: 20%">Obs</th>-->
-                  </thead>
+                <table *ngIf="(a.session.id==s.id)" class="table  border-black  table-bordered table-hover  m-0">
+<!--                  <thead>-->
+<!--                  <th style="width: 70%"><p>Prestation</p></th>-->
+<!--                  <th style="width: 15%"><p>Qte</p></th>-->
+<!--                  <th style="width: 15%"><p>Prix</p></th>-->
+<!--                  &lt;!&ndash;            <th style="width: 20%">Obs</th>&ndash;&gt;-->
+<!--                  </thead>-->
 
                   <tr *ngFor="let d of invoiceDetails">
 
                     <td
-                      *ngIf="(a.stagiaire.id==d.inscription.stagiaire.id)&&(a.booking)&&(d.inscription.session.id==s.id)">{{d.benefit.designation}}
-                      du {{d.phase.startDate|date:"dd/MM/yy"}} au {{d.phase.endDate|date:"dd/MM/yy"}}</td>
+                      *ngIf="(a.stagiaire.id==d.inscription.stagiaire.id)&&(a.booking)&&(d.inscription.session.id==s.id)">
+                     <p>{{d.benefit.designation}} du {{d.phase.startDate|date:"dd/MM/yy"}} au {{d.phase.endDate|date:"dd/MM/yy"}}</p>
+                    </td>
                     <td
-                      *ngIf="(a.stagiaire.id==d.inscription.stagiaire.id)&&(!a.booking)&&(d.inscription.session.id==s.id)">{{d.benefit.designation}}
-                      du {{d.phase.startDate|date:"dd/MM/yy"}} au {{d.phase.endDate|date:"dd/MM/yy"}}</td>
+                      *ngIf="(a.stagiaire.id==d.inscription.stagiaire.id)&&(!a.booking)&&(d.inscription.session.id==s.id)">
+                     <p>{{d.benefit.designation}} du {{d.phase.startDate|date:"dd/MM/yy"}} au {{d.phase.endDate|date:"dd/MM/yy"}}</p>
+                    </td>
 
 
                     <td
-                      *ngIf="(a.stagiaire.id==d.inscription.stagiaire.id) &&(!a.booking)&&(d.inscription.session.id==s.id)">{{d.qte}}</td>
+                      *ngIf="(a.stagiaire.id==d.inscription.stagiaire.id) &&(!a.booking)&&(d.inscription.session.id==s.id)">
+                      <p>{{d.qte}}</p>
+                    </td>
                     <td
-                      *ngIf="(a.stagiaire.id==d.inscription.stagiaire.id) &&(!a.booking)&&(d.inscription.session.id==s.id)">{{d.price}}</td>
+                      *ngIf="(a.stagiaire.id==d.inscription.stagiaire.id) &&(!a.booking)&&(d.inscription.session.id==s.id)">
+                     <p>{{d.price}}</p>
+                    </td>
 
 
                   </tr>

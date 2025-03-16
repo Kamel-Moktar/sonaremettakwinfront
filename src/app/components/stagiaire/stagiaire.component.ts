@@ -46,7 +46,7 @@ export class StagiaireComponent {
       birthDay: this.fg.value.birthDay,
       customer: this.fg.value.customer
     }).subscribe(
-      res => {
+      (res:any)=> {
         this.stagiaires = res
       })
   }

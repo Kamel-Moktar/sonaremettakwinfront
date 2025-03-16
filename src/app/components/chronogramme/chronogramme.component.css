@@ -2,3 +2,13 @@
   display: flex;
   background-color: #d2f4ea;
 }
+table, th, td {
+
+  padding: 0px;
+  margin-inside: 0;
+  margin-outside: 0;
+}
+table {
+  border-spacing: 0;
+
+}

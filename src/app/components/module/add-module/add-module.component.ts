@@ -40,7 +40,7 @@ export class AddModuleComponent {
   }
 
   ngOnInit() {
-    this.domaineService.getAll().subscribe(res => {//est une prog asynchrone pour éviter le blocage
+    this.domaineService.getAll().subscribe((res:any) => {//est une prog asynchrone pour éviter le blocage
       this.domaines = res
     })
 

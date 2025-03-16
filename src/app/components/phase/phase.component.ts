@@ -39,7 +39,7 @@ export class PhaseComponent {
 
   ngOnInit(): void {
 
-    this.sessionService.getAll().subscribe(ss => {
+    this.sessionService.getAll().subscribe((ss:any) => {
       this.sessions = ss
     })
     let session_id = this.activateRoute.snapshot.url[1].path
@@ -130,7 +130,7 @@ export class PhaseComponent {
       name: this.fg.value.name,
       theme: this.fg.value.theme,
       date: this.fg.value.dd
-    }).subscribe(res => {
+    }).subscribe((res:any) => {
       this.sessions = res
     })
   }

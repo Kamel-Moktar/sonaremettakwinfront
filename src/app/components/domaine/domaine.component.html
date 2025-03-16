@@ -18,11 +18,13 @@
           <tr class="text-center">
             <th style="width: 5%">Code Domaine</th>
             <th style="width: 80%">Nom de domaine</th>
+            <th style="width: 80%">Couleur de domaine</th>
           </thead>
           <tbody>
           <tr *ngFor="let a of this.domaines ;let i=index ">
             <td style="text-align: center"> {{a.id}}</td>
             <td> {{a.name}}</td>
+            <td style="background-color:{{a.color}}"></td>
             <td>
               <div class="container">
                 <button (click)="onUpdate(a)" class="btn btn-outline-success">

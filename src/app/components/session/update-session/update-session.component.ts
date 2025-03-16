@@ -49,7 +49,7 @@ export class UpdateSessionComponent {
   }
 
   ngOnInit() {
-    this.actionService.getAll().subscribe(res => {//est une prog asynchrone pour éviter le blocage
+    this.actionService.getAll().subscribe((res:any )=> {//est une prog asynchrone pour éviter le blocage
       this.actions = res
     })
     let sessionId = this.activateRoute.snapshot.url[1].path
@@ -96,7 +96,7 @@ export class UpdateSessionComponent {
 
 
   onSearch() {
-    this.actionService.getAllParam({name: this.fg.value.name, domainName: this.fg.value.domaine}).subscribe(res => {//est une prog asynchrone pour éviter le blocage
+    this.actionService.getAllParam({name: this.fg.value.name, domainName: this.fg.value.domaine}).subscribe((res:any)=> {//est une prog asynchrone pour éviter le blocage
       this.actions = res
     })
   }

@@ -49,7 +49,7 @@ export class UpdatePhaseComponent {
 
     let phase_id = this.activateRoute.snapshot.url[1].path
     if (phase_id != "0") {
-      this.phaseService.getById(phase_id).subscribe(ph => {
+      this.phaseService.getById(phase_id).subscribe((ph:any )=> {
         this.selected = ph
         this.session = ph.session
 
@@ -66,12 +66,12 @@ export class UpdatePhaseComponent {
       })
     }
 
-    this.phaseService.grtTypePhase().subscribe(res => {
+    this.phaseService.grtTypePhase().subscribe((res:any) => {
       this.typePhases = res
 
 
     })
-    this.phaseService.grtLieuPhase().subscribe(res => {
+    this.phaseService.grtLieuPhase().subscribe((res:any) => {
       this.lieuPhases = res
 
 

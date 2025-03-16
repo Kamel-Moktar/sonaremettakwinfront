@@ -2,6 +2,13 @@
   <div class="card-header ">
     <div class="row">
       <div class="col"><h6>{{title}}</h6></div>
+
+      <div class="col col-auto">
+        <button (click)="openExportList()" class="btn btn-outline-success align-content-end">
+          <span class="fa fa-table"></span>
+        </button>
+      </div>
+
       <div class="col col-auto">
         <button (click)="onShow()" class="btn btn-outline-success align-content-end">
           <span class="fa fa-tasks"></span>
@@ -25,7 +32,7 @@
     </div>
   </div>
   <div class="card-body">
-    <table class="table table-bordered " style="font-size: 6pt">
+    <table class="table table-bordered "   id="listeTable" style="font-size: 6pt">
       <thead>
       <tr>
         <th style="width: 20%">Action</th>
@@ -48,8 +55,8 @@
 
         <td *ngFor="let d of periode"  >
           <div *ngFor="let c of r.cellules" >
-            <div *ngIf="utils.formatDate(c.date)===utils.formatDate(d.day)"  >
-              {{c.typePhase.label}}
+            <div *ngIf="utils.formatDate(c.date)===utils.formatDate(d.day)" style="background-color:{{c.phase.session.action.domaine.color}}">
+              {{c.phase.typePhase.label}}
             </div>
           </div>
         </td>

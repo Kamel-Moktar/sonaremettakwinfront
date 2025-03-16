@@ -1,65 +1,68 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {DatePipe} from "@angular/common";
+import {SecurityService} from "../security/security.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProformaService {
 
-
+  option:any ={
+    headers: new HttpHeaders({"Authorization": "Bearer " + this.securityService.loadToken()}), observe: "body"
+  }
   baseUrl: any = environment.backendBaseUrl + "/proforma"
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private securityService :SecurityService) {
   }
 
   public getAll() {
     let url = this.baseUrl + "/all"
-    return this.http.get<any[]>(url)
+    return this.http.get<any[]>(url, this.option)
   }
 
   public getDebts() {
     let url = this.baseUrl + "/debts"
-    return this.http.get<any[]>(url)
+    return this.http.get<any[]>(url, this.option)
   }
 
   public getDebtsParam(param: any) {
     let url = this.baseUrl + "/debtsparam"
-    return this.http.post<any[]>(url, param)
+    return this.http.post<any[]>(url, param, this.option)
   }
 
   public getAllParam(param: any) {
     let url = this.baseUrl + "/allparam"
-    return this.http.post<any[]>(url, param)
+    return this.http.post<any[]>(url, param, this.option)
   }
 
   public getUnpaidProforma(searchParm: any) {
     let url = this.baseUrl + "/unpaidproforma"
-    return this.http.post<any[]>(url, searchParm)
+    return this.http.post<any[]>(url, searchParm, this.option)
   }
 
 
   public add(proforma: any) {
     let url = this.baseUrl + "/add"
-    return this.http.post(url, proforma)
+    return this.http.post(url, proforma, this.option)
 
   }
 
   public delete(proforma: any) {
     let url = this.baseUrl + "/delete"
-    return this.http.post(url, proforma)
+    return this.http.post(url, proforma, this.option)
   }
 
   public update(proforma: any) {
     let url = this.baseUrl + "/update"
-    return this.http.post(url, proforma)
+    return this.http.post(url, proforma, this.option)
   }
 
 
   getProformaById(proformaId: any) {
     let url = this.baseUrl + "/byid/" + proformaId
-    return this.http.get<any>(url)
+    return this.http.get<any>(url, this.option)
 
   }
 

@@ -49,7 +49,7 @@ export class UpdateOffreComponent {
 
     this.id = this.activateRoute.snapshot.url[1].path
 
-    this.offreService.getOffreById(this.id).subscribe(offre => {
+    this.offreService.getOffreById(this.id).subscribe((offre:any) => {
 
       this.selectedBenefit=offre.benefit
       this.proforma = offre.proforma
@@ -64,7 +64,7 @@ export class UpdateOffreComponent {
       })
 
       this.uniteMesureService.getUnits().subscribe(
-        (res)=>{
+        (res:any)=>{
           if(this.units.length>0)
             this.unit=this.units[0]
           this.units=res

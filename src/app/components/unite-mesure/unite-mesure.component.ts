@@ -24,7 +24,7 @@ export class UniteMesureComponent {
 
   }
   refreche(name :any){
-    this.uniteMesureService.getAll(name).subscribe(res=>{//est une prog asynchrone pour éviter le blocage
+    this.uniteMesureService.getAll(name).subscribe((res:any)=>{//est une prog asynchrone pour éviter le blocage
     this.uniteMesures=res
   })
 
